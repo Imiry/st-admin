@@ -1,0 +1,75 @@
+.layout-container {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  min-width: 1200px;
+}
+  
+.layout-container .header {
+  width: 100%;
+  height: 50px;
+  background-color: #fff;
+  border-bottom: 1px solid #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.layout-container .header .header_left {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.layout-container .header .header_left{
+  // background-color: purple;
+}
+.layout-container .header .header_right{
+  width: 50%;
+  height: 100%;
+  // background-color: pink;
+  position: relative;
+}
+.layout-container .header .header_right .el-drop1{
+  position: absolute;
+  right: 60px;
+  top: 20px;
+  
+}
+.layout-container .header .header_right .el-drop2{
+  position: absolute;
+  right: 0px;
+  top: 5px;
+}
+.layout-container .header .header_right .avatar-wrap {
+
+  display: flex; 
+  align-items: center;
+  height: 50px;
+  // background-color: #ccc;
+}
+
+
+.el-container{
+  height: 100%;
+}
+.el-container .nav-menu {
+    height: 100%;
+}
+.el-container .nav-menu .iconfont {
+      margin-right: 10px;
+      padding-left: 5px;
+      width: 10px;
+      height: 10px;
+}
+.el-menu-vertical-demo:not(.el-menu--collapse) {
+  width: 200px;
+  min-height: 400px;
+}
+.main{
+  background-color: #eee;
+  padding: 20px;
+  height: 100%;
+}
