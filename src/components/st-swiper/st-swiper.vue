@@ -1,6 +1,6 @@
 <template>
   <div class="st-swiper">
-    <el-carousel height="150px" interval="1000">
+    <el-carousel height="150px" :interval="interval">
       <el-carousel-item v-for="(item,id) in swiperlist" :key="id">
         <img :src="require(`../../assets/images/swiper/${item.src}`)" alt="" srcset="">
       </el-carousel-item>
@@ -19,7 +19,7 @@ export default {
   },
   data() { 
     return {
-      
+      interval:1000,//轮播滚动时间间隔
     }
   }
  }

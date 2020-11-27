@@ -52,15 +52,14 @@
           active-text-color="#01DFD7"
           router
           :collapse="isCollapse"
-        >
-          <el-submenu index="/st_other">
+        > 
+          <el-submenu index="1">
             <template  slot="title" >
               <i class="iconfont icon-otherfile"></i>
               <span slot="title">{{$t('nav.others')}}</span>
             </template>
             <el-menu-item-group>
-              <el-menu-item index="/ux_table">{{$t('others_subnav.Ux_Table')}}</el-menu-item>
-              <!-- <el-menu-item index="1-2">选项2</el-menu-item> -->
+              <el-menu-item index="/ux_table"><i class="iconfont icon-UX"></i>{{$t('others_subnav.Ux_Table')}}</el-menu-item>
             </el-menu-item-group>
           </el-submenu>
           <el-menu-item index="/st_welcome">
@@ -83,10 +82,16 @@
             <i class="iconfont icon-chart"></i>
             <span slot="title">{{$t('nav.chart')}}</span>
           </el-menu-item>
-          <el-menu-item index="/st_element">
-            <i class="iconfont icon-suozhu"></i>
-            <span slot="title">{{$t('nav.element')}}</span>
-          </el-menu-item>
+          <el-submenu index="7">
+            <template  slot="title" >
+              <i class="iconfont icon-suozhu"></i>
+              <span slot="title">{{$t('nav.element')}}</span>
+            </template>
+            <el-menu-item-group>
+              
+              <el-menu-item index="/st_element"><i class="iconfont icon-xiaolian-"></i>{{$t('others_subnav.St_element')}}</el-menu-item>
+            </el-menu-item-group>
+          </el-submenu>
           <el-menu-item index="/st_settings">
             <i class="iconfont icon-shezhi"></i>
             <span slot="title">{{$t('nav.settings')}}</span>

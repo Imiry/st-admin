@@ -110,7 +110,10 @@ export default {
 
       }).catch(err => { // 登录失败
         console.log('登录失败', err)
-        this.$message.error('登录失败，手机号或验证码错误')
+        this.$message({
+          message: '登录失败',
+          type: 'error'
+        })
 
         // 关闭 loading
         this.loginLoading = false

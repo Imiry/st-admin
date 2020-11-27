@@ -53,7 +53,8 @@ const zh = {
     settings:"设置"
   },
   others_subnav:{
-    Ux_Table:"优炫表格"
+    Ux_Table:"优炫表格",
+    St_element:"St_element"
   },
   table:{
     name:"名称",

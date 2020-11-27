@@ -61,7 +61,8 @@ const en = {
       settings:"settings",
     },
     others_subnav:{
-      Ux_Table:"Ux_Table"
+      Ux_Table:"Ux_Table",
+      St_element:"St_element"
     },
     //表格头其一
     table:{

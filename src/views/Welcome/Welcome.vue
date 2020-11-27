@@ -13,7 +13,7 @@
           </el-col>
           <el-col :span="6">
             <div class="grid-content1 purple2">
-              <st-bar></st-bar>
+              
             </div>
           </el-col>
           <el-col :span="6"><div class="grid-content1 purple3"></div></el-col>
@@ -38,10 +38,10 @@
 </template>
 
 <script>
-import StBar from '../../components/st-chart/st-bar.vue'
-import stSwiper from '../../components/st-swiper/st-swiper.vue'
+
+// import stSwiper from '../../components/st-swiper/st-swiper.vue'
 export default {
-  components: { stSwiper, StBar },
+  // components: { stSwiper, StBar },
   name: 'Welcome',
   data() { 
     return {

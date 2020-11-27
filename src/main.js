@@ -10,12 +10,14 @@ import filters from './utils/filters.js'
 import axios from 'axios'
 import i18n from '@/i18n/i18n.js'
 // import echarts from 'echarts'
-
+import message from '@/utils/message.js'
+import notifyMsg from '@/utils/notify.js'
 Vue.prototype.$echarts = window.echarts
 Vue.use(ElementUI);
 Vue.use(filters)
 Vue.config.productionTip = false
-
+Vue.prototype.$message = message
+Vue.prototype.$notifyMsg = notifyMsg
 
 
 axios.defaults.baseURL = 'http://localhost:8888/api/'
