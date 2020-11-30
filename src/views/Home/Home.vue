@@ -9,7 +9,7 @@
                 'el-icon-s-fold': isCollapse,
                 'el-icon-s-unfold': !isCollapse
               }"
-          @click="isCollapse = !isCollapse"
+          @click="toggleNav"
           ></i>
         </h1>
       </div>
@@ -17,11 +17,11 @@
       <div class="header_right">
         <el-dropdown class="el-drop1">
           <span class="el-dropdown-link">
-            {{$t('change.name')}}<i class="el-icon-arrow-down el-icon--right"></i>
+            {{currentLanguage}}<i class="el-icon-arrow-down el-icon--right"></i>
           </span>
           <el-dropdown-menu slot="dropdown">
-            <el-dropdown-item @click.native="handleChange(language[0])">{{$t('change.zh')}}</el-dropdown-item>
-            <el-dropdown-item @click.native="handleChange(language[1])">{{$t('change.en')}}</el-dropdown-item>
+            <el-dropdown-item index="1-1" @click.native="handleChange('zh')">中文</el-dropdown-item>
+            <el-dropdown-item index="1-2" @click.native="handleChange('en')">English</el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
         <!-- <el-select class="el-select" @change="handleChange(language)" v-model="language" placeholder="中文" >

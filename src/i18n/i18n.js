@@ -1,3 +1,9 @@
+/*
+ * @Author: sitao
+ * @Date: 2020-11-25 18:15:00
+ * @LastEditors: sitao
+ * @LastEditTime: 2020-11-30 16:20:27
+ */
 import Vue from 'vue'
 import locale from 'element-ui/lib/locale';
 import VueI18n from 'vue-i18n'
@@ -19,9 +25,9 @@ const messages = {
 //从localStorage中拿到用户的语言选择，如果没有，那默认中文。
 
 const i18n = new VueI18n({
-  locale: localStorage.getItem('locale') || 'zh',
+  locale: sessionStorage.getItem('language') || 'zh',
   messages
 })
 locale.i18n((key, value) => i18n.t(key, value)) //为了实现element插件的多语言切换
-console.log('%c当前缓存语言是：'+(localStorage.getItem('locale')=='en'?'English':'中文')+'','color:#fff;background:green;padding:4px;border-radius:5px');
+console.log('%c当前缓存语言是：'+(sessionStorage.getItem('language')=='en'?'English':'中文')+'','color:#fff;background:green;padding:4px;border-radius:5px');
 export default i18n
