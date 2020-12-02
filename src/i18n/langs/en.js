@@ -1,3 +1,9 @@
+/*
+ * @Author: sitao
+ * @Date: 2020-11-25 18:15:00
+ * @LastEditors: sitao
+ * @LastEditTime: 2020-12-02 16:46:45
+ */
 const en = {
   // 按钮
     button: {
@@ -51,7 +57,7 @@ const en = {
     },
     // 侧边栏
     nav:{
-      others:"others",
+      others:"UX",
       home:"home",
       template:"template",
       manage:"manage",
@@ -60,9 +66,17 @@ const en = {
       element:"element",
       settings:"settings",
     },
+    //子nav
     others_subnav:{
       Ux_Table:"Ux_Table",
+      Ux_Form:"Ux_Form",
+    },
+    element_subnav:{
       St_element:"St_element"
+    },
+    chart_subnav:{
+      St_line:"St_line",
+      St_histogram:"St_histogram"
     },
     //表格头其一
     table:{

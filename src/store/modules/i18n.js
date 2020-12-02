@@ -2,11 +2,11 @@
  * @Author: sitao
  * @Date: 2020-11-30 14:23:10
  * @LastEditors: sitao
- * @LastEditTime: 2020-11-30 17:17:43
+ * @LastEditTime: 2020-12-01 16:51:22
  */
 const i18n = {
   state: {
-    isCollapse:JSON.parse(sessionStorage.getItem('isCollapse')) || true,
+    isCollapse:JSON.parse(sessionStorage.getItem('isCollapse')) || false,
     language: sessionStorage.getItem('language') || 'zh',
   },
   mutations: {

@@ -1,3 +1,9 @@
+/*
+ * @Author: sitao
+ * @Date: 2020-11-25 18:15:00
+ * @LastEditors: sitao
+ * @LastEditTime: 2020-12-02 09:48:56
+ */
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
@@ -12,9 +18,11 @@ import i18n from '@/i18n/i18n.js'
 // import echarts from 'echarts'
 import message from '@/utils/message.js'
 import notifyMsg from '@/utils/notify.js'
+import VCharts from 'v-charts'
 Vue.prototype.$echarts = window.echarts
 Vue.use(ElementUI);
 Vue.use(filters)
+Vue.use(VCharts)
 Vue.config.productionTip = false
 Vue.prototype.$message = message
 Vue.prototype.$notifyMsg = notifyMsg

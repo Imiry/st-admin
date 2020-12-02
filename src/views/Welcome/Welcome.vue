@@ -32,7 +32,7 @@
           <el-col :span="8"><div class="grid-content3 purple3"></div></el-col>          
         </el-row> 
       </div>
-      <div class="moban_4"></div>
+      <!-- <div class="moban_4"></div> -->
     </div>
   </div>
 </template>

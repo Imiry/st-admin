@@ -42,7 +42,7 @@
       
     </el-header>
     
-    <el-container class="el-container">
+    <el-container >
       <el-aside width="auto">
         <el-menu
           class="nav-menu el-menu-vertical-demo"
@@ -53,19 +53,23 @@
           router
           :collapse="isCollapse"
         > 
-          <el-submenu index="1">
+
+          <el-menu-item index="/st_welcome">
+            <i class="iconfont icon-shouye"></i>
+            <span slot="title">{{$t('nav.home')}}</span>
+          </el-menu-item>
+
+          <el-submenu index="2">
             <template  slot="title" >
               <i class="iconfont icon-otherfile"></i>
               <span slot="title">{{$t('nav.others')}}</span>
             </template>
             <el-menu-item-group>
               <el-menu-item index="/ux_table"><i class="iconfont icon-UX"></i>{{$t('others_subnav.Ux_Table')}}</el-menu-item>
+              <el-menu-item index="/ux_form"><i class="iconfont icon-UX"></i>{{$t('others_subnav.Ux_Form')}}</el-menu-item>
             </el-menu-item-group>
           </el-submenu>
-          <el-menu-item index="/st_welcome">
-            <i class="iconfont icon-shouye"></i>
-            <span slot="title">{{$t('nav.home')}}</span>
-          </el-menu-item>
+
           <el-menu-item index="/st_template">
             <i class="iconfont icon-pulse"></i>
             <span slot="title">{{$t('nav.template')}}</span>
@@ -78,18 +82,23 @@
             <i class="iconfont icon-biaoge"></i>
             <span slot="title">{{$t('nav.form')}}</span>
           </el-menu-item>
-          <el-menu-item index="/st_chart">
-            <i class="iconfont icon-chart"></i>
-            <span slot="title">{{$t('nav.chart')}}</span>
-          </el-menu-item>
+          <el-submenu index="6">
+            <template  slot="title" >
+              <i class="iconfont icon-chart"></i>
+              <span slot="title">{{$t('nav.chart')}}</span>
+            </template>
+            <el-menu-item-group>
+              <el-menu-item index="/st_line"><i class="iconfont icon-linechart"></i>{{$t('chart_subnav.St_line')}}</el-menu-item>
+              <el-menu-item index="/st_histogram"><i class="iconfont icon-zhuzhuangtu"></i>{{$t('chart_subnav.St_histogram')}}</el-menu-item>
+            </el-menu-item-group>
+          </el-submenu>
           <el-submenu index="7">
             <template  slot="title" >
               <i class="iconfont icon-suozhu"></i>
               <span slot="title">{{$t('nav.element')}}</span>
             </template>
             <el-menu-item-group>
-              
-              <el-menu-item index="/st_element"><i class="iconfont icon-xiaolian-"></i>{{$t('others_subnav.St_element')}}</el-menu-item>
+              <el-menu-item index="/st_element"><i class="iconfont icon-xiaolian-"></i>{{$t('element_subnav.St_element')}}</el-menu-item>
             </el-menu-item-group>
           </el-submenu>
           <el-menu-item index="/st_settings">
@@ -98,7 +107,7 @@
           </el-menu-item>
         </el-menu>
       </el-aside>
-      <el-main class="main">
+      <el-main >
         <router-view></router-view>
       </el-main>
     </el-container>

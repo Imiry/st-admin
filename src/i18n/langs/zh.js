@@ -1,3 +1,9 @@
+/*
+ * @Author: sitao
+ * @Date: 2020-11-25 18:15:00
+ * @LastEditors: sitao
+ * @LastEditTime: 2020-12-02 16:46:55
+ */
 const zh = {
   button: {
     more: "更多",
@@ -43,7 +49,7 @@ const zh = {
     title: "删除失败！"
   },
   nav:{
-    others:"其它",
+    others:"UX",
     home:"首页",
     template:"模板",
     manage:"管理",
@@ -53,8 +59,15 @@ const zh = {
     settings:"设置"
   },
   others_subnav:{
-    Ux_Table:"优炫表格",
+    Ux_Table:"Ux_Table",
+    Ux_Form:"Ux_Form",
+  },
+  element_subnav:{
     St_element:"St_element"
+  },
+  chart_subnav:{
+    St_line:"St_line",
+    St_histogram:"St_histogram"
   },
   table:{
     name:"名称",

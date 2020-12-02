@@ -1,3 +1,9 @@
+/*
+ * @Author: sitao
+ * @Date: 2020-12-01 16:27:12
+ * @LastEditors: sitao
+ * @LastEditTime: 2020-12-02 16:45:37
+ */
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
@@ -16,13 +22,18 @@ const routes = [
   {
     path: '/home',
     name: 'Home',
-    redirect:"/st_welcome",
+    redirect:"/ux_table",
     component: () => import('../views/Home/Home.vue'),
     children:[
       {
         path: '/ux_table',
         name: 'Ux_table',
         component: () => import('../views/Other/UxTable/UxTable.vue'),
+      },
+      {
+        path: '/ux_form',
+        name: 'UxForm',
+        component: () => import('../views/Other/UxForm/UxForm.vue'),
       },
       {
         path: '/st_welcome',
@@ -46,12 +57,15 @@ const routes = [
         component: () => import('../views/Form/Form.vue'),
       },
       {
-        path: '/st_chart',
-        name: 'Chart',
-        component: () => import('../views/Chart/Chart.vue'),
+        path: '/st_line',
+        name: 'Line',
+        component: () => import('../views/Chart/Line.vue'),
       },
-
-      ,
+      {
+        path: '/st_histogram',
+        name: 'Histogram',
+        component: () => import('../views/Chart/Histogram.vue'),
+      },
       {
         path: '/st_element',
         name: 'Element',

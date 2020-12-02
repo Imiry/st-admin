@@ -71,6 +71,8 @@
         </el-form-item>
       </el-form>
     </ux-dialog>
+
+
   </div>
 </template>
 
@@ -205,6 +207,110 @@ export default {
           users: ["admin", "user"], //表格select选项数据
           users_list: "admin", //默认选中值
         },
+        {
+          uuid: "1122111",
+          id: "9",
+          name: "zdb",
+          status: "active",
+          create_time: 1605756297384,
+          usage: 70,
+          size: 100000,
+          free_size: "100KB",
+          size_utils: "100",
+          users: ["admin", "user"], //表格select选项数据
+          users_list: "admin", //默认选中值
+        },
+        {
+          uuid: "1122112",
+          id: "10",
+          name: "aas",
+          status: "active",
+          create_time: 1605756297384,
+          usage: 70,
+          size: 100000,
+          free_size: "100KB",
+          size_utils: "100",
+          users: ["admin", "user"], //表格select选项数据
+          users_list: "admin", //默认选中值
+        },
+        {
+          uuid: "1122111",
+          id: "11",
+          name: "zdb",
+          status: "active",
+          create_time: 1605756297384,
+          usage: 70,
+          size: 100000,
+          free_size: "100KB",
+          size_utils: "100",
+          users: ["admin", "user"], //表格select选项数据
+          users_list: "admin", //默认选中值
+        },
+        {
+          uuid: "1122112",
+          id: "12",
+          name: "aas",
+          status: "active",
+          create_time: 1605756297384,
+          usage: 70,
+          size: 100000,
+          free_size: "100KB",
+          size_utils: "100",
+          users: ["admin", "user"], //表格select选项数据
+          users_list: "admin", //默认选中值
+        },
+        {
+          uuid: "1122111",
+          id: "13",
+          name: "zdb",
+          status: "active",
+          create_time: 1605756297384,
+          usage: 70,
+          size: 100000,
+          free_size: "100KB",
+          size_utils: "100",
+          users: ["admin", "user"], //表格select选项数据
+          users_list: "admin", //默认选中值
+        },
+        {
+          uuid: "1122112",
+          id: "14",
+          name: "aas",
+          status: "active",
+          create_time: 1605756297384,
+          usage: 70,
+          size: 100000,
+          free_size: "100KB",
+          size_utils: "100",
+          users: ["admin", "user"], //表格select选项数据
+          users_list: "admin", //默认选中值
+        },
+        {
+          uuid: "1122111",
+          id: "15",
+          name: "zdb",
+          status: "active",
+          create_time: 1605756297384,
+          usage: 70,
+          size: 100000,
+          free_size: "100KB",
+          size_utils: "100",
+          users: ["admin", "user"], //表格select选项数据
+          users_list: "admin", //默认选中值
+        },
+        {
+          uuid: "1122112",
+          id: "16",
+          name: "aas",
+          status: "active",
+          create_time: 1605756297384,
+          usage: 70,
+          size: 100000,
+          free_size: "100KB",
+          size_utils: "100",
+          users: ["admin", "user"], //表格select选项数据
+          users_list: "admin", //默认选中值
+        },
       ],
       columnData: [
         {
@@ -309,10 +415,13 @@ export default {
     //表格当前页回调
     handleCurrentChange(page) { //点击页数，跳转到当前的页数对应的数据
       console.log(page);  
+
     },
     //每页显示条数回调
     handleSizeChange(size) {  
       console.log(size);
+      // let data = this.tableData.slice(0,size)
+      // this.tableData = data
       
     },
     //点击名称跳转回调
@@ -368,20 +477,6 @@ export default {
         }
       });
     },
-
-    // 切换中英文点击
-    // changezh(){
-    //   // this.$i18n.locale = 'zh'
-    //   localStorage.setItem('locale', 'zh')
-    //   this.$i18n.locale = localStorage.getItem('locale')
-    // },
-    // changeen(){
-    //   // this.$i18n.locale = 'en'
-    //   localStorage.setItem('locale', 'en')
-    //   this.$i18n.locale = localStorage.getItem('locale')
-    // },
-
-    
 
     //根据id删除对应的值 ----------简单的页面删除
     delete(id){
@@ -439,7 +534,8 @@ export default {
 </script>
 <style lang="scss" scoped>
 .Uxtable_container{
-  height: 100%;
+  // height: 100%;
+
 }
 .Uxtable_container .el-breadcrumb{
   margin-bottom: 20px;
