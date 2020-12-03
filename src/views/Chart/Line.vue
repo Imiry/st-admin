@@ -2,7 +2,7 @@
  * @Author: sitao
  * @Date: 2020-11-26 09:58:03
  * @LastEditors: sitao
- * @LastEditTime: 2020-12-02 16:24:30
+ * @LastEditTime: 2020-12-03 10:39:06
 -->
 <template>
   <div class="chart_container">
@@ -11,7 +11,14 @@
           <el-col :span="6">
             <div class="grid-content1 purple1">
               <div class="line_header">
-                <el-button @click="btn1lick" icon="el-icon-share" circle size="mini"></el-button>
+                  <el-popover
+                  placement="top-start"
+                  title="折线图示例1"
+                  width="200"
+                  trigger="hover"
+                  content="columns是对应列的数据名称，rows下面是对应一行的数据">
+                  <el-button slot="reference" icon="el-icon-share" circle size="mini"></el-button>
+                </el-popover>
               </div>
               <ve-line :data="row1_chartData.chartData1" height="250px"></ve-line>
             </div>
@@ -19,7 +26,15 @@
           <el-col :span="6">
             <div class="grid-content1 purple2">
               <div class="line_header">
-                <el-button  icon="el-icon-share" circle size="mini"></el-button>
+                <el-popover
+                  placement="top-start"
+                  title="设置显示的指标维度"
+                  width="200"
+                  trigger="hover"
+                  content="metrics：维度，dimension：指标，metrics: ['访问用户', '下单用户'],
+        dimension: ['日期']">
+                  <el-button slot="reference" icon="el-icon-share" circle size="mini"></el-button>
+                </el-popover>
               </div>
               <ve-line :data="row1_chartData.chartData2" :settings="this.row1_chartSettings.chartSettings2" height="200px"></ve-line>
             </div>
@@ -27,7 +42,14 @@
           <el-col :span="6">
             <div class="grid-content1 purple3">
               <div class="line_header">
-                <el-button  icon="el-icon-share" circle size="mini"></el-button>
+                <el-popover
+                  placement="top-start"
+                  title="设置双y轴"
+                  width="200"
+                  trigger="hover"
+                  content="chartSettings里面的设置：axisSite: { right: ['下单率'] }，yAxisType: ['KMB', 'percent']，yAxisName: ['数值', '比率'] 。 axisSite	：指标所在的轴，默认不在right轴的指标都在left轴">
+                  <el-button slot="reference" icon="el-icon-share" circle size="mini"></el-button>
+                </el-popover>
               </div>
               <ve-line :data="row1_chartData.chartData3" :settings="this.row1_chartSettings.chartSettings3" height="250px"></ve-line>
             </div>
@@ -35,7 +57,14 @@
           <el-col :span="6">
             <div class="grid-content1 purple4">
               <div class="line_header">
-                <el-button  icon="el-icon-share" circle size="mini"></el-button>
+                <el-popover
+                  placement="top-start"
+                  title="横坐标的倾斜"
+                  width="200"
+                  trigger="hover"
+                  content="this.extend = { 'xAxis.0.axisLabel.rotate': 45 }">
+                  <el-button slot="reference" icon="el-icon-share" circle size="mini"></el-button>
+                </el-popover>
               </div>
               <ve-line :data="row1_chartData.chartData4" :extend="this.row1_extend.extend4" height="250px"></ve-line>
             </div>
@@ -46,7 +75,14 @@
           <el-col :span="6">
             <div class="grid-content1 purple1">
              <div class="line_header">
-                <el-button  icon="el-icon-share" circle size="mini"></el-button>
+                <el-popover
+                  placement="top-start"
+                  title="堆叠面积图"
+                  width="200"
+                  trigger="hover"
+                  content="this.chartSettings = { stack: { '用户': ['访问用户', '下单用户'] }, area: true }">
+                  <el-button slot="reference" icon="el-icon-share" circle size="mini"></el-button>
+                </el-popover>
               </div>
               <ve-line :data="row2_chartData.chartData1" :settings="this.row2_chartSettings.chartSettings1" height="250px"></ve-line>
             </div>
@@ -54,7 +90,14 @@
           <el-col :span="6">
             <div class="grid-content1 purple2">
               <div class="line_header">
-                <el-button  icon="el-icon-share" circle size="mini"></el-button>
+                <el-popover
+                  placement="top-start"
+                  title="设置别名"
+                  width="200"
+                  trigger="hover"
+                  content="labelMap：设置指标的别名，同时作用于提示框和图例，legendName：设置图表上方图例的别名	">
+                  <el-button slot="reference" icon="el-icon-share" circle size="mini"></el-button>
+                </el-popover>
               </div>
               <ve-line :data="row2_chartData.chartData2" :settings="this.row2_chartSettings.chartSettings2" height="250px"></ve-line>
             </div>
@@ -62,7 +105,14 @@
           <el-col :span="6">
             <div class="grid-content1 purple3">
               <div class="line_header">
-                <el-button  icon="el-icon-share" circle size="mini"></el-button>
+                <el-popover
+                  placement="top-start"
+                  title="显示指标数值"
+                  width="200"
+                  trigger="hover"
+                  content="this.extend = { series: { label: { normal: { show: true } } } }">
+                  <el-button slot="reference" icon="el-icon-share" circle size="mini"></el-button>
+                </el-popover>
               </div>
               <ve-line :data="row2_chartData.chartData3" :extend="this.row2_extend.extend3" height="250px"></ve-line>
             </div>
@@ -70,7 +120,14 @@
           <el-col :span="6">
             <div class="grid-content1 purple4">
               <div class="line_header">
-                <el-button  icon="el-icon-share" circle size="mini"></el-button>
+                <el-popover
+                  placement="top-start"
+                  title="设置横轴为连续的数值轴"
+                  width="200"
+                  trigger="hover"
+                  content="	this.chartSettings = { xAxisType: 'value' }">
+                  <el-button slot="reference" icon="el-icon-share" circle size="mini"></el-button>
+                </el-popover>
               </div>
               <ve-line :data="row2_chartData.chartData4" :settings="this.row2_chartSettings.chartSettings4" height="250px"></ve-line>
             </div>
