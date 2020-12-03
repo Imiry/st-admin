@@ -2,7 +2,7 @@
  * @Author: sitao
  * @Date: 2020-11-25 18:15:00
  * @LastEditors: sitao
- * @LastEditTime: 2020-12-02 16:46:55
+ * @LastEditTime: 2020-12-03 11:38:33
  */
 const zh = {
   button: {
@@ -66,8 +66,23 @@ const zh = {
     St_element:"St_element"
   },
   chart_subnav:{
-    St_line:"St_line",
-    St_histogram:"St_histogram"
+    St_line:"折线图",
+    St_histogram:"柱状图",
+    St_bar:"条形图",
+    St_pie:"饼图",
+    St_ring:"环图",
+    St_waterfal:"瀑布图",
+    St_funnel:"漏斗图",
+    St_radar:"雷达图",
+    St_map:"地图",
+    St_sankey:"桑基图",
+    St_heatmap:"热力图",
+    St_scatter:"散点图",
+    St_candle:"K线图",
+    St_gauge:"仪表盘",
+    St_tree:"树图",
+    St_liquidfill:"水球图",
+    St_wordcloud:"词云图"
   },
   table:{
     name:"名称",

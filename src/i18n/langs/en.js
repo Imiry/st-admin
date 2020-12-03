@@ -2,7 +2,7 @@
  * @Author: sitao
  * @Date: 2020-11-25 18:15:00
  * @LastEditors: sitao
- * @LastEditTime: 2020-12-02 16:46:45
+ * @LastEditTime: 2020-12-03 11:39:46
  */
 const en = {
   // 按钮
@@ -76,7 +76,22 @@ const en = {
     },
     chart_subnav:{
       St_line:"St_line",
-      St_histogram:"St_histogram"
+      St_histogram:"St_histogram",
+      St_bar:"St_bar",
+      St_pie:"St_pie",
+      St_ring:"St_ring",
+      St_waterfal:"St_waterfal",
+      St_funnel:"St_funnel",
+      St_radar:"St_radar",
+      St_map:"St_map",
+      St_sankey:"St_sankey",
+      St_heatmap:"St_heatmap",
+      St_scatter:"St_scatter",
+      St_candle:"St_candle",
+      St_gauge:"St_gauge",
+      St_tree:"St_tree",
+      St_liquidfill:"St_liquidfill",
+      St_wordcloud:"St_wordcloud"
     },
     //表格头其一
     table:{

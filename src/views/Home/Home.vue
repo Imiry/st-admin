@@ -90,6 +90,21 @@
             <el-menu-item-group>
               <el-menu-item index="/st_line"><i class="iconfont icon-linechart"></i>{{$t('chart_subnav.St_line')}}</el-menu-item>
               <el-menu-item index="/st_histogram"><i class="iconfont icon-zhuzhuangtu"></i>{{$t('chart_subnav.St_histogram')}}</el-menu-item>
+              <el-menu-item index="/st_bar"><i class="iconfont icon-icon-"></i>{{$t('chart_subnav.St_bar')}}</el-menu-item>
+              <el-menu-item index="/st_pie"><i class="iconfont icon-tianchongxing-"></i>{{$t('chart_subnav.St_pie')}}</el-menu-item>
+              <el-menu-item index="/st_ring"><i class="iconfont icon-fsux_tubiao_bingtu"></i>{{$t('chart_subnav.St_ring')}}</el-menu-item>
+              <el-menu-item index="/st_waterfal"><i class="iconfont icon-pubutu"></i>{{$t('chart_subnav.St_waterfal')}}</el-menu-item>
+              <el-menu-item index="/st_funnel"><i class="iconfont icon-loudoutu"></i>{{$t('chart_subnav.St_funnel')}}</el-menu-item>
+              <el-menu-item index="/st_radar"><i class="iconfont icon-leidatu"></i>{{$t('chart_subnav.St_radar')}}</el-menu-item>
+              <el-menu-item index="/st_map"><i class="iconfont icon-ditu"></i>{{$t('chart_subnav.St_map')}}</el-menu-item>
+              <el-menu-item index="/st_sankey"><i class="iconfont icon-tubiaozhizuomoban_sangjitu"></i>{{$t('chart_subnav.St_sankey')}}</el-menu-item>
+              <el-menu-item index="/st_heatmap"><i class="iconfont icon-sandiantu"></i>{{$t('chart_subnav.St_heatmap')}}</el-menu-item>
+              <el-menu-item index="/st_scatter"><i class="iconfont icon-Kxiantu"></i>{{$t('chart_subnav.St_scatter')}}</el-menu-item>
+              <el-menu-item index="/st_candle"><i class="iconfont icon-ziyuan"></i>{{$t('chart_subnav.St_candle')}}</el-menu-item>
+              <el-menu-item index="/st_gauge"><i class="iconfont icon-ziyuan"></i>{{$t('chart_subnav.St_gauge')}}</el-menu-item>
+              <el-menu-item index="/st_tree"><i class="iconfont icon-511tongji_shutu"></i>{{$t('chart_subnav.St_tree')}}</el-menu-item>
+              <el-menu-item index="/st_liquidfill"><i class="iconfont icon-fsux_tubiao_shuiqiutu"></i>{{$t('chart_subnav.St_liquidfill')}}</el-menu-item>
+              <el-menu-item index="/st_wordcloud"><i class="iconfont icon-ciyuntu"></i>{{$t('chart_subnav.St_wordcloud')}}</el-menu-item>
             </el-menu-item-group>
           </el-submenu>
           <el-submenu index="7">

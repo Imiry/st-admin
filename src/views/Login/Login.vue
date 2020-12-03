@@ -105,7 +105,6 @@ export default {
         // 本地存储只能存储字符串
         // 如果需要存储对象、数组类型的数据，则把他们转为 JSON 格式字符串进行存储
         window.localStorage.setItem('user', JSONbig.stringify(res.data.data))
-
         this.$router.push('/home')
 
       }).catch(err => { // 登录失败
