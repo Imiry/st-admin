@@ -2,7 +2,7 @@
  * @Author: sitao
  * @Date: 2020-11-25 18:15:00
  * @LastEditors: sitao
- * @LastEditTime: 2020-12-03 11:38:33
+ * @LastEditTime: 2020-12-04 14:21:33
  */
 const zh = {
   button: {
@@ -23,7 +23,8 @@ const zh = {
     users:"选择空间"
   },
   msg: {
-    tip: "标题"
+    tip: "标题",
+    settings:"配置"
   },
   layout: {
     all: "全部",

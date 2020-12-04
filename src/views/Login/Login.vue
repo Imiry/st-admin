@@ -1,8 +1,8 @@
 
 <template>
   <div class="login_container">
-    <!-- :style="{background:`url(${bg}) no-repeat`}" -->
-    <div class="lg_content" ref="lg_content"  >
+    <!-- 'url(' + coverImgUrl + ')','background-repeat':'no-repeat' -->
+    <div class="lg_content" ref="lg_content" v-bind:style="{backgroundImage: 'url(' + bgImages[defaultindex].src + ')'}"  >
       <div class="login_box">
         <div class="lg_header"></div>
         <el-form  class="login-form" ref="loginFormRef" :model="user" :rules="formRules">
@@ -34,6 +34,7 @@
 <script>
 import { login } from "@/api/user";
 import JSONbig from 'json-bigint'
+import { now } from 'moment';
 export default {
   name: 'Login',
   data () { 
@@ -43,7 +44,7 @@ export default {
         code: '246810', // 验证码
         agree: false // 是否同意协议
       },
-      // bg: '../../assets/images/bg6.jpg',
+      defaultindex:0,//默认一个数组索引[0]图片
       bgImages:[
         {id:1,src:require("@/assets/images/bg1.jpg")},
         {id:2,src:require("@/assets/images/bg2.jpg")},
@@ -118,16 +119,16 @@ export default {
         this.loginLoading = false
       })
     },
-    mounted (){
-      this.changeBg()
-    },
     //切换背景
     changeBg (item) {
-      // console.log(this.$refs.lg_content)
-      // this.$refs.lg_content.style.background = `url(../../assets/images/bg${id}.jpg) no-repeat`
-      // this.bg = item.src
+      // console.log(item.id)
+      this.defaultindex = item.id-1
+      
     }
-  }
+  },
+  // mounted (){
+  //   this.changeBg()
+  // },
 }
 </script>
 
@@ -140,10 +141,11 @@ export default {
   .login_container .lg_content {
       position: relative;
       height: 100%;
-      // background: url(../../assets/images/bg6.jpg) no-repeat;
-      background-color: rgb(136, 125, 125);
+      background: url(../../assets/images/bg6.jpg) no-repeat;
+      // background-color: rgb(136, 125, 125);
       background-size: 100% 100%;
   }
+
   .login_container .lg_content .login_box{
         position: absolute;
         width: 450px;
@@ -181,7 +183,7 @@ export default {
     margin-right: 150px;
   }
   .bg_change{
-        position: fixed;
+        position: absolute;
         width: 50px;
         height: 400px;
         // background-color: pink;

@@ -2,11 +2,14 @@
  * @Author: sitao
  * @Date: 2020-12-03 11:45:26
  * @LastEditors: sitao
- * @LastEditTime: 2020-12-03 11:46:17
+ * @LastEditTime: 2020-12-04 13:35:22
 -->
 
 <template>
   <div class="funnel_container">
+    <el-card>
+      <st-button :buttons="buttons"></st-button>
+    </el-card>
     <div class="chart_a">
       <el-row :gutter="20">
         <el-col :span="6">
@@ -14,14 +17,14 @@
             <div class="line_header">
                 <el-popover
                 placement="top-start"
-                title="折线图示例1"
+                title="指定指标维度"
                 width="200"
                 trigger="hover"
-                content="columns是对应列的数据名称，rows下面是对应一行的数据">
+                content="dimension: '状态1',metrics: '数值'">
                 <el-button slot="reference" icon="el-icon-share" circle size="mini"></el-button>
               </el-popover>
             </div>
-            
+            <ve-funnel :data="row1_chartData.chartData1" :settings="row1_chartSettings.chartSettings1" height="250px"></ve-funnel>
           </div>
         </el-col>
         <el-col :span="6">
@@ -29,15 +32,14 @@
             <div class="line_header">
               <el-popover
                 placement="top-start"
-                title="设置显示的指标维度"
+                title="自动按照数值排序并过滤0值"
                 width="200"
                 trigger="hover"
-                content="metrics：维度，dimension：指标，metrics: ['访问用户', '下单用户'],
-      dimension: ['日期']">
+                content="useDefaultOrder: true,filterZero: true">
                 <el-button slot="reference" icon="el-icon-share" circle size="mini"></el-button>
               </el-popover>
             </div>
-            
+            <ve-funnel :data="row1_chartData.chartData2" :settings="row1_chartSettings.chartSettings2" height="250px"></ve-funnel>
           </div>
         </el-col>
         <el-col :span="6">
@@ -45,14 +47,14 @@
             <div class="line_header">
               <el-popover
                 placement="top-start"
-                title="设置双y轴"
+                title="定制顺序漏斗图/金字塔"
                 width="200"
                 trigger="hover"
-                content="chartSettings里面的设置：axisSite: { right: ['下单率'] }，yAxisType: ['KMB', 'percent']，yAxisName: ['数值', '比率'] 。 axisSite	：指标所在的轴，默认不在right轴的指标都在left轴">
+                content="sequence: ['订单', '点击', '访问', '展示'],------------------------/ascending: true">
                 <el-button slot="reference" icon="el-icon-share" circle size="mini"></el-button>
               </el-popover>
             </div>
-            
+            <ve-funnel :data="row1_chartData.chartData3" :settings="row1_chartSettings.chartSettings3" height="250px"></ve-funnel>
           </div>
         </el-col> 
         <el-col :span="6">
@@ -60,19 +62,19 @@
             <div class="line_header">
               <el-popover
                 placement="top-start"
-                title="横坐标的倾斜"
+                title="指定数据类型漏斗图/修改legend别名漏斗图"
                 width="200"
                 trigger="hover"
-                content="this.extend = { 'xAxis.0.axisLabel.rotate': 45 }">
+                content="dataType: 'percent',legendName: {'订单': '订单 total:1000'}">
                 <el-button slot="reference" icon="el-icon-share" circle size="mini"></el-button>
               </el-popover>
             </div>
-            
+            <ve-funnel :data="row1_chartData.chartData4" :settings="row1_chartSettings.chartSettings4" height="250px"></ve-funnel>
           </div>
         </el-col>          
       </el-row> 
 
-      <el-row :gutter="20">
+      <!-- <el-row :gutter="20">
         <el-col :span="6">
           <div class="grid-content1 purple1">
             <div class="line_header">
@@ -133,7 +135,7 @@
             
           </div>
         </el-col>          
-      </el-row> 
+      </el-row>  -->
     </div>
   </div>
 </template>
@@ -142,8 +144,75 @@
 export default {
   name: 'Funnel',
   data() { 
+    this.row1_chartSettings = {
+      chartSettings1: {
+        dimension: '状态1',
+        metrics: '数值'
+      },
+      chartSettings2:{
+        useDefaultOrder: true,
+        filterZero: true
+      },
+      chartSettings3:{
+        sequence: ['订单', '点击', '访问', '展示'],
+        ascending: true
+      },
+      chartSettings4:{
+        dataType: 'percent',
+        legendName: {
+          '订单': '订单 total:1000'
+        }
+      }
+    }
     return {
-
+      buttons:[{
+        type:'info',
+        icon:'iconfont icon-peizhi',
+        size:'mini',
+        click:() => {
+          alert(1)
+        },
+        label:"配置"
+      }],
+      row1_chartData:{
+        chartData1: {
+          columns: ['状态', '状态1', '数值'],
+          rows: [
+            { '状态': '展示', '状态1': '展示1', '数值': 900 },
+            { '状态': '访问', '状态1': '访问1', '数值': 600 },
+            { '状态': '点击', '状态1': '点击1', '数值': 300 },
+            { '状态': '订单', '状态1': '订单1', '数值': 100 }
+          ]
+        },
+        chartData2: {
+          columns: ['状态', '数值'],
+          rows: [
+            { '状态': '展示', '数值': 900 },
+            { '状态': '访问', '数值': 100 },
+            { '状态': '零', '数值': 0 },
+            { '状态': '点击', '数值': 300 },
+            { '状态': '订单', '数值': 200 }
+          ]
+        },
+        chartData3: {
+          columns: ['状态', '数值'],
+          rows: [
+            { '状态': '展示', '数值': 900 },
+            { '状态': '访问', '数值': 600 },
+            { '状态': '点击', '数值': 300 },
+            { '状态': '订单', '数值': 100 }
+          ]
+        },
+        chartData4: {
+          columns: ['状态', '数值'],
+          rows: [
+            { '状态': '展示', '数值': 0.9 },
+            { '状态': '访问', '数值': 0.6 },
+            { '状态': '点击', '数值': 0.3 },
+            { '状态': '订单', '数值': 0.1 }
+          ]
+        }
+      }
     }
   }
  }
@@ -152,6 +221,14 @@ export default {
 <style lang="scss" >
   .funnel_container{
     height: 100%;
+    .el-card{
+      height: 50px;
+      border-radius: 5px;
+      margin-bottom: 10px;
+      .el-card__body{
+        padding: 10px 0px 10px 10px;
+      }
+    }
     .chart_a{
       height: 100%;
       .el-row{

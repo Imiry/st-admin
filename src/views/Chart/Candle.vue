@@ -2,10 +2,13 @@
  * @Author: sitao
  * @Date: 2020-12-03 11:52:07
  * @LastEditors: sitao
- * @LastEditTime: 2020-12-03 12:42:34
+ * @LastEditTime: 2020-12-04 13:35:15
 -->
 <template>
   <div class="candle_container">
+    <el-card>
+      <st-button :buttons="buttons"></st-button>
+    </el-card>
     <div class="chart_a">
       <el-row :gutter="20">
         <el-col :span="6">
@@ -142,7 +145,15 @@ export default {
   name: 'Candle',
   data() { 
     return {
-
+      buttons:[{
+        type:'info',
+        icon:'iconfont icon-peizhi',
+        size:'mini',
+        click:() => {
+          alert(1)
+        },
+        label:"配置"
+      }],
     }
   }
  }
@@ -151,6 +162,14 @@ export default {
 <style lang="scss" >
   .candle_container{
     height: 100%;
+    .el-card{
+      height: 50px;
+      border-radius: 5px;
+      margin-bottom: 10px;
+      .el-card__body{
+        padding: 10px 0px 10px 10px;
+      }
+    }
     .chart_a{
       height: 100%;
       .el-row{

@@ -2,10 +2,13 @@
  * @Author: sitao
  * @Date: 2020-12-03 11:01:46
  * @LastEditors: sitao
- * @LastEditTime: 2020-12-03 18:43:55
+ * @LastEditTime: 2020-12-04 13:38:22
 -->
 <template>
   <div class="bar_container">
+    <el-card>
+      <st-button :buttons="buttons"></st-button>
+    </el-card>
     <div class="chart_a">
       <el-row :gutter="20">
         <el-col :span="6">
@@ -144,7 +147,7 @@ export default {
     this.row1_chartSettings = {
       chartSettings1:{
         dimension: ['日期'],
-        metrics: ['访问用户']
+        metrics: ['访问用户'],
       },
       chartSettings2:{
         dimension: ['日期'],
@@ -178,6 +181,15 @@ export default {
       }
     }
     return {
+      buttons:[{
+        type:'info',
+        icon:'iconfont icon-peizhi',
+        size:'mini',
+        click:() => {
+          alert(1)
+        },
+        label:"配置"
+      }],
       row1_chartData:{
         chartData: {
           columns: ['日期', '访问用户', '下单用户', '下单率'],
@@ -234,6 +246,14 @@ export default {
 <style lang="scss" >
   .bar_container{
     height: 100%;
+    .el-card{
+      height: 50px;
+      border-radius: 5px;
+      margin-bottom: 10px;
+      .el-card__body{
+        padding: 10px 0px 10px 10px;
+      }
+    }
     .chart_a{
       height: 100%;
       .el-row{

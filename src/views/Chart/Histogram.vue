@@ -2,10 +2,13 @@
  * @Author: sitao
  * @Date: 2020-12-02 16:34:47
  * @LastEditors: sitao
- * @LastEditTime: 2020-12-03 09:58:54
+ * @LastEditTime: 2020-12-04 13:35:50
 -->
 <template>
   <div class="histogram_container">
+    <el-card>
+      <st-button :buttons="buttons"></st-button>
+    </el-card>
       <div class="chart_a">
         <el-row :gutter="20">
           <el-col :span="6">
@@ -131,6 +134,15 @@ export default {
     }
 
     return {
+      buttons:[{
+        type:'info',
+        icon:'iconfont icon-peizhi',
+        size:'mini',
+        click:() => {
+          alert(1)
+        },
+        label:"配置"
+      }],
       row1_chartData:{
         chartData: {
           columns: ['日期', '访问用户', '下单用户', '下单率'],
@@ -176,6 +188,14 @@ export default {
 <style lang="scss" >
   .histogram_container{
     height: 100%;
+    .el-card{
+      height: 50px;
+      border-radius: 5px;
+      margin-bottom: 10px;
+      .el-card__body{
+        padding: 10px 0px 10px 10px;
+      }
+    }
     .chart_a{
       height: 100%;
       .el-row{

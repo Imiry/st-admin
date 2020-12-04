@@ -2,7 +2,7 @@
  * @Author: sitao
  * @Date: 2020-11-25 18:15:00
  * @LastEditors: sitao
- * @LastEditTime: 2020-12-03 11:39:46
+ * @LastEditTime: 2020-12-04 13:47:50
  */
 const en = {
   // 按钮
@@ -26,7 +26,8 @@ const en = {
     },
 
     msg: {
-      tip: "title"
+      tip: "title",
+      settings:"settings"
     },
     // 分页
     layout: {
