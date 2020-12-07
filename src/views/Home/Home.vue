@@ -43,94 +43,99 @@
     </el-header>
     
     <el-container >
-        <el-aside style="height:100%;width:auto">
-          <vue-custom-scrollbar style="height:100%;" >
-            <el-menu
-              class="nav-menu el-menu-vertical-demo"
-              :default-active="$route.path"
-              background-color="#222"
-              text-color="#fff"
-              active-text-color="#01DFD7"
-              router
-              :collapse="isCollapse"
-            > 
+        <el-aside style="height:100%;width:auto;background-color:#222">
+          <!-- <vue-custom-scrollbar style="height:100%;" > -->
+            
+              <el-menu
+                class="nav-menu el-menu-vertical-demo"
+                :default-active="$route.path"
+                background-color="#222"
+                text-color="#fff"
+                active-text-color="#01DFD7"
+                router
+                :collapse="isCollapse"
+              > 
+              <el-scrollbar style="height:100%">
+                <el-menu-item index="/st_welcome">
+                  <i class="iconfont icon-shouye"></i>
+                  <span slot="title">{{$t('nav.home')}}</span>
+                </el-menu-item>
 
-              <el-menu-item index="/st_welcome">
-                <i class="iconfont icon-shouye"></i>
-                <span slot="title">{{$t('nav.home')}}</span>
-              </el-menu-item>
+                <el-submenu index="2">
+                  <template  slot="title" >
+                    <i class="iconfont icon-otherfile"></i>
+                    <span slot="title">{{$t('nav.others')}}</span>
+                  </template>
+                  <el-menu-item-group>
+                    <el-menu-item index="/ux_table"><i class="iconfont icon-UX"></i>{{$t('others_subnav.Ux_Table')}}</el-menu-item>
+                    <el-menu-item index="/ux_form"><i class="iconfont icon-UX"></i>{{$t('others_subnav.Ux_Form')}}</el-menu-item>
+                  </el-menu-item-group>
+                </el-submenu>
 
-              <el-submenu index="2">
-                <template  slot="title" >
-                  <i class="iconfont icon-otherfile"></i>
-                  <span slot="title">{{$t('nav.others')}}</span>
-                </template>
-                <el-menu-item-group>
-                  <el-menu-item index="/ux_table"><i class="iconfont icon-UX"></i>{{$t('others_subnav.Ux_Table')}}</el-menu-item>
-                  <el-menu-item index="/ux_form"><i class="iconfont icon-UX"></i>{{$t('others_subnav.Ux_Form')}}</el-menu-item>
-                </el-menu-item-group>
-              </el-submenu>
-
-              <el-menu-item index="/st_template">
-                <i class="iconfont icon-pulse"></i>
-                <span slot="title">{{$t('nav.template')}}</span>
-              </el-menu-item>
-              <el-menu-item index="/st_manage">
-                <i class="iconfont icon-baobeiguanli"></i>
-                <span slot="title">{{$t('nav.manage')}}</span>
-              </el-menu-item>
-              <el-menu-item index="/st_form">
-                <i class="iconfont icon-biaoge"></i>
-                <span slot="title">{{$t('nav.form')}}</span>
-              </el-menu-item>
-              <el-submenu index="6">
-                <template  slot="title" >
-                  <i class="iconfont icon-chart"></i>
-                  <span slot="title">{{$t('nav.chart')}}</span>
-                </template>
-                <el-menu-item-group>
-                  <el-menu-item index="/st_line"><i class="iconfont icon-linechart"></i>{{$t('chart_subnav.St_line')}}</el-menu-item>
-                  <el-menu-item index="/st_histogram"><i class="iconfont icon-zhuzhuangtu"></i>{{$t('chart_subnav.St_histogram')}}</el-menu-item>
-                  <el-menu-item index="/st_bar"><i class="iconfont icon-icon-"></i>{{$t('chart_subnav.St_bar')}}</el-menu-item>
-                  <el-menu-item index="/st_pie"><i class="iconfont icon-tianchongxing-"></i>{{$t('chart_subnav.St_pie')}}</el-menu-item>
-                  <el-menu-item index="/st_ring"><i class="iconfont icon-fsux_tubiao_bingtu"></i>{{$t('chart_subnav.St_ring')}}</el-menu-item>
-                  <el-menu-item index="/st_waterfal"><i class="iconfont icon-pubutu"></i>{{$t('chart_subnav.St_waterfal')}}</el-menu-item>
-                  <el-menu-item index="/st_funnel"><i class="iconfont icon-loudoutu"></i>{{$t('chart_subnav.St_funnel')}}</el-menu-item>
-                  <el-menu-item index="/st_radar"><i class="iconfont icon-leidatu"></i>{{$t('chart_subnav.St_radar')}}</el-menu-item>
-                  <el-menu-item index="/st_map"><i class="iconfont icon-ditu"></i>{{$t('chart_subnav.St_map')}}</el-menu-item>
-                  <el-menu-item index="/st_sankey"><i class="iconfont icon-tubiaozhizuomoban_sangjitu"></i>{{$t('chart_subnav.St_sankey')}}</el-menu-item>
-                  <el-menu-item index="/st_heatmap"><i class="iconfont icon-sandiantu"></i>{{$t('chart_subnav.St_heatmap')}}</el-menu-item>
-                  <el-menu-item index="/st_scatter"><i class="iconfont icon-Kxiantu"></i>{{$t('chart_subnav.St_scatter')}}</el-menu-item>
-                  <el-menu-item index="/st_candle"><i class="iconfont icon-ziyuan"></i>{{$t('chart_subnav.St_candle')}}</el-menu-item>
-                  <el-menu-item index="/st_gauge"><i class="iconfont icon-ziyuan"></i>{{$t('chart_subnav.St_gauge')}}</el-menu-item>
-                  <el-menu-item index="/st_tree"><i class="iconfont icon-511tongji_shutu"></i>{{$t('chart_subnav.St_tree')}}</el-menu-item>
-                  <el-menu-item index="/st_liquidfill"><i class="iconfont icon-fsux_tubiao_shuiqiutu"></i>{{$t('chart_subnav.St_liquidfill')}}</el-menu-item>
-                  <el-menu-item index="/st_wordcloud"><i class="iconfont icon-ciyuntu"></i>{{$t('chart_subnav.St_wordcloud')}}</el-menu-item>
-                </el-menu-item-group>
-              </el-submenu>
-              <el-submenu index="7">
-                <template  slot="title" >
-                  <i class="iconfont icon-suozhu"></i>
-                  <span slot="title">{{$t('nav.element')}}</span>
-                </template>
-                <el-menu-item-group>
-                  <el-menu-item index="/st_element"><i class="iconfont icon-xiaolian-"></i>{{$t('element_subnav.St_element')}}</el-menu-item>
-                </el-menu-item-group>
-              </el-submenu>
-              <el-menu-item index="/st_settings">
-                <i class="iconfont icon-shezhi"></i>
-                <span slot="title">{{$t('nav.settings')}}</span>
-              </el-menu-item>
-            </el-menu>
-          </vue-custom-scrollbar>
+                <el-menu-item index="/st_template">
+                  <i class="iconfont icon-pulse"></i>
+                  <span slot="title">{{$t('nav.template')}}</span>
+                </el-menu-item>
+                <el-menu-item index="/st_manage">
+                  <i class="iconfont icon-baobeiguanli"></i>
+                  <span slot="title">{{$t('nav.manage')}}</span>
+                </el-menu-item>
+                <el-menu-item index="/st_form">
+                  <i class="iconfont icon-biaoge"></i>
+                  <span slot="title">{{$t('nav.form')}}</span>
+                </el-menu-item>
+                <el-submenu index="6">
+                  <template  slot="title" >
+                    <i class="iconfont icon-chart"></i>
+                    <span slot="title">{{$t('nav.chart')}}</span>
+                  </template>
+                  <el-menu-item-group>
+                    <el-menu-item index="/st_line"><i class="iconfont icon-linechart"></i>{{$t('chart_subnav.St_line')}}</el-menu-item>
+                    <el-menu-item index="/st_histogram"><i class="iconfont icon-zhuzhuangtu"></i>{{$t('chart_subnav.St_histogram')}}</el-menu-item>
+                    <el-menu-item index="/st_bar"><i class="iconfont icon-icon-"></i>{{$t('chart_subnav.St_bar')}}</el-menu-item>
+                    <el-menu-item index="/st_pie"><i class="iconfont icon-tianchongxing-"></i>{{$t('chart_subnav.St_pie')}}</el-menu-item>
+                    <el-menu-item index="/st_ring"><i class="iconfont icon-fsux_tubiao_bingtu"></i>{{$t('chart_subnav.St_ring')}}</el-menu-item>
+                    <el-menu-item index="/st_waterfal"><i class="iconfont icon-pubutu"></i>{{$t('chart_subnav.St_waterfal')}}</el-menu-item>
+                    <el-menu-item index="/st_funnel"><i class="iconfont icon-loudoutu"></i>{{$t('chart_subnav.St_funnel')}}</el-menu-item>
+                    <el-menu-item index="/st_radar"><i class="iconfont icon-leidatu"></i>{{$t('chart_subnav.St_radar')}}</el-menu-item>
+                    <el-menu-item index="/st_map"><i class="iconfont icon-ditu"></i>{{$t('chart_subnav.St_map')}}</el-menu-item>
+                    <el-menu-item index="/st_sankey"><i class="iconfont icon-tubiaozhizuomoban_sangjitu"></i>{{$t('chart_subnav.St_sankey')}}</el-menu-item>
+                    <el-menu-item index="/st_heatmap"><i class="iconfont icon-sandiantu"></i>{{$t('chart_subnav.St_heatmap')}}</el-menu-item>
+                    <el-menu-item index="/st_scatter"><i class="iconfont icon-Kxiantu"></i>{{$t('chart_subnav.St_scatter')}}</el-menu-item>
+                    <el-menu-item index="/st_candle"><i class="iconfont icon-ziyuan"></i>{{$t('chart_subnav.St_candle')}}</el-menu-item>
+                    <el-menu-item index="/st_gauge"><i class="iconfont icon-ziyuan"></i>{{$t('chart_subnav.St_gauge')}}</el-menu-item>
+                    <el-menu-item index="/st_tree"><i class="iconfont icon-511tongji_shutu"></i>{{$t('chart_subnav.St_tree')}}</el-menu-item>
+                    <el-menu-item index="/st_liquidfill"><i class="iconfont icon-fsux_tubiao_shuiqiutu"></i>{{$t('chart_subnav.St_liquidfill')}}</el-menu-item>
+                    <el-menu-item index="/st_wordcloud"><i class="iconfont icon-ciyuntu"></i>{{$t('chart_subnav.St_wordcloud')}}</el-menu-item>
+                  </el-menu-item-group>
+                </el-submenu>
+                <el-submenu index="7">
+                  <template  slot="title" >
+                    <i class="iconfont icon-suozhu"></i>
+                    <span slot="title">{{$t('nav.element')}}</span>
+                  </template>
+                  <el-menu-item-group>
+                    <el-menu-item index="/st_element"><i class="iconfont icon-xiaolian-"></i>{{$t('element_subnav.St_element')}}</el-menu-item>
+                  </el-menu-item-group>
+                </el-submenu>
+                <el-menu-item index="/st_settings">
+                  <i class="iconfont icon-shezhi"></i>
+                  <span slot="title">{{$t('nav.settings')}}</span>
+                </el-menu-item>
+                </el-scrollbar>
+              </el-menu>
+            
+          <!-- </vue-custom-scrollbar> -->
         </el-aside>
-      <vue-custom-scrollbar class="el_main_er"  style="height:100%;width:100%">
-        <el-main >       
-            <router-view></router-view> 
-        </el-main>
-      </vue-custom-scrollbar>
+      <!-- <vue-custom-scrollbar ref="scroll" class="el_main_er"  :settings="settings"  style="height:100%;width:100%" @ps-scroll-y="scrollHanle"> -->
+        <el-scrollbar ref="scrollbar" class="conta" >
+          <el-main >       
+              <router-view></router-view>
+          </el-main>
+        </el-scrollbar>
+      <!-- </vue-custom-scrollbar> -->
     </el-container>
-
+    <st-back-top v-show="backtopflag" @backtop="backtop"></st-back-top>
   </el-container> 
   
 </template>

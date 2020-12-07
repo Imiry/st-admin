@@ -53,8 +53,21 @@
 
 
 .el-container{
-  height: 100%;
+  height: calc(100vh - 50px);
+
+  .conta{
+    width: 100%;
+    // border: 2px solid #ff4400;
+    height: calc(100vh - 50px);
+    background-color: #eee;
+  }
 }
+.el-side{
+
+}
+//  .el-scrollbar__view{
+//   height: 100%;
+// }
 .el-container .nav-menu {
     height: 100%;
 }
@@ -68,8 +81,7 @@
   width: 200px;
   min-height: 400px;
 }
-.el_main_er{
+.el-main{
   background-color: #eee;
-  // padding: 20px;
   height: 100%;
 }

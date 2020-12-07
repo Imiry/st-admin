@@ -2,7 +2,7 @@
  * @Author: sitao
  * @Date: 2020-11-26 09:58:32
  * @LastEditors: sitao
- * @LastEditTime: 2020-12-07 12:04:20
+ * @LastEditTime: 2020-12-07 17:09:54
  */
 import { mapActions } from "vuex";
 import { mapState } from 'vuex'
@@ -13,7 +13,17 @@ export default {
       user: {}, // 当前登录用户信息
       // isCollapse: JSON.parse(sessionStorage.getItem('isCollapse')), // 侧边菜单栏的展示状态
       // language: sessionStorage.getItem('language') || 'zh', //选择语言定义
-      currentLanguage:""  //当前的选中的语言
+      currentLanguage:"",  //当前的选中的语言
+
+      settings: {
+        suppressScrollY: false,
+        suppressScrollX: false,
+        wheelPropagation: false,
+        swipeEasing:true
+      },
+      backtopflag:false, //箭头的状态
+      event:null,
+      backheight:null,
     };
   },
   computed:mapState({
@@ -61,9 +71,55 @@ export default {
       this.changeCollapse(!isCol)
     },
 
+    handleScroll() {
+      let scrollbarEl = this.$refs.scrollbar.wrap
+      scrollbarEl.onscroll = () => {
+        if(scrollbarEl.scrollTop >= 250){
+          this.backtopflag = true
+        }else{
+          this.backtopflag = false
+        }
+      }
+    },
+    backtop() {
+      // this.$refs.scrollbar.wrap.scrollTop = 0
+      // console.log(this.$refs.scrollbar.wrap.scrollTop)
+        let timer =setInterval(()=> {
+          this.$refs.scrollbar.wrap.scrollTop -=50; 
+          if(this.$refs.scrollbar.wrap.scrollTop <= 0){
+            clearInterval(timer)
+          }
+        },10)
+
+    }
+    
+
+    //vue-custom-scrollbar----------------------------监听滚动位置的变化
+    // scrollHanle(evt) {
+    //   this.event = evt.target;
+    //   this.backheight = parseInt(evt.target.scrollTop);
+    //   if(parseInt(evt.target.scrollTop) >= 250){
+    //     this.backtopflag = true
+    //   }else{
+    //     this.backtopflag = false
+    //   }
+    //   // console.log(parseInt(evt.target.scrollTop))
+    // },
+    // backtop() {
+    //   if(this.event){
+    //     let timer =setInterval(()=> {
+    //       this.event.scrollTop -=50; 
+    //       if(this.event.scrollTop <= 0){
+    //         clearInterval(timer)
+    //       }
+    //     },5)
+    //   }
+    // }
+    //vue-custom-scrollbar----------------------------监听滚动位置的变化
   },
   mounted() {
-    this.currentLanguage = this.language == 'zh' ? '中文' : 'English'
+    this.currentLanguage = this.language == 'zh' ? '中文' : 'English',
+    this.handleScroll()
   }
 
 
