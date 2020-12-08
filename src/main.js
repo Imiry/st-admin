@@ -2,12 +2,14 @@
  * @Author: sitao
  * @Date: 2020-11-25 18:15:00
  * @LastEditors: sitao
- * @LastEditTime: 2020-12-07 11:56:31
+ * @LastEditTime: 2020-12-08 15:54:56
  */
 import Vue from 'vue';
 import App from './App.vue';
 import router from './router';
 import store from './store';
+
+// plugins
 import ElementUI from 'element-ui';
 import '../src/assets/css/global.scss';
 import 'element-ui/lib/theme-chalk/index.css';
@@ -21,10 +23,16 @@ import notifyMsg from '@/utils/notify.js';
 import VCharts from 'v-charts';
 import VueCustomScrollbar from 'vue-custom-scrollbar';
 import 'vue-custom-scrollbar/dist/vueScrollbar.css';
-Vue.prototype.$echarts = window.echarts;
+import VuePanel from './plugins/Panel/'
+import screenfull from 'screenfull'
+
 Vue.use(ElementUI);
 Vue.use(filters);
 Vue.use(VCharts);
+Vue.use(VuePanel);
+Vue.use(screenfull)
+
+Vue.prototype.$echarts = window.echarts;
 Vue.config.productionTip = false;
 Vue.prototype.$message = message;
 Vue.prototype.$notifyMsg = notifyMsg;
