@@ -2,11 +2,16 @@
  * @Author: sitao
  * @Date: 2020-11-26 09:58:50
  * @LastEditors: sitao
- * @LastEditTime: 2020-12-10 10:30:58
+ * @LastEditTime: 2020-12-10 15:13:11
 -->
 <template>
   <div class="tempalte_container">
     <!-- <st-panel></st-panel> -->
+    <el-breadcrumb separator="/" class="crumb">
+      <el-breadcrumb-item :to="{ path: '/st_welcome' }">首页</el-breadcrumb-item>
+      <el-breadcrumb-item>{{$t('nav.template')}}</el-breadcrumb-item>
+      <el-breadcrumb-item>{{$t('template_subnav.template1')}}</el-breadcrumb-item>
+    </el-breadcrumb>
     <el-row :gutter="20">
       <el-col :span="6">
         <div class="card">
@@ -103,7 +108,7 @@
                   <div class="total_dec">Total visitors</div>
                 </div>
                 <div class="con">
-                  <ve-ring :data="ringData"  :settings="ringSettings"></ve-ring>
+                  <ve-ring :data="ringData" :extend="ringExtend" :settings="ringSettings"></ve-ring>
                 </div>
                 <div class="ul">
                   <div><span class="per">34.0%</span><span class="pname">New Visitors</span></div>
@@ -229,19 +234,26 @@ export default {
       },
       chartSettings:{roseType: 'radius'},
       ringSettings:{
-        radius: [20, 40],
+        radius: [30, 60],
         offsetY: 100,
         legendLimit:0
+      },
+      ringExtend:{
+        series:{
+          label: {
+            show: true,
+            position: 'inner'
+          },
+          labelLine: {
+            show: false
+          },
+        }
       },
       ringData: {
         columns: ['日期', '访问用户'],
         rows: [
-          { '日期': '1/1', '访问用户': 1393 },
-          { '日期': '1/2', '访问用户': 3530 },
-          { '日期': '1/3', '访问用户': 2923 },
-          { '日期': '1/4', '访问用户': 1723 },
-          { '日期': '1/5', '访问用户': 3792 },
-          { '日期': '1/6', '访问用户': 4593 }
+          { '日期': '34.0%', '访问用户': 1393 },
+          { '日期': '56.0%', '访问用户': 3530 },
         ]
       },
       lineExtend:{
@@ -255,7 +267,7 @@ export default {
         textStyle:{
           color:'#fff'
         },
-          
+        color:['#1A94E6','#33AECC']
       },
       chartData2: {
         columns: ['日期', 'open', 'close', 'lowest', 'highest', 'vol'],
@@ -352,6 +364,9 @@ export default {
 
 <style lang="scss" >
   .tempalte_container{
+    .crumb{
+      margin-bottom: 20px;
+    }
     .card,.card1,.card2,.card3{
       height: 130px;
       border-radius: 4px;

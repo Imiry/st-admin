@@ -2,7 +2,7 @@
  * @Author: sitao
  * @Date: 2020-12-08 14:41:06
  * @LastEditors: sitao
- * @LastEditTime: 2020-12-09 16:14:36
+ * @LastEditTime: 2020-12-10 13:30:37
 -->
 <template>
   <div class="panel" v-if="disable" :class="{panel1:exprandFlag}">
@@ -76,7 +76,7 @@ export default {
     border-radius: 4px;
     .panel_header{
       height:40px;
-      background-color: rgba(0,0,0,.4);
+      background-color: #222;
       display: flex;
       justify-content: space-between;
       align-items: center;
