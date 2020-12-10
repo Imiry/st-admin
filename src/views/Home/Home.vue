@@ -15,6 +15,9 @@
       </div>
       
       <div class="header_right">
+        <div class="exprand" @click="exprandChange">
+          <i :class="exprandflag ? 'iconfont icon-ziyuanldpi1' : 'iconfont icon-suoxiao'"></i>
+        </div>
         <el-dropdown class="el-drop1">
           <span class="el-dropdown-link">
             {{currentLanguage}}<i class="el-icon-arrow-down el-icon--right"></i>
@@ -71,11 +74,16 @@
                 <el-menu-item index="/ux_form"><i class="iconfont icon-UX"></i>{{$t('others_subnav.Ux_Form')}}</el-menu-item>
               </el-menu-item-group>
             </el-submenu>
-
-            <el-menu-item index="/st_template">
-              <i class="iconfont icon-pulse"></i>
-              <span slot="title">{{$t('nav.template')}}</span>
-            </el-menu-item>
+            <el-submenu index="3">
+              <template  slot="title" >
+                <i class="iconfont icon-pulse"></i>
+                <span slot="title">{{$t('nav.template')}}</span>
+              </template>
+              <el-menu-item-group>
+                <el-menu-item index="/st_template"><i class="iconfont icon-pulse"></i>{{$t('template_subnav.template1')}}</el-menu-item>
+                <el-menu-item index="/st_template2"><i class="iconfont icon-pulse"></i>{{$t('template_subnav.template2')}}</el-menu-item>
+              </el-menu-item-group>
+            </el-submenu>
             <el-menu-item index="/st_manage">
               <i class="iconfont icon-baobeiguanli"></i>
               <span slot="title">{{$t('nav.manage')}}</span>

@@ -2,7 +2,7 @@
  * @Author: sitao
  * @Date: 2020-11-26 09:58:32
  * @LastEditors: sitao
- * @LastEditTime: 2020-12-07 17:09:54
+ * @LastEditTime: 2020-12-09 15:28:56
  */
 import { mapActions } from "vuex";
 import { mapState } from 'vuex'
@@ -14,7 +14,7 @@ export default {
       // isCollapse: JSON.parse(sessionStorage.getItem('isCollapse')), // 侧边菜单栏的展示状态
       // language: sessionStorage.getItem('language') || 'zh', //选择语言定义
       currentLanguage:"",  //当前的选中的语言
-
+      exprandflag:true,//放大缩小的状态
       settings: {
         suppressScrollY: false,
         suppressScrollX: false,
@@ -56,7 +56,33 @@ export default {
       this.$router.push('/st_settings')
     },
     
-
+    exprandChange(){
+      let element = document.documentElement;
+      if (this.fullscreen) {
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        } else if (document.webkitCancelFullScreen) {
+          document.webkitCancelFullScreen();
+        } else if (document.mozCancelFullScreen) {
+          document.mozCancelFullScreen();
+        } else if (document.msExitFullscreen) {
+          document.msExitFullscreen();
+        }
+      } else {
+        if (element.requestFullscreen) {
+          element.requestFullscreen();
+        } else if (element.webkitRequestFullScreen) {
+          element.webkitRequestFullScreen();
+        } else if (element.mozRequestFullScreen) {
+          element.mozRequestFullScreen();
+        } else if (element.msRequestFullscreen) {
+          // IE11
+          element.msRequestFullscreen();
+        }
+      }
+      this.fullscreen = !this.fullscreen;
+      this.exprandflag = ! this.exprandflag
+    },
     //切换中英文
     handleChange(value){
       let language = value === 'zh' ? 'zh' : 'en'

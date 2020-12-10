@@ -2,7 +2,7 @@
  * @Author: sitao
  * @Date: 2020-11-25 18:15:00
  * @LastEditors: sitao
- * @LastEditTime: 2020-12-08 15:54:56
+ * @LastEditTime: 2020-12-10 10:16:32
  */
 import Vue from 'vue';
 import App from './App.vue';
@@ -23,14 +23,16 @@ import notifyMsg from '@/utils/notify.js';
 import VCharts from 'v-charts';
 import VueCustomScrollbar from 'vue-custom-scrollbar';
 import 'vue-custom-scrollbar/dist/vueScrollbar.css';
-import VuePanel from './plugins/Panel/'
-import screenfull from 'screenfull'
+import VuePanel from './plugins/Panel/';
+import screenfull from 'screenfull';
+import VueSparkline from 'vue-sparklines';
 
 Vue.use(ElementUI);
 Vue.use(filters);
 Vue.use(VCharts);
 Vue.use(VuePanel);
-Vue.use(screenfull)
+Vue.use(screenfull);
+Vue.use(VueSparkline)
 
 Vue.prototype.$echarts = window.echarts;
 Vue.config.productionTip = false;
@@ -38,8 +40,8 @@ Vue.prototype.$message = message;
 Vue.prototype.$notifyMsg = notifyMsg;
 Vue.component('vue-custom-scrollbar', VueCustomScrollbar)
 
-axios.defaults.baseURL = 'http://localhost:8888/api/';
-Vue.prototype.$http = axios;
+// axios.defaults.baseURL = 'http://localhost:8888/api/';
+// Vue.prototype.$http = axios;
 //将全局echarts对象挂载到vue的原型上
 // Vue.prototype.$echarts = window.echarts
 new Vue({

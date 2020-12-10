@@ -28,11 +28,15 @@
     height: 100%;
     // background-color: pink;
     position: relative;
+    .exprand{
+      position: absolute;
+      right: 140px;
+      top: 20px;
+    }
     .el-drop1{
       position: absolute;
       right: 60px;
-      top: 20px;
-      
+      top: 20px;  
     }
     .el-drop2{
       position: absolute;

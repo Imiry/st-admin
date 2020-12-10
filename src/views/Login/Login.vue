@@ -92,32 +92,33 @@ export default {
     },
     login () {
       this.loginLoading = true
-      login(this.user).then(res => {
-        // console.log(res)
-        // 登录成功
-        this.$message({
-          message: '登录成功',
-          type: 'success'
-        })
-        // 关闭 loading
-        this.loginLoading = false
+      this.$router.push('/home')
+      // login(this.user).then(res => {
+      //   // console.log(res)
+      //   // 登录成功
+      //   this.$message({
+      //     message: '登录成功',
+      //     type: 'success'
+      //   })
+      //   // 关闭 loading
+      //   this.loginLoading = false
         
-        // 将接口返回的用户相关数据放到本地存储，方便应用数据共享
-        // 本地存储只能存储字符串
-        // 如果需要存储对象、数组类型的数据，则把他们转为 JSON 格式字符串进行存储
-        window.localStorage.setItem('user', JSONbig.stringify(res.data.data))
-        this.$router.push('/home')
+      //   // 将接口返回的用户相关数据放到本地存储，方便应用数据共享
+      //   // 本地存储只能存储字符串
+      //   // 如果需要存储对象、数组类型的数据，则把他们转为 JSON 格式字符串进行存储
+      //   window.localStorage.setItem('user', JSONbig.stringify(res.data.data))
+      //   this.$router.push('/home')
 
-      }).catch(err => { // 登录失败
-        console.log('登录失败', err)
-        this.$message({
-          message: '登录失败',
-          type: 'error'
-        })
+      // }).catch(err => { // 登录失败
+      //   console.log('登录失败', err)
+      //   this.$message({
+      //     message: '登录失败',
+      //     type: 'error'
+      //   })
 
         // 关闭 loading
         this.loginLoading = false
-      })
+      // })
     },
     //切换背景
     changeBg (item) {

@@ -2,7 +2,7 @@
  * @Author: sitao
  * @Date: 2020-12-08 14:41:06
  * @LastEditors: sitao
- * @LastEditTime: 2020-12-08 18:11:22
+ * @LastEditTime: 2020-12-09 16:14:36
 -->
 <template>
   <div class="panel" v-if="disable" :class="{panel1:exprandFlag}">
@@ -19,7 +19,7 @@
       v-show="disable_content" 
       v-loading="loading"
       element-loading-background="rgba(0, 0, 0, 0.3)">
-      <slot name="content"></slot>
+      <slot name="content" class="slot_con"></slot>
       <slot name="footer"></slot>
     </div>
   </div>
@@ -73,13 +73,15 @@ export default {
   .panel{
     width: 100%;
     background-color: #fff;
-    border-radius: 5px;
+    border-radius: 4px;
     .panel_header{
-      height:50px;
-      background-color: #222;
+      height:40px;
+      background-color: rgba(0,0,0,.4);
       display: flex;
       justify-content: space-between;
       align-items: center;
+      border-top-right-radius: 4px;
+      border-top-left-radius: 4px;
       .header_left{
         color: #fff;
         font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -90,9 +92,6 @@ export default {
         display: flex;
         align-items: center;
       }
-    }
-    .panel_content{
-      background-color: #f2f3f4;
     }
   }
   .panel1{
@@ -103,11 +102,10 @@ export default {
     bottom: 0;
     height: 100%;
     background-color: #fff;
-    border-radius: 5px;
     z-index: 9999;
     .panel_header{
       height:50px;
-      background-color: #222;
+      background-color:rgba(0,0,0,.4);
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -123,7 +121,6 @@ export default {
       }
     }
     .panel_content{
-      // height: 800px;
       background-color: #f2f3f4;
     }
   }

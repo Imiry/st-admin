@@ -2,7 +2,7 @@
  * @Author: sitao
  * @Date: 2020-11-25 18:15:00
  * @LastEditors: sitao
- * @LastEditTime: 2020-12-04 13:47:50
+ * @LastEditTime: 2020-12-09 16:31:26
  */
 const en = {
   // 按钮
@@ -71,6 +71,10 @@ const en = {
     others_subnav:{
       Ux_Table:"Ux_Table",
       Ux_Form:"Ux_Form",
+    },
+    template_subnav:{
+      template1:"template1",
+      template2:"template2"
     },
     element_subnav:{
       St_element:"St_element"
