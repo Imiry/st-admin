@@ -2,7 +2,7 @@
  * @Author: sitao
  * @Date: 2020-11-26 09:58:50
  * @LastEditors: sitao
- * @LastEditTime: 2020-12-10 15:13:11
+ * @LastEditTime: 2020-12-14 13:23:41
 -->
 <template>
   <div class="tempalte_container">
@@ -118,9 +118,9 @@
             </el-col>
           </el-row>
           <el-row>
-            <st-panel class="panel" :title="'Default Table'">
-              <div slot="content">
-                <ve-line :data="lineData" :settings="lineSetting" height="300px"></ve-line>
+            <st-panel class="panel" :title="'Line'">
+              <div slot="content" >
+                <ve-line ref="line" @resize="resize" :data="lineData" :settings="lineSetting" height="300px"></ve-line>
               </div>
             </st-panel>
           </el-row>
@@ -357,6 +357,17 @@ export default {
       },
       
       
+    }
+  },
+  mounted(){
+
+  },
+  methods:{
+    resize(){
+      this.$nextTick(() => {   
+          this.refs.line.resize();
+      });
+
     }
   }
  }

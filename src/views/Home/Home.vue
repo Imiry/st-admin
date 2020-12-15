@@ -60,13 +60,13 @@
           > 
           <!-- <el-scrollbar style="height:100%"> -->
             <el-menu-item index="/st_welcome">
-              <i class="iconfont icon-shouye"></i>
+              <i class="iconfont icon-shouye icbg"></i>
               <span slot="title">{{$t('nav.home')}}</span>
             </el-menu-item>
 
             <el-submenu index="2">
               <template  slot="title" >
-                <i class="iconfont icon-otherfile"></i>
+                <i class="iconfont icon-otherfile icbg"></i>
                 <span slot="title">{{$t('nav.others')}}</span>
               </template>
               <el-menu-item-group>
@@ -76,7 +76,7 @@
             </el-submenu>
             <el-submenu index="3">
               <template  slot="title" >
-                <i class="iconfont icon-pulse"></i>
+                <i class="iconfont icon-pulse icbg"></i>
                 <span slot="title">{{$t('nav.template')}}</span>
               </template>
               <el-menu-item-group>
@@ -85,16 +85,16 @@
               </el-menu-item-group>
             </el-submenu>
             <el-menu-item index="/st_manage">
-              <i class="iconfont icon-baobeiguanli"></i>
+              <i class="iconfont icon-baobeiguanli icbg"></i>
               <span slot="title">{{$t('nav.manage')}}</span>
             </el-menu-item>
             <el-menu-item index="/st_form">
-              <i class="iconfont icon-biaoge"></i>
+              <i class="iconfont icon-biaoge icbg"></i>
               <span slot="title">{{$t('nav.form')}}</span>
             </el-menu-item>
             <el-submenu index="6">
               <template  slot="title" >
-                <i class="iconfont icon-chart"></i>
+                <i class="iconfont icon-chart icbg"></i>
                 <span slot="title">{{$t('nav.chart')}}</span>
               </template>
               <el-menu-item-group>
@@ -119,7 +119,7 @@
             </el-submenu>
             <el-submenu index="7">
               <template  slot="title" >
-                <i class="iconfont icon-suozhu"></i>
+                <i class="iconfont icon-suozhu icbg"></i>
                 <span slot="title">{{$t('nav.element')}}</span>
               </template>
               <el-menu-item-group>
@@ -127,7 +127,7 @@
               </el-menu-item-group>
             </el-submenu>
             <el-menu-item index="/st_settings">
-              <i class="iconfont icon-shezhi"></i>
+              <i class="iconfont icon-shezhi icbg"></i>
               <span slot="title">{{$t('nav.settings')}}</span>
             </el-menu-item>
             <!-- </el-scrollbar> -->

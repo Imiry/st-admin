@@ -2,7 +2,7 @@
  * @Author: sitao
  * @Date: 2020-12-08 14:41:06
  * @LastEditors: sitao
- * @LastEditTime: 2020-12-10 13:30:37
+ * @LastEditTime: 2020-12-14 12:20:29
 -->
 <template>
   <div class="panel" v-if="disable" :class="{panel1:exprandFlag}">
@@ -52,6 +52,7 @@ export default {
   methods:{
     exprand(){
       this.exprandFlag = !this.exprandFlag
+      this.$emit('resize')
     },
     loadingHandle(){
       this.loading = true
