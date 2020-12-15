@@ -2,7 +2,7 @@
  * @Author: sitao
  * @Date: 2020-11-25 18:15:00
  * @LastEditors: sitao
- * @LastEditTime: 2020-12-09 16:31:54
+ * @LastEditTime: 2020-12-15 10:56:05
  */
 const zh = {
   button: {
@@ -10,7 +10,8 @@ const zh = {
     edit: "编辑",
     delete: "删除",
     cancel: "取消",
-    confirm: "确定"
+    confirm: "确定",
+    submit:"提交"
   },
   lable: {
     name: "名称",
@@ -100,7 +101,31 @@ const zh = {
     users:"选择权限",
     operate:"操作1",
     operate1:"操作2"
-  } 
+  },
+  form: {
+    'public': '公有',
+    'private': '私有',
+    'userName': '用户名',
+    'password': '密码',
+    'confirmPassword': '确认密码',
+    'age': '年龄',
+    'email': '邮箱',
+    'contact': '联系方式'
+  },
+  message: {
+
+  },
+  errorMsg: {
+      'pleaseEnterUserName': '请输入用户名',
+      'pleaseInputAPassword': '请输入一个密码',
+      'pleaseEnterAge': '请输入年龄',
+      'ageMustBeBetween1And99': '年龄必须介于1到99岁之间',
+      'incorrectEmailFormat': '邮箱格式不正确',
+      'mobilePhoneFormatIsIncorrect': '手机号码格式不正确',
+      'pleaseEnterANumericValue': '请输入数字',
+      'pleaseEnterEmail': '请输入邮箱',
+      'pleaseEnterContact': '请输入联系方式'
+  },
   
 }
 export default zh

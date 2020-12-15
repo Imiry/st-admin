@@ -2,7 +2,7 @@
  * @Author: sitao
  * @Date: 2020-11-25 18:15:00
  * @LastEditors: sitao
- * @LastEditTime: 2020-12-09 16:31:26
+ * @LastEditTime: 2020-12-15 10:55:28
  */
 const en = {
   // 按钮
@@ -11,7 +11,8 @@ const en = {
       edit: "edit",
       delete: "delete",
       cancel: "cancel",
-      confirm: "confirm"
+      confirm: "confirm",
+      submit:"submit"
     },
     //模态框其一选项
     lable: {
@@ -110,6 +111,31 @@ const en = {
       users:"Select",
       operate:"operate1",
       operate1:"operate2"
-    }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
+    },
+    form: {
+      'public': 'Public',
+      'private': 'Private',
+      'userName': 'UserName',
+      'password': 'Password',
+      'confirmPassword': 'ConfirmPassword',
+      'age': 'Age',
+      'email': 'Email',
+      'contact': 'Contact'
+    },
+    message: {
+
+    },
+    errorMsg: {
+        'pleaseEnterUserName': 'Please Enter UserName',
+        'pleaseInputAPassword': 'Please Input A Password',
+        'pleaseEnterAge': 'Please Enter Age',
+        'ageMustBeBetween1And99': 'Age Must Be Between 1 And 99',
+        'incorrectEmailFormat': 'Incorrect Email Format',
+        'mobilePhoneFormatIsIncorrect': 'Mobile Phone Format Is Incorrect',
+        'pleaseEnterANumericValue': 'Please Enter A Numeric Value',
+        'pleaseEnterEmail': 'Please Enter Email',
+        'pleaseEnterContact': 'Please Enter Contact',
+
+    },                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
 }
 export default en

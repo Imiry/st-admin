@@ -2,9 +2,10 @@
  * @Author: sitao
  * @Date: 2020-12-08 14:41:06
  * @LastEditors: sitao
- * @LastEditTime: 2020-12-14 12:20:29
+ * @LastEditTime: 2020-12-15 13:42:40
 -->
 <template>
+  
   <div class="panel" v-if="disable" :class="{panel1:exprandFlag}">
     <div class="panel_header">
       <div class="header_left">{{title}}</div>
@@ -19,10 +20,11 @@
       v-show="disable_content" 
       v-loading="loading"
       element-loading-background="rgba(0, 0, 0, 0.3)">
-      <slot name="content" class="slot_con"></slot>
-      <slot name="footer"></slot>
+        <slot name="content" class="slot_con"></slot>
+        <slot name="footer"></slot>
     </div>
   </div>
+  
 </template>
 
 <script>
@@ -34,10 +36,6 @@ export default {
       type:Boolean,
       default:true
     },
-    disable_content:{
-      type:Boolean,
-      default:true
-    },
     title:{
       type:String,
       default:''
@@ -46,7 +44,8 @@ export default {
   data() { 
     return {
       loading:false,
-      exprandFlag:false
+      exprandFlag:false,
+      disable_content:true
     }
   },
   methods:{
@@ -71,13 +70,14 @@ export default {
 </script>
 
 <style lang="scss" >
+
   .panel{
     width: 100%;
     background-color: #fff;
     border-radius: 4px;
     .panel_header{
       height:40px;
-      background-color: #222;
+      background-color: rgba(0,0,0,.5);
       display: flex;
       justify-content: space-between;
       align-items: center;

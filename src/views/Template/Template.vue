@@ -2,7 +2,7 @@
  * @Author: sitao
  * @Date: 2020-11-26 09:58:50
  * @LastEditors: sitao
- * @LastEditTime: 2020-12-14 13:23:41
+ * @LastEditTime: 2020-12-15 14:09:35
 -->
 <template>
   <div class="tempalte_container">
@@ -97,7 +97,7 @@
                   <div class="dec">Where do our visitors come from</div>
                 </div>
                 <div class="chart_con">
-                  <ve-line :data="lineData" :extend="lineExtend" :settings="lineSetting" height="350px" ></ve-line>
+                  <ve-line ref="chart1" :data="lineData" :extend="lineExtend" :settings="lineSetting" height="350px" ></ve-line>
                 </div>
               </div>
             </el-col>
@@ -108,7 +108,7 @@
                   <div class="total_dec">Total visitors</div>
                 </div>
                 <div class="con">
-                  <ve-ring :data="ringData" :extend="ringExtend" :settings="ringSettings"></ve-ring>
+                  <ve-ring ref="chart2" :data="ringData" :extend="ringExtend" :settings="ringSettings"></ve-ring>
                 </div>
                 <div class="ul">
                   <div><span class="per">34.0%</span><span class="pname">New Visitors</span></div>
@@ -118,14 +118,14 @@
             </el-col>
           </el-row>
           <el-row>
-            <st-panel class="panel" :title="'Line'">
+            <st-panel class="panel" :title="'Line'" @resize="resizeChange">
               <div slot="content" >
-                <ve-line ref="line" @resize="resize" :data="lineData" :settings="lineSetting" height="300px"></ve-line>
+                <ve-line ref="chart3"  :extend="lineExtend1" :data="lineData" :settings="lineSetting" height="300px"></ve-line>
               </div>
             </st-panel>
           </el-row>
           <el-row>
-            <st-panel class="panel">
+            <st-panel class="panel" >
               <div slot="content">
                   <el-table
                     :data="tableData"
@@ -155,16 +155,16 @@
       <el-col :span="8">
         <div class="elcol_left">
           <el-row>
-            <st-panel>
+            <st-panel @resize="resizeChange">
               <div slot="content">
-                <ve-ring :data="chartData" :settings="chartSettings" height="350px"></ve-ring>
+                <ve-ring ref="chart4" :data="chartData" :settings="chartSettings" height="350px"></ve-ring>
               </div>
             </st-panel>
           </el-row>
           <el-row>
-            <st-panel>
+            <st-panel @resize="resizeChange">
               <div slot="content">
-                <ve-candle :data="chartData2" height="300px"></ve-candle>
+                <ve-candle ref="chart5" :data="chartData2" height="300px"></ve-candle>
               </div>
             </st-panel>
           </el-row>
@@ -178,7 +178,7 @@
 </template>
 
 <script>
-
+import { mapState } from 'vuex'
 export default {
   name: 'Tempalte1',
   data() { 
@@ -268,6 +268,15 @@ export default {
           color:'#fff'
         },
         color:['#1A94E6','#33AECC']
+      },
+      lineExtend1:{
+        legend:{
+          top:20,
+          right:20,
+          textStyle:{
+            color:'#000'
+          }
+        },
       },
       chartData2: {
         columns: ['日期', 'open', 'close', 'lowest', 'highest', 'vol'],
@@ -362,12 +371,34 @@ export default {
   mounted(){
 
   },
+  computed:mapState({
+    isCollapse:state => state.i18n.isCollapse
+  }),
+  watch:{
+    isCollapse:function(newV,oldV){
+      // console.log(newV)
+      if(newV!==oldV){
+        this.reload()
+      }
+    }
+  },
   methods:{
-    resize(){
+    resizeChange(){
       this.$nextTick(() => {   
-          this.refs.line.resize();
+          // this.refs.line.resize();
+          this.$refs['chart3']&&this.$refs['chart3'].echartsResize()
+          this.$refs['chart4']&&this.$refs['chart4'].echartsResize()
+          this.$refs['chart5']&&this.$refs['chart5'].echartsResize()
       });
-
+    },
+    reload(){    
+        for(let i = 1;i <= 5;i++){
+           console.log(this.$refs[`chart${i}`])
+           setTimeout(() => {
+            this.$refs[`chart${i}`]&&this.$refs[`chart${i}`].echartsResize()
+          },300)
+        }
+      
     }
   }
  }
