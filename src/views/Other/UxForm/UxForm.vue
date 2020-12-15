@@ -2,7 +2,7 @@
  * @Author: sitao
  * @Date: 2020-12-01 16:37:01
  * @LastEditors: sitao
- * @LastEditTime: 2020-12-15 10:55:36
+ * @LastEditTime: 2020-12-15 15:12:20
 -->
 <template>
   <div class="Uxform_container">
@@ -32,6 +32,9 @@
 
           <el-form-item :label="$t('form.age')" prop="age">
             <el-input type="age" v-model.number="form.age" :placeholder="$t('form.age')"></el-input>
+          </el-form-item>
+          <el-form-item label="单位" prop="utils">
+              <el-input v-model="form.utils" placeholder="例如：10、10Kb"></el-input>
           </el-form-item>
           <el-form-item label="数字" prop="num">
             <!--  :min最小值  :max最大值 -->
@@ -103,7 +106,8 @@
 import {
     validateNum,
     validateEmail,
-    validateContact
+    validateContact,
+    validUnits
 } from '../../../utils/validator.js';
 export default {
   name: "UxForm",
@@ -120,7 +124,8 @@ export default {
           contact: '',
           defaultType: 'public',
           type: 'public',
-          typeareatext: ''
+          typeareatext: '',
+          utils:''
       },
       rules: {
           username: [{
@@ -152,7 +157,16 @@ export default {
               required: true,
               validator: validateContact,
               trigger: 'blur'
-          }]
+          }],
+          utils:[
+            {
+              required: true, 
+              validator:(rule,value,callback)=>{
+                  return validUnits(this.form,'utils',rule,value,callback)
+              },
+              trigger: 'blur'
+            }
+          ]
       },
       // unitArrs: ['GB', 'MB'],
       unitArrs: ['B/s', 'KB/s', 'MB/s', 'GB/s', 'TB/s', 'PB/s', 'EB/s', 'ZB/s', 'YB/s'],

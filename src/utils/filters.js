@@ -1,3 +1,9 @@
+/*
+ * @Author: sitao
+ * @Date: 2020-12-15 10:39:37
+ * @LastEditors: sitao
+ * @LastEditTime: 2020-12-15 15:25:04
+ */
 
 import moment from 'moment';
 const filters={}
@@ -33,4 +39,17 @@ filters.install=(Vue)=>{
     
 }
 
+export const humanLimitSize=(bytes, si = false) => {
+    let thresh = si ? 1000 : 1024;
+    if (Math.abs(bytes) < thresh) {
+        return bytes + 'B'
+    }
+    let units = si ? ['KiB', 'MiB', 'GiB', 'TiB', 'PiB', 'EiB', 'ZiB', 'YiB'] : ['KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB']
+    let u = -1
+    do { 
+        bytes /= thresh
+         ++u
+    } while (Math.abs(bytes) >= thresh && u < units.length - 1)
+    return (Math.ceil(bytes*100)/100)+units[u]
+}
 export default filters

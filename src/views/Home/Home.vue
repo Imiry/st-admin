@@ -142,6 +142,19 @@
       </el-scrollbar>
     </el-container>
     <st-back-top v-show="backtopflag" @backtop="backtop"></st-back-top>
+
+      <st-set :show="tabShow" @closeHandle="closeHandle">
+        <div class="tubiao">
+          <div class="icon"><i class="iconfont "></i></div>
+          <div class="icon"><i class="iconfont "></i></div>
+          <div class="icon"><i class="iconfont "></i></div>
+          <div class="icon"><i class="iconfont "></i></div>
+          <div class="icon"><i class="iconfont "></i></div>
+        </div>
+      </st-set>
+
+    <!-- 工具图标类 -->
+    <div class="tabout" v-show="tabIconFlag" @click="tabOut"><i class="iconfont icon-peizhi"></i></div>
   </el-container> 
   
 </template>

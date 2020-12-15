@@ -2,7 +2,7 @@
  * @Author: sitao
  * @Date: 2020-11-26 09:58:50
  * @LastEditors: sitao
- * @LastEditTime: 2020-12-15 14:09:35
+ * @LastEditTime: 2020-12-15 14:34:37
 -->
 <template>
   <div class="tempalte_container">
@@ -261,11 +261,11 @@ export default {
           top:30,
           right:10,
           textStyle:{
-            color:'#fff'
+            color:'#000'
           }
         },
         textStyle:{
-          color:'#fff'
+          color:'#000'
         },
         color:['#1A94E6','#33AECC']
       },
@@ -495,7 +495,8 @@ export default {
           border-radius: 4px;
           .dataChart1{
             height: 350px;
-            background-color: #2d353c;
+            // background-color: #2d353c;
+            background-color: rgba(0,0,0,.4);
             border-top-left-radius: 4px;
             border-bottom-left-radius: 4px;
             box-sizing: border-box;
@@ -508,10 +509,10 @@ export default {
               .tit{
                 font-size: 18px;
                 font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-                color: #fff;
+                color: #000;
               }
               .dec{
-                color: #9ba8b4;
+                color: rgb(230, 219, 219);
               }
             }
           }
@@ -519,7 +520,8 @@ export default {
             height: 350px;
             padding: 15px;
             box-sizing: border-box;
-            background-color: #1a2229;
+            // background-color: #1a2229;
+            background-color: rgba(0,0,0,0.6);
             border-top-right-radius: 4px;
             border-bottom-right-radius: 4px;
             .total_number{

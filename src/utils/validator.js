@@ -26,6 +26,30 @@ import {
     regExpConfig
 } from './regular.config'
 
+
+import {humanLimitSize} from '../utils/filters'
+const limit=(value)=>{
+    return regExpConfig.bReg.test(value) ? [0,'B']:
+     regExpConfig.kbReg.test(value) ? [1,'KB']:
+     regExpConfig.mbReg.test(value)? [2,'MB']:
+     regExpConfig.gbReg.test(value)? [3,'GB']:
+     regExpConfig.tbReg.test(value)? [4,'TB']:
+     regExpConfig.pbReg.test(value)? [5,'PB']:
+     regExpConfig.ebReg.test(value)? [6,'EB']:
+     regExpConfig.zbReg.test(value)? [7,'ZB']:
+     regExpConfig.ybReg.test(value) ? [8,'YB']:''
+}
+
+const dislodgeLetter=(str)=> {
+      let result;
+      //[a-zA-Z]表示匹配字bai母，g表示全局匹配
+      let reg= /[a-zA-Z]+/
+      while (result = str.match(reg)) { 
+        str = str.replace(result[0], '');
+      }
+      return Math.ceil(str*100)/100;
+}
+
 export const checkAge = (rule, value, callback) => {
     setTimeout(() => {
         if (!Number.isInteger(value)) {
@@ -98,5 +122,30 @@ export const validateContact = (rule, value, callback) => {
 export const validateNum = (rule, value, callback) => {
     if (value == undefined) {
         callback(new Error(i18n.t('errorMsg.pleaseEnterANumericValue')))
+    }
+};
+
+export const validUnits=(formName,key,rule,value,callback)=>{
+    console.log(formName,key,rule,value,callback)
+    if(value===''){
+        return callback(new Error('单位不能为空'))
+    }else if(regExpConfig.unitsReg.test(value)){
+        //去掉单位
+        let val=limit(value);  //拿到的数据就是类似于[0,'B']
+        let handleUnit={
+            [val[1]]:()=>{
+                let num=dislodgeLetter(value)
+                let result=humanLimitSize(num*Math.pow(1024, val[0]))
+                formName[key]=num<1024 ? `${num}${val[1]}`:result
+                return callback()
+            }
+        }
+        handleUnit[val[1]]()
+        
+    }else if(regExpConfig.numReg.test(value)){
+        formName[key]=humanLimitSize(value);
+        return callback()
+    }else{
+        return callback(new Error('请输入有效单位'))
     }
 }

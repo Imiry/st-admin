@@ -5,6 +5,26 @@
   top: 0;
   bottom: 0;
   min-width: 1200px;
+
+  .tabout{
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    position: fixed;
+    z-index: 999;
+    right: 10px;
+    top:50%;
+    border-radius: 10px;
+    background-color: rgba(0,0,0,0.1);
+    cursor: pointer;
+    .iconfont{
+      font-size: 40px;
+    }
+  }
+  .tabout:hover{
+    background-color: rgba(0,0,0,.5);
+  }
 }
   
 .layout-container .header {

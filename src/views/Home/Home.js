@@ -2,7 +2,7 @@
  * @Author: sitao
  * @Date: 2020-11-26 09:58:32
  * @LastEditors: sitao
- * @LastEditTime: 2020-12-09 15:28:56
+ * @LastEditTime: 2020-12-15 16:59:22
  */
 import { mapActions } from "vuex";
 import { mapState } from 'vuex'
@@ -11,8 +11,6 @@ export default {
   data() {
     return {
       user: {}, // 当前登录用户信息
-      // isCollapse: JSON.parse(sessionStorage.getItem('isCollapse')), // 侧边菜单栏的展示状态
-      // language: sessionStorage.getItem('language') || 'zh', //选择语言定义
       currentLanguage:"",  //当前的选中的语言
       exprandflag:true,//放大缩小的状态
       settings: {
@@ -24,6 +22,8 @@ export default {
       backtopflag:false, //箭头的状态
       event:null,
       backheight:null,
+      tabShow:false, //右侧工具状态
+      tabIconFlag:true //右侧图标状态
     };
   },
   computed:mapState({
@@ -117,8 +117,15 @@ export default {
           }
         },10)
 
+    },
+    tabOut(){
+      this.tabShow = !this.tabShow
+      this.tabIconFlag = !this.tabIconFlag
+    },
+    closeHandle() {
+      this.tabIconFlag = true
+      this.tabShow = false
     }
-    
 
     //vue-custom-scrollbar----------------------------监听滚动位置的变化
     // scrollHanle(evt) {
