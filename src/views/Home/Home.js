@@ -2,7 +2,7 @@
  * @Author: sitao
  * @Date: 2020-11-26 09:58:32
  * @LastEditors: sitao
- * @LastEditTime: 2020-12-15 16:59:22
+ * @LastEditTime: 2020-12-16 10:45:30
  */
 import { mapActions } from "vuex";
 import { mapState } from 'vuex'
@@ -118,14 +118,18 @@ export default {
         },10)
 
     },
+    //左侧图标显示
     tabOut(){
       this.tabShow = !this.tabShow
       this.tabIconFlag = !this.tabIconFlag
     },
+    // 左侧图标隐藏
     closeHandle() {
       this.tabIconFlag = true
       this.tabShow = false
-    }
+    },
+    //截屏
+    
 
     //vue-custom-scrollbar----------------------------监听滚动位置的变化
     // scrollHanle(evt) {

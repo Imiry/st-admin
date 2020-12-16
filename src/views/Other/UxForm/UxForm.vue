@@ -2,7 +2,7 @@
  * @Author: sitao
  * @Date: 2020-12-01 16:37:01
  * @LastEditors: sitao
- * @LastEditTime: 2020-12-15 15:12:20
+ * @LastEditTime: 2020-12-16 16:31:51
 -->
 <template>
   <div class="Uxform_container">
@@ -14,13 +14,6 @@
           </el-form-item>
           <el-form-item :label="$t('form.password')" prop="password">
             <el-input type="password" v-model="form.password" :placeholder="$t('form.password')"></el-input>
-          </el-form-item>
-          <el-form-item :label="$t('form.confirmPassword')" prop="confirmPassword">
-            <el-input
-              type="password"
-              v-model="form.confirmPassword"
-              :placeholder="$t('form.confirmPassword')"
-            ></el-input>
           </el-form-item>
           <el-form-item :label="$t('form.confirmPassword')" prop="confirmPassword">
             <el-input

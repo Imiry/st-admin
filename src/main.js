@@ -2,7 +2,7 @@
  * @Author: sitao
  * @Date: 2020-11-25 18:15:00
  * @LastEditors: sitao
- * @LastEditTime: 2020-12-15 17:36:36
+ * @LastEditTime: 2020-12-16 12:33:46
  */
 import Vue from 'vue';
 import App from './App.vue';
@@ -26,6 +26,7 @@ import 'vue-custom-scrollbar/dist/vueScrollbar.css';
 import VuePanel from './plugins/Panel/';
 import screenfull from 'screenfull';
 import VueSparkline from 'vue-sparklines';
+import '../node_modules/echarts/map/js/world.js' // 引入世界地图
 
 Vue.use(ElementUI);
 Vue.use(filters);
@@ -34,14 +35,15 @@ Vue.use(VuePanel);
 Vue.use(screenfull);
 Vue.use(VueSparkline)
 
+
 Vue.prototype.$echarts = window.echarts;
 Vue.config.productionTip = false;
 Vue.prototype.$message = message;
 Vue.prototype.$notifyMsg = notifyMsg;
 Vue.component('vue-custom-scrollbar', VueCustomScrollbar)
 
-// axios.defaults.baseURL = 'http://localhost:8888/api/';
-// Vue.prototype.$http = axios;
+axios.defaults.baseURL = 'http://localhost:8888/api/';
+Vue.prototype.$http = axios;
 //将全局echarts对象挂载到vue的原型上
 // Vue.prototype.$echarts = window.echarts
 new Vue({

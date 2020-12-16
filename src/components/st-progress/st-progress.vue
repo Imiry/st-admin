@@ -2,7 +2,7 @@
  * @Author: sitao
  * @Date: 2020-12-10 11:56:17
  * @LastEditors: sitao
- * @LastEditTime: 2020-12-10 12:25:21
+ * @LastEditTime: 2020-12-16 17:03:08
  * @height: 进度条的高度
  * @bgcolor：进度条底层的背景颜色
  * @percolor：进度条进度的背景颜色
@@ -21,8 +21,8 @@ export default {
   name: 'st-progress',
   props:{
     height:{
-      type:String,
-      default:'2'
+      type:Number,
+      default:2
     },
     bgcolor:{
       type:String,
@@ -33,7 +33,7 @@ export default {
       default:'#fff'
     },
     percent:{
-      type:String,
+      type:Number,
       default:'50'
     }
   },

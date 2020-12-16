@@ -1,6 +1,6 @@
 
 <template>
-  <el-container class="layout-container">
+  <el-container class="layout-container" ref="faultTree">
     <el-header class="header">
       <div class="header_left">
         <h1>
@@ -142,17 +142,20 @@
       </el-scrollbar>
     </el-container>
     <st-back-top v-show="backtopflag" @backtop="backtop"></st-back-top>
-
+    <transition name="set">
       <st-set :show="tabShow" @closeHandle="closeHandle">
         <div class="tubiao">
-          <div class="icon"><i class="iconfont "></i></div>
-          <div class="icon"><i class="iconfont "></i></div>
-          <div class="icon"><i class="iconfont "></i></div>
-          <div class="icon"><i class="iconfont "></i></div>
-          <div class="icon"><i class="iconfont "></i></div>
+          <div class="icon"><i class="iconfont icon-apple"></i></div>
+          <div class="icon"><i class="iconfont icon-xiaomi"></i></div>
+          <div class="icon"><i class="iconfont icon-erweima"></i></div>
+          <div class="icon"><i class="iconfont icon-feiji800"></i></div>
+          <div class="icon"><i class="iconfont icon-wifi"></i></div>
+          <div class="icon"><i class="iconfont icon-lanya"></i></div>
+          <div class="icon" ><i class="iconfont icon-jieping"></i></div>
+          <div class="icon"><i class="iconfont icon-weixin"></i></div>
         </div>
       </st-set>
-
+    </transition>
     <!-- 工具图标类 -->
     <div class="tabout" v-show="tabIconFlag" @click="tabOut"><i class="iconfont icon-peizhi"></i></div>
   </el-container> 
