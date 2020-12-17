@@ -126,7 +126,7 @@ export const validateNum = (rule, value, callback) => {
 };
 
 export const validUnits=(formName,key,rule,value,callback)=>{
-    console.log(formName,key,rule,value,callback)
+    // console.log(formName,key,rule,value,callback)
     if(value===''){
         return callback(new Error('单位不能为空'))
     }else if(regExpConfig.unitsReg.test(value)){

@@ -1,0 +1,65 @@
+.page-sidebar-minified {
+    & .sidebar {
+        width: $sidebar-minified-width !important;
+
+        & .nav {
+            &>li {
+                &>a {
+                    padding: 12px 10px 12px 5px;
+
+                    & span {
+                        display: none;
+                    }
+
+                    & i {
+                        margin: -5px auto;
+                        float: none;
+                        display: block;
+                    }
+                }
+            }
+
+            & li {
+                &.has-sub {
+                    &>.sub-menu {
+                        display: none !important;
+                    }
+                }
+            }
+
+        }
+
+        & .caret {
+            position: absolute;
+            top: 11px;
+
+            @if $enable-rtl {
+                left: 0;
+            }
+
+            @else {
+                right: 0;
+            }
+
+            &:before {
+                @include transform(rotate(0deg) !important);
+            }
+        }
+    }
+
+    & .content {
+        left: $sidebar-minified-width;
+        width: calc(100vw - #{$sidebar-minified-width});
+    }
+
+    & .sidebar-minify-btn {
+        left: 12px !important;
+
+        & i {
+            @include transform(rotate(360deg));
+        }
+
+
+    }
+
+}

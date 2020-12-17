@@ -2,7 +2,7 @@
  * @Author: sitao
  * @Date: 2020-11-25 18:15:00
  * @LastEditors: sitao
- * @LastEditTime: 2020-12-15 10:55:28
+ * @LastEditTime: 2020-12-17 17:55:50
  */
 const en = {
   // 按钮
@@ -117,10 +117,15 @@ const en = {
       'private': 'Private',
       'userName': 'UserName',
       'password': 'Password',
+      'phone':'phone',
       'confirmPassword': 'ConfirmPassword',
       'age': 'Age',
       'email': 'Email',
-      'contact': 'Contact'
+      'contact': 'Contact',
+      'passwordStrength': 'Password Strength',
+      'weak': 'Weak',
+      'moderate': 'Moderate',
+      'strong': 'Strong'
     },
     message: {
 
@@ -135,7 +140,12 @@ const en = {
         'pleaseEnterANumericValue': 'Please Enter A Numeric Value',
         'pleaseEnterEmail': 'Please Enter Email',
         'pleaseEnterContact': 'Please Enter Contact',
-
+        'passwordLengthIsBetween8And30': 'Password Length Is Between 8 And 30',
+        'passwordLengthIsBetween6And10': 'Password Length Is Between 6 And 10',
+        'passwordLengthIsBetween3And6': 'Password Length Is Between 3 And 6',
+        'containAtLeastTwoCombinationsOfNumbers/Uppercase/LowercaseLetters/Characters': 'Contain At Least Two Combinations Of Numbers/Uppercase/Lowercase Letters/Characters',
+        'pleaseEnterTheConfirmationPassword': 'Please Enter The Confirmation Password',
+        'twoPasswordEntriesAreInconsistent': 'Two Password Entries Are Inconsistent',
     },                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
 }
 export default en

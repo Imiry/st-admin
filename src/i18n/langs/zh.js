@@ -2,7 +2,7 @@
  * @Author: sitao
  * @Date: 2020-11-25 18:15:00
  * @LastEditors: sitao
- * @LastEditTime: 2020-12-15 10:56:05
+ * @LastEditTime: 2020-12-17 17:56:26
  */
 const zh = {
   button: {
@@ -107,10 +107,15 @@ const zh = {
     'private': '私有',
     'userName': '用户名',
     'password': '密码',
+    'phone':'手机号',
     'confirmPassword': '确认密码',
     'age': '年龄',
     'email': '邮箱',
-    'contact': '联系方式'
+    'contact': '联系方式',
+    'passwordStrength': '密码强度',
+    'weak': '弱',
+    'moderate': '中',
+    'strong': '强'
   },
   message: {
 
@@ -124,7 +129,13 @@ const zh = {
       'mobilePhoneFormatIsIncorrect': '手机号码格式不正确',
       'pleaseEnterANumericValue': '请输入数字',
       'pleaseEnterEmail': '请输入邮箱',
-      'pleaseEnterContact': '请输入联系方式'
+      'pleaseEnterContact': '请输入联系方式',
+      'passwordLengthIsBetween8And30': '密码长度为8～30之间',
+      'passwordLengthIsBetween6And10': '密码长度为6～10之间',
+      'passwordLengthIsBetween3And6': '密码长度为3～6之间',
+      'containAtLeastTwoCombinationsOfNumbers/Uppercase/LowercaseLetters/Characters': '至少包含数字/大写字母/小写字母/特殊字符2种组合',
+      'pleaseEnterTheConfirmationPassword': '请输入确认密码',
+      'twoPasswordEntriesAreInconsistent': '两次密码输入不一致',
   },
   
 }

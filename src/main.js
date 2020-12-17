@@ -2,7 +2,7 @@
  * @Author: sitao
  * @Date: 2020-11-25 18:15:00
  * @LastEditors: sitao
- * @LastEditTime: 2020-12-16 12:33:46
+ * @LastEditTime: 2020-12-17 14:40:20
  */
 import Vue from 'vue';
 import App from './App.vue';
@@ -11,6 +11,8 @@ import store from './store';
 
 // plugins
 import ElementUI from 'element-ui';
+
+import '../src/assets/css/vue.scss'
 import '../src/assets/css/global.scss';
 import 'element-ui/lib/theme-chalk/index.css';
 import '@/components/index.js';

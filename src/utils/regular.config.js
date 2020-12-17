@@ -2,10 +2,15 @@
  * @Author: lixiaoteng
  * @Date: 2020-10-28 14:33:04
  * @LastEditors: sitao
- * @LastEditTime: 2020-12-15 15:07:40
+ * @LastEditTime: 2020-12-17 11:22:38
  */
 // 常用的正则规则
 export const regExpConfig = {
+  numValidate: /[0-9]/,
+  lowerValidate: /[a-z]/,
+  upperValidate: /[A-Z]/,
+  specialValidate: /[\W]/,
+  
   // 匹配8~30个字符 小写字母
   singlePwdValidateLowerCase830: /^[a-z]{8,30}$/,
   // 匹配8~30个字符 大写字母

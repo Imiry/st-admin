@@ -1,0 +1,11 @@
+.content {
+    position: absolute;
+    right: 0px;
+    top: $header-height;
+    left: $sidebar-width;
+    width: calc(100vw - #{$sidebar-width});
+    height: calc(100vh - #{$header-height});
+    background-color: $bg-color;
+
+
+}
