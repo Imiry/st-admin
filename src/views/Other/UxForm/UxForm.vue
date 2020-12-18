@@ -2,7 +2,7 @@
  * @Author: sitao
  * @Date: 2020-12-01 16:37:01
  * @LastEditors: sitao
- * @LastEditTime: 2020-12-17 17:13:15
+ * @LastEditTime: 2020-12-18 14:46:51
 -->
 <template>
   <div class="Uxform_container">
@@ -87,7 +87,7 @@
           </el-form-item>
 
           <el-form-item :label="$t('form.password')" prop="password">
-            <el-popover placement="right" trigger="hover" width="320">
+            <el-popover placement="right" trigger="focus" width="320">
               <div class="text-color f-s-12">
                 <div>
                   <span v-show="pwdLength === null">
@@ -131,6 +131,7 @@
               <el-input
                 type="password"
                 v-model="form.password"
+                show-password="true"
                 :placeholder="$t('form.password')"
                 slot="reference"
               ></el-input>
@@ -139,6 +140,7 @@
           <el-form-item :label="$t('form.confirmPassword')" prop="confirmPassword">
             <el-input
               type="password"
+              
               v-model="form.confirmPassword"
               :placeholder="$t('form.confirmPassword')"
             ></el-input>
@@ -178,6 +180,15 @@ export default {
           callback();
       }
     }
+    let validatePassword = (rule,value,callback) => {
+      if(value == "") {
+        callback(new Error('密码不能为空！'))
+      }else if(value.length < 8 || value.length > 30) {
+        callback(new Error('密码长度为8～30之间'))
+      }else if(this.pwdLength == 1){
+        callback(new Error('至少包含数字/大写字母/小写字母/特殊字符2种组合'))
+      }
+    }
     return {
       form: {
         username: '',
@@ -200,8 +211,8 @@ export default {
             trigger: 'blur'
         }],
         password: [{
-            required: true,
-            message: this.$i18n.t('errorMsg.pleaseInputAPassword'),
+            required: true, //this.$i18n.t('errorMsg.pleaseInputAPassword')
+            validator: validatePassword,
             trigger: 'blur'
         }],
         confirmPassword: [{

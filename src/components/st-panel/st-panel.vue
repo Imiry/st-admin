@@ -2,7 +2,7 @@
  * @Author: sitao
  * @Date: 2020-12-08 14:41:06
  * @LastEditors: sitao
- * @LastEditTime: 2020-12-15 13:42:40
+ * @LastEditTime: 2020-12-18 10:55:04
 -->
 <template>
   
@@ -77,7 +77,7 @@ export default {
     border-radius: 4px;
     .panel_header{
       height:40px;
-      background-color: rgba(0,0,0,.5);
+      background-color: rgba(0,0,0,.8);
       display: flex;
       justify-content: space-between;
       align-items: center;

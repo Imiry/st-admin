@@ -2,7 +2,7 @@
  * @Author: sitao
  * @Date: 2020-12-09 16:25:42
  * @LastEditors: sitao
- * @LastEditTime: 2020-12-16 18:02:47
+ * @LastEditTime: 2020-12-18 11:07:07
 -->
 <template>
   <div class="tempalte2_container">
@@ -56,8 +56,18 @@
     <el-row :gutter="20">
       <el-col :span="8">
         <st-card :cardData="cardData">
-          <el-progress type="circle" :key="key"  :percentage="percentage" :color="colors"></el-progress>
-          <st-progress :height="5" :percent="percentage" :perColor="'#00ACAC'"></st-progress>
+          <div class="per_con">
+            <el-progress type="circle" :key="key"  :percentage="percentage" :color="colors"></el-progress>
+            <div class="per_num f-w-600 width-80 height-80 text-center">{{percentage}}%</div>
+          </div>
+          <div class="per_dec m-t-50">
+            <el-steps :active="active" finish-status="success">
+              <el-step title="0%"></el-step>
+              <el-step title="50%"></el-step>
+              <el-step title="100%"></el-step>
+            </el-steps>
+          </div>
+          <!-- <st-progress :height="5" :percent="percentage" :perColor="'#00ACAC'"></st-progress> -->
         </st-card>
       </el-col>
       <el-col :span="16">
@@ -92,9 +102,9 @@ export default {
         {color: '#1989fa', percentage: 80},
         {color: '#6f7ad3', percentage: 100}
       ],
-      isTime:true,
       status:'',
-      key:0
+      key:0, //用来控制定时器的
+      active: 0,//步骤条
     }
   },
   props:{
@@ -220,18 +230,24 @@ export default {
     timeOut() {  
         let timer = setInterval(() => {
           this.percentage++;
-          if(this.percentage >= 100){         
+          if(this.percentage == 50){
+            this.active = 2
+          }else if(this.percentage ==100){
+            this.active = 3  
+          }
+          if(this.percentage >= 100){   
               clearInterval(timer)
               this.percentage = 0
               this.key = 1
               let timer1 = setTimeout(() => {
                 this.key = 0
+                this.active = 0
                 this.timeOut()
                 clearTimeout(timer1)
                 // console.log(111)
-              }, 10);
+              }, 1000);
           }
-        }, 100)
+        },300)
       
     },
 
@@ -249,7 +265,8 @@ export default {
       height: 130px;
       border-radius: 4px;
       box-sizing: border-box;
-      padding: 15px;;
+      padding: 15px;
+      cursor: pointer;
       .cd_header{
         display: flex;
         justify-content: space-around;
@@ -276,6 +293,7 @@ export default {
     .card{
       background-color: #00ACAC !important;
     }
+
     .card1{
       background-color: #348FE2 !important;
     }
@@ -285,6 +303,7 @@ export default {
     .card3{
       background-color: #2D353C !important;
     }
+
     .el-row {
       margin-bottom: 20px;
       &:last-child {
@@ -299,9 +318,21 @@ export default {
       }
         
     }
+    .per_con{
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      .per_num{
+        font-size: 30px;
+        background-color: rgba(0,0,0,.1);
+        line-height: 80px;
+        border-radius: 5px;
+      }
+      
+    }
     .card_map{
       width: 100%;
-      background-color: rgba(0,0,0,.2);
+      background-color: rgba(0,0,0,.1);
       .chart{
         width: 100%;
         margin:0 auto;

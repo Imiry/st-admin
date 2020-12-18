@@ -51,16 +51,6 @@
   }
 
 }
-.set-enter,     /*进入之前，元素的起始状态，此时还没有进入*/
-.set-leave-to { /*动画离开之后，离开的终止状态，此时，动画已经结束了*/
-  transform: translateX(100px);
-  opacity: 0;
-}
-
-.set-enter-active,   /*入场动画的时间段*/
-.set-leave-active {  /*离场动画的时间段*/
-  transition: all 1s;
-}
 .layout-container .header {
   width: 100%;
   height: 50px;
@@ -76,6 +66,85 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    .bigBox{
+      width: 30px;
+      height: 30px;
+      position: relative;
+      left: 0;right: 0;
+      top: 0;bottom: 0;
+      margin: auto;
+      margin-left: 100px;
+      transform-style: preserve-3d;
+      // transform: rotateX(-20deg) rotateY(30deg);
+      /* 
+        这个3d盒子与spin动画绑定
+        就是说给这个.bigBox的盒子添加动画spin
+      */
+      animation: spin 5s  infinite  linear;
+    }
+    .bigBox div{
+        width: 30px;
+        height: 30px;
+        font-size: 50px;
+        line-height: 100px;
+        text-align: center;
+        position: absolute;
+        left: 0;top:0;
+        opacity: 0.5;
+    }
+    /* 把每个s_box的移到相对应的盒子面,并设置好角度 */
+    .s_box1{
+        background-color: purple;
+        transform: translateX(15px) rotateY(90deg);
+      
+    }
+    .s_box2{
+        background-color: skyblue;
+        transform: translateX(-15px) rotateY(-90deg);
+      
+    }
+    .s_box3{
+        background-color: olive;
+        transform: translateY(-15px) rotateX(-90deg);
+      
+    }
+    .s_box4{
+        background-color: rgb(60, 15, 223);
+        transform: translateY(15px) rotateX(-90deg);
+        
+    }
+    .s_box5{
+        background-color: rgb(241, 121, 9);
+        transform: translateZ(15px);
+    }
+    .s_box6{
+        background-color: rgb(248, 16, 16);
+        transform: translateZ(15px) rotateY(180deg);
+    }
+    /* 创建动画 */
+    @keyframes spin{
+        0%{
+            transform: rotateX(-15deg) rotateY(0deg) ;
+        }
+        25%{
+            
+            transform: rotateX(-20deg) rotateY(180deg) ;
+        }
+        50%{
+            transform: rotateX(-20deg) rotateY(360deg) ;
+        }
+        75%{
+            transform: rotateX(-20deg) rotateY(540deg) ;
+        }
+        100%{
+            transform: rotateX(-20deg) rotateY(720deg) ;
+        }
+    }
+    // /* 鼠标悬停3D盒子的时候，暂停动画 */
+    .bigBox:hover{
+        // animation-play-state:paused;
+        cursor: pointer;
+    }
   }
   .header_right{
     width: 50%;
@@ -137,7 +206,7 @@
   .conta{
     width: 100%;
     height: calc(100vh - 60px);
-    background-color: #eee;
+    background-color: #eee
   }
 }
 .el-container .nav-menu {
@@ -153,7 +222,7 @@
       text-align: center;
       border-radius: 20%;
       margin-right: 10px;
-      background-color: rgba(0, 0, 0, 0.5);
+      background-color: rgba(0, 0, 0, 0.1);
 }
 .el-menu-vertical-demo:not(.el-menu--collapse) {
   width: 200px;

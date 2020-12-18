@@ -2,7 +2,7 @@
  * @Author: sitao
  * @Date: 2020-12-01 16:27:12
  * @LastEditors: sitao
- * @LastEditTime: 2020-12-09 16:29:02
+ * @LastEditTime: 2020-12-18 13:39:33
  */
 import Vue from 'vue'
 import VueRouter from 'vue-router'
@@ -49,6 +49,11 @@ const routes = [
         path: '/st_template2',
         name: 'Template2',
         component: () => import('../views/Template/Template2.vue'),
+      },
+      {
+        path: '/st_template3',
+        name: 'Template3',
+        component: () => import('../views/Template/Template3.vue'),
       },
       {
         path: '/st_manage',

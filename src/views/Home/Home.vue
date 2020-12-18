@@ -12,6 +12,14 @@
           @click="toggleNav"
           ></i>
         </h1>
+        <div class="bigBox">
+          <div class="s_box1"></div>
+          <div class="s_box2"></div>
+          <div class="s_box3"></div>
+          <div class="s_box4"></div>
+          <div class="s_box5"></div>
+          <div class="s_box6"></div>
+        </div>
       </div>
       
       <div class="header_right">
@@ -82,6 +90,7 @@
               <el-menu-item-group>
                 <el-menu-item index="/st_template"><i class="iconfont icon-pulse"></i>{{$t('template_subnav.template1')}}</el-menu-item>
                 <el-menu-item index="/st_template2"><i class="iconfont icon-pulse"></i>{{$t('template_subnav.template2')}}</el-menu-item>
+                <el-menu-item index="/st_template3"><i class="iconfont icon-pulse"></i>{{$t('template_subnav.template2')}}</el-menu-item>
               </el-menu-item-group>
             </el-submenu>
             <el-menu-item index="/st_manage">
