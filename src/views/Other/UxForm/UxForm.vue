@@ -2,7 +2,7 @@
  * @Author: sitao
  * @Date: 2020-12-01 16:37:01
  * @LastEditors: sitao
- * @LastEditTime: 2020-12-18 14:46:51
+ * @LastEditTime: 2020-12-21 10:41:21
 -->
 <template>
   <div class="Uxform_container">
@@ -85,66 +85,6 @@
           <el-form-item label="文本域" prop="typeareatext">
             <el-input type="textarea" autosize placeholder="请输入内容" v-model="form.typeareatext"></el-input>
           </el-form-item>
-
-          <el-form-item :label="$t('form.password')" prop="password">
-            <el-popover placement="right" trigger="focus" width="320">
-              <div class="text-color f-s-12">
-                <div>
-                  <span v-show="pwdLength === null">
-                    <i class="iconfont icon-gantanhao f-s-14"></i>
-                  </span>
-                  <span v-show="pwdLength === true">
-                    <i class="iconfont icon-chenggong1 success"></i>
-                  </span>
-                  <span v-show="pwdLength !== null && pwdLength !== true">
-                    <i class="iconfont icon-shibai danger"></i>
-                  </span>
-                  {{ $t("errorMsg.passwordLengthIsBetween8And30") }}
-                </div>
-                <div class="m-t-10">
-                  <span v-show="pwdLevel == 0">
-                    <i class="iconfont icon-gantanhao f-s-14"></i>
-                  </span>
-                  <span v-show="pwdLevel == 2 || pwdLevel == 3 || pwdLevel == 4">
-                    <i class="iconfont icon-chenggong1 success"></i>
-                  </span>
-                  <span v-show="pwdLevel == 1 ">
-                    <i class="iconfont icon-shibai danger"></i>
-                  </span>
-                  {{
-                  $t(
-                  "errorMsg.containAtLeastTwoCombinationsOfNumbers/Uppercase/LowercaseLetters/Characters"
-                  )
-                  }}
-                </div>
-                <div class="m-t-10">
-                  {{$t('form.passwordStrength')}}:
-                  <span
-                    class="pwd-tip-style"
-                    :style="{ backgroundColor: lowBgColor }"
-                  ></span>
-                  <span class="pwd-tip-style" :style="{ backgroundColor: midBgColor }"></span>
-                  <span class="pwd-tip-style" :style="{ backgroundColor: highBgColor }"></span>
-                  {{ safeMsg }}
-                </div>
-              </div>
-              <el-input
-                type="password"
-                v-model="form.password"
-                show-password="true"
-                :placeholder="$t('form.password')"
-                slot="reference"
-              ></el-input>
-            </el-popover>
-          </el-form-item>
-          <el-form-item :label="$t('form.confirmPassword')" prop="confirmPassword">
-            <el-input
-              type="password"
-              
-              v-model="form.confirmPassword"
-              :placeholder="$t('form.confirmPassword')"
-            ></el-input>
-          </el-form-item>
           <el-form-item>
             <el-button type="primary" @click="submit('form')">{{$t('button.submit')}}</el-button>
             <el-button @click="reset('form')">{{$t('button.cancel')}}</el-button>
@@ -164,36 +104,12 @@ import {
     validateContact,
     validUnits
 } from '../../../utils/validator.js';
-import {
-    checkStrong,
-    pwdLength 
-} from '../../../utils/mUtils';
 export default {
   name: "UxForm",
   data() {
-    let validateConfirmPassword = (rule, value, callback) => {
-      if (value == '') {
-          callback(new Error(this.$i18n.t('errorMsg.pleaseEnterTheConfirmationPassword')));
-      } else if (value !== this.form.password) {
-          callback(new Error(this.$i18n.t('errorMsg.twoPasswordEntriesAreInconsistent')));
-      } else {
-          callback();
-      }
-    }
-    let validatePassword = (rule,value,callback) => {
-      if(value == "") {
-        callback(new Error('密码不能为空！'))
-      }else if(value.length < 8 || value.length > 30) {
-        callback(new Error('密码长度为8～30之间'))
-      }else if(this.pwdLength == 1){
-        callback(new Error('至少包含数字/大写字母/小写字母/特殊字符2种组合'))
-      }
-    }
     return {
       form: {
         username: '',
-        password: '',
-        confirmPassword: '',
         age: undefined,
         num: 1,
         unit: 'B/s',
@@ -208,16 +124,6 @@ export default {
         username: [{
             required: true,
             message: this.$i18n.t('errorMsg.pleaseEnterUserName'),
-            trigger: 'blur'
-        }],
-        password: [{
-            required: true, //this.$i18n.t('errorMsg.pleaseInputAPassword')
-            validator: validatePassword,
-            trigger: 'blur'
-        }],
-        confirmPassword: [{
-            required: true,
-            validator: validateConfirmPassword,
             trigger: 'blur'
         }],
         age: [{
@@ -266,34 +172,6 @@ export default {
           label: 'private',
           value: 'private'
       }],
-      pwdLevel: 0,
-      pwdLength: null,
-      safeMsg: '',
-      lowBgColor: '#dcdcdc',
-      midBgColor: '#dcdcdc',
-      highBgColor: '#dcdcdc',
-    }
-  },
-  watch: {
-    "form.password"(newVal, oldVal) {
-      this.pwdLevel = checkStrong(newVal);
-      this.pwdLength = pwdLength(newVal);
-      if (this.pwdLevel == 2) {
-          this.safeMsg = this.$i18n.t('form.weak');
-          this.lowBgColor = '#ff460f';
-          this.midBgColor = '#dcdcdc';
-          this.highBgColor = '#dcdcdc';
-      } else if (this.pwdLevel == 3) {
-          this.safeMsg = this.$i18n.t('form.moderate');
-          this.lowBgColor = '#ff6a00';
-          this.midBgColor = '#ff6a00';
-          this.highBgColor = '#dcdcdc';
-      } else if (this.pwdLevel == 4) {
-          this.safeMsg = this.$i18n.t('form.strong');
-          this.lowBgColor = '#0a9e00';
-          this.midBgColor = '#0a9e00';
-          this.highBgColor = '#0a9e00'
-      }
     }
   },
   methods: {

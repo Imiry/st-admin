@@ -2,13 +2,12 @@
  * @Author: zhangyao
  * @Date: 2020-12-17 17:46:00
  * @LastEditors: sitao
- * @LastEditTime: 2020-12-18 16:16:22
+ * @LastEditTime: 2020-12-21 11:35:17
 -->
 <template>
   <div class="markdown-tpl border-box min-height-full bg-f p-10 radius-4">
     <el-row :gutter="24">
       <el-col :span="10">
-        {{validStatus}}
         <el-form ref="ruleForm" :model="form" :rules="rules">
           <el-form-item label="密码" prop="password">
             <el-popover

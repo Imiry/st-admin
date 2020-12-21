@@ -2,7 +2,7 @@
  * @Author: sitao
  * @Date: 2020-11-25 18:15:00
  * @LastEditors: sitao
- * @LastEditTime: 2020-12-17 17:56:26
+ * @LastEditTime: 2020-12-21 13:46:24
  */
 const zh = {
   button: {
@@ -63,10 +63,13 @@ const zh = {
   others_subnav:{
     Ux_Table:"Ux_Table",
     Ux_Form:"Ux_Form",
+    pwd:"UX_Pwd"
   },
   template_subnav:{
     template1:"模板1",
-    template2:"模板2"
+    template2:"模板2",
+    template3:"模板3",
+    template4:"模板4"
   },
   element_subnav:{
     St_element:"St_element"
@@ -136,6 +139,7 @@ const zh = {
       'containAtLeastTwoCombinationsOfNumbers/Uppercase/LowercaseLetters/Characters': '至少包含数字/大写字母/小写字母/特殊字符2种组合',
       'pleaseEnterTheConfirmationPassword': '请输入确认密码',
       'twoPasswordEntriesAreInconsistent': '两次密码输入不一致',
+      'thePasswordDoesNotMeetTheRequirements': '密码不符合要求'
   },
   
 }

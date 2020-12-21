@@ -15,12 +15,20 @@
           <div class="Qr_note">请扫描微信二维码进行登录本系统,没有账号需要进行<span class="register_" @click="register">注册</span>哦！</div>
         </div>
         <!-- /二维码区域 -->
+
         <el-form  v-show="Qrflag" class="login-form" ref="loginFormRef" :model="userLogin" :rules="loginRules">
           <el-form-item prop="mobile" class="iput_con">
             <el-input  placeholder="请输入手机号" v-model="userLogin.mobile"  prefix-icon=" icon iconfont icon-yidongduanicon-"></el-input>
           </el-form-item>
-          <el-form-item prop="code" class="iput_psd">
-            <el-input  placeholder="请输入密码" v-model="userLogin.code" prefix-icon=" icon iconfont icon-zu" show-password></el-input>
+          <el-form-item prop="password" class="iput_psd">
+            <el-input  placeholder="请输入密码" v-model="userLogin.password" prefix-icon=" icon iconfont icon-zu" show-password></el-input>
+          </el-form-item>
+          <el-form-item prop="identify" class="iput_identify">
+            <el-input class="input_it" placeholder="请输入验证码" v-model="userLogin.identify" prefix-icon=" icon iconfont icon-zu" ></el-input>
+            <div @click="changeCode()">
+              <st-identify :identifyCode="identifyCode"></st-identify>
+            </div>
+            
           </el-form-item>
           <el-form-item prop="agree" class="xieyi">
             <el-checkbox v-model="userLogin.agree" style="color:#fff">我已阅读并同意用户协议和隐私条款</el-checkbox>
@@ -42,57 +50,11 @@
           <el-form-item prop="mobile" class="iput_con">
               <el-input  :placeholder="$t('form.phone')" v-model="userRegister.mobile"  prefix-icon=" icon iconfont icon-yidongduanicon-"></el-input>
           </el-form-item>
-          <el-form-item prop="code" class="iput_psd">
-            <el-popover
-              placement="right"
-              width="400"
-              trigger="hover"
-              >
-              <div class="text-color f-s-12">
-                <div>
-                  <span v-show="pwdLengthlogin === null">
-                    <i class="iconfont icon-gantanhao f-s-14 "></i>
-                  </span>
-                  <span v-show="pwdLengthlogin">
-                    <i class="iconfont icon-chenggong1 success"></i>
-                  </span>
-                  <span v-show="!pwdLengthlogin && pwdLengthlogin !== null">
-                    <i class="iconfont icon-shibai danger"></i>
-                  </span>
-                  {{ $t("errorMsg.passwordLengthIsBetween3And6") }}
-                </div>
-                <div class="m-t-10">
-                  <span v-show="pwdLevel == 0">
-                    <i class="iconfont icon-gantanhao f-s-14"></i>
-                  </span>
-                  <span v-show="pwdLevel == 2 || pwdLevel == 3 || pwdLevel == 4">
-                    <i class="iconfont icon-chenggong1 success"></i>
-                  </span>
-                  <span v-show="pwdLevel == 1 ">
-                    <i class="iconfont icon-shibai danger"></i>
-                  </span>
-                  {{
-                  $t(
-                  "errorMsg.containAtLeastTwoCombinationsOfNumbers/Uppercase/LowercaseLetters/Characters"
-                  )
-                  }}
-                </div>
-                <div class="m-t-10">
-                  {{$t('form.passwordStrength')}}:
-                  <span
-                    class="pwd-tip-style"
-                    :style="{ backgroundColor: lowBgColor }"
-                  ></span>
-                  <span class="pwd-tip-style" :style="{ backgroundColor: midBgColor }"></span>
-                  <span class="pwd-tip-style" :style="{ backgroundColor: highBgColor }"></span>
-                  {{ safeMsg }}
-                </div>
-              </div>
-              <el-input slot="reference"  :placeholder="$t('form.password')" v-model="userRegister.code" prefix-icon=" icon iconfont icon-zu" show-password></el-input>
-            </el-popover>
+          <el-form-item prop="password" class="iput_psd">
+            <ux-password class="pwd_ux" ref="pwd" v-model="userRegister.password" :pwdLengthRange="'6~10'"></ux-password>
           </el-form-item>
-          <el-form-item prop="codeCirfim" class="iput_psd">
-            <el-input  :placeholder="$t('form.confirmPassword')" type="password" v-model="userRegister.codeCirfim" prefix-icon=" icon iconfont icon-querenmima" ></el-input>
+          <el-form-item prop="confirmPassword" class="iput_psd">
+            <el-input  :placeholder="$t('form.confirmPassword')" type="password" v-model="userRegister.confirmPassword" prefix-icon=" icon iconfont icon-querenmima" ></el-input>
           </el-form-item>
           <el-form-item class="btn" >
             <el-button class="denglu" type="success" @click="submit('registerFormRef')">{{$t('button.submit')}}</el-button>
@@ -120,18 +82,30 @@ import JSONbig from 'json-bigint'
 import { now } from 'moment';
 import {
     checkStrong,
-    pwdLengthlogin 
+    pwdLength610 
 } from '../../utils/mUtils';
+import stIdentify from '../../components/st-identify/st-identify.vue';
 export default {
+  components: { stIdentify },
   name: 'Login',
   data () { 
-    let validateConfirmPassword = (rule, value, callback) => {
-        if (value == '') {
-            callback(new Error(this.$i18n.t('errorMsg.pleaseEnterTheConfirmationPassword')));
-        } else if (value !== this.userRegister.code) {
-            callback(new Error(this.$i18n.t('errorMsg.twoPasswordEntriesAreInconsistent')));
+    let validatePassword = (rule, value, callback) => {
+        if (value == '' && this.subBtn == true) {
+          callback(new Error(this.$i18n.t('errorMsg.pleaseInputAPassword')));
+        } else if (pwdLength610(value) == false || checkStrong(value) == 1) {
+          callback(new Error(this.$i18n.t('errorMsg.thePasswordDoesNotMeetTheRequirements')))
         } else {
-            callback();
+          callback();
+        }
+    }
+    let validateConfirmPassword = (rule, value, callback) => {
+        if (value == '' && this.subBtn == true) {
+          callback(new Error(this.$i18n.t('errorMsg.pleaseEnterTheConfirmationPassword')));
+        } else if (value !== this.userRegister.password) {
+          console.log(this.userRegister.password + value)
+          callback(new Error(this.$i18n.t('errorMsg.twoPasswordEntriesAreInconsistent')));
+        } else {
+          callback();
         }
     }
     return {
@@ -139,25 +113,23 @@ export default {
         // mobile: '13911111111', // 手机号
         // code: '246810', // 密码
         mobile: '', // 手机号
-        code: '', // 密码
+        password: '', // 密码
         agree: false // 是否同意协议
       },
       userRegister: {
-        mobile: '', // 手机号
-        code: '', // 密码
-        codeCirfim:'',//确认密码
+        mobile: '18329162570', // 手机号
+        password: '', // 密码
+        confirmPassword:'',//确认密码
       },
-
-      pwdLevel: 0,
-      pwdLengthlogin: null,
-      safeMsg: '',
-      lowBgColor: '#dcdcdc',
-      midBgColor: '#dcdcdc',
-      highBgColor: '#dcdcdc',
 
       loginFlag:true,//登录状态
       Qrflag:true,//二维码显示状态
       defaultindex:0,//默认一个数组索引[0]图片
+      // 验证码初始值
+      identifyCode: '1234',
+      // 验证码的随机取值范围
+      identifyCodes: '1234567890',
+
       bgImages:[
         {id:1,src:require("@/assets/images/timg2.gif")},
         {id:2,src:require("@/assets/images/bg2.jpg")},
@@ -166,6 +138,7 @@ export default {
         {id:5,src:require("@/assets/images/bg6.jpg")}
       ],
       loginLoading:false,
+      subBtn: false,
       //表单验证规则
       loginRules: { 
         mobile: [
@@ -173,9 +146,9 @@ export default {
           { required: true, message: '请输入手机号', trigger: 'blur' },
           { pattern: /^1[3|5|7|8|9]\d{9}$/, message: '请输入正确的手机号格式', trigger: 'blur' }
         ],
-        code: [
+        password: [
           { required: true, message: '请你输入密码', trigger: 'blur' },
-          { min: 3,max: 6, message: "密码长度在3到6个字符串", trigger: 'blur' }
+          { min: 6,max: 10, message: "密码长度在3到6个字符串", trigger: 'blur' }
         ],
         //自定义校验规则
         agree: [
@@ -199,39 +172,23 @@ export default {
           { required: true, message: '请输入手机号', trigger: 'blur' },
           { pattern: /^1[3|5|7|8|9]\d{9}$/, message: '请输入正确的手机号格式', trigger: 'blur' }
         ],
-        code: [{
+        password: [{
           required: true,
-          message: this.$i18n.t('errorMsg.pleaseInputAPassword'),
-          trigger: 'blur'
+          validator: validatePassword,
+          trigger: ['blur']
         }],
-        codeCirfim: [{
+        confirmPassword: [{
           required: true,
           validator: validateConfirmPassword,
-          trigger: 'blur'
+          trigger: 'change'
         }]
       }
     }
   },
   watch: {
-    "userRegister.code"(newVal, oldVal) {
-      // console.log(newVal)
-        this.pwdLevel = checkStrong(newVal);
-        this.pwdLengthlogin = pwdLengthlogin(newVal);
-        if (this.pwdLevel == 2) {
-            this.safeMsg = this.$i18n.t('form.weak');
-            this.lowBgColor = '#ff460f';
-            this.midBgColor = '#dcdcdc';
-            this.highBgColor = '#dcdcdc';
-        } else if (this.pwdLevel == 3) {
-            this.safeMsg = this.$i18n.t('form.moderate');
-            this.lowBgColor = '#ff6a00';
-            this.midBgColor = '#ff6a00';
-            this.highBgColor = '#dcdcdc';
-        } else if (this.pwdLevel == 4) {
-            this.safeMsg = this.$i18n.t('form.strong');
-            this.lowBgColor = '#0a9e00';
-            this.midBgColor = '#0a9e00';
-            this.highBgColor = '#0a9e00'
+    'userRegister.password'(newVal, oldVal) {
+        if (newVal != oldVal) {
+            this.$refs['registerFormRef'].clearValidate('password')
         }
     }
   },
@@ -249,9 +206,14 @@ export default {
       
       /* 在这里就模拟下刚才新用户注册填写的信息进行登录，信息被保存在sessionStorage */
       let registerPhone = sessionStorage.getItem('registerPhone')
-      let registerCode = sessionStorage.getItem('registerCode')
-      if(this.userLogin.mobile == registerPhone && this.userLogin.code == registerCode){
+      let registerPassword = sessionStorage.getItem('registerPassword')
+      if(this.userLogin.mobile == registerPhone && this.userLogin.password == registerPassword){
         this.$router.push('/st_template')
+      }else{
+        this.$message({
+          message: '登录失败,密码信息或账号信息填错！',
+          type: 'error'
+        })
       }
       // login(this.user).then(res => {
       //   // console.log(res)
@@ -288,7 +250,6 @@ export default {
       this.loginFlag = !this.loginFlag
     },
     //提交注册
-    
     submit(formName) {
       /*
         目前实现一个本地注册，主要采用回话存储机制，当用户输入数据的时候，
@@ -296,15 +257,16 @@ export default {
         本身实现注册就是调用注册接口将输入的信息保存到对应新用户的数据库中，
         当这个用户进行登录时，就调用登录接口，及后端处理的注册新用户有登录权限
       */
+      this.subBtn = true;
       this.$refs[formName].validate((valid) => {
           if (valid) {
-            // 表单验证通过
-            console.log(this.userRegister.code)
+            this.subBtn = false;
             sessionStorage.setItem('registerPhone',this.userRegister.mobile)
-            sessionStorage.setItem('registerCode',this.userRegister.code)
+            sessionStorage.setItem('registerPassword',this.userRegister.password)
             this.$message('恭喜您！注册成功')
             this.loginFlag = true
           } else {
+              this.subBtn = false;
               return false;
           }
       })
@@ -313,33 +275,45 @@ export default {
     },
     //取消注册
     cancleRrgister(formName) {
-      this.$confirm('是否退出注册！', '提示', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
-          type: 'warning'
-        }).then(() => {
-          this.$message({
-            type: 'success',
-            message: '没有账号的小朋友需要注册哦！!'
-          });
           this.loginFlag = true
           this.$refs[formName].resetFields();
-          this.Qrflag = true
-        }).catch(() => {
-          this.$message({
-            type: 'info',
-            message: '继续你的表演！'
-          });          
-        });
-      
+          this.$refs.pwd.resetPwd();
+          this.subBtn = false;
+          this.Qrflag = true      
     },
     //切换背景
     changeBg (item) {
       // console.log(item.id)
       this.defaultindex = item.id-1
       
+    },
+
+
+    // 点击验证码刷新验证码
+    changeCode () {
+      this.identifyCode = ''
+      this.makeCode(this.identifyCodes, 4)
+    },
+    // 生成一个随机整数  randomNum(0, 10) 0 到 10 的随机整数， 包含 0 和 10
+    randomNum (min, max) {
+      max = max + 1
+      return Math.floor(Math.random() * (max - min) + min)
+    },
+    // 随机生成验证码字符串
+    makeCode (data, len) {
+      for (let i = 0; i < len; i++) {
+        this.identifyCode += data[this.randomNum(0, data.length - 1)]
+      }
     }
+
   },
+  mounted() { 
+    let data = this.$md5(this.passWord)
+    console.log(data)// e10adc3949ba59abbe56e057f20f883e
+    // 刷新页面就生成随机验证码
+    this.identifyCode = ''
+    this.makeCode(this.identifyCodes, 4)
+  }
 
 }
 </script>
@@ -411,8 +385,20 @@ export default {
           flex-direction: column;
           justify-content: space-around;
           align-items: center;
+          .login-form .iput_psd .pwd_ux{
+            width: 300px;
+          }
           .iput_con,.iput_psd,.xieyi{
             width: 300px;
+          }
+          .iput_identify,.el-form-item__content{
+            display: flex;
+            justify-content: space-around;
+            width: 300px;
+          }
+          .input_it{
+            margin-right: 10px;
+            box-sizing: border-box;
           }
           .btn .el-form-item__content{
             width: 300px;
@@ -420,13 +406,13 @@ export default {
             justify-content: space-between;
             align-items: center;
           }
-          .btn  .denglu{
+          .btn .denglu{
             margin-right: 150px;
             width: 70px;
             height: 40px;
             text-align: center;
           }
-          .btn  .zhuce{
+          .btn .zhuce{
             width: 70px;
             height: 40px;
             text-align: center;

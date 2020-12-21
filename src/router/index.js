@@ -2,7 +2,7 @@
  * @Author: sitao
  * @Date: 2020-12-01 16:27:12
  * @LastEditors: sitao
- * @LastEditTime: 2020-12-18 13:39:33
+ * @LastEditTime: 2020-12-21 17:26:36
  */
 import Vue from 'vue'
 import VueRouter from 'vue-router'
@@ -36,6 +36,11 @@ const routes = [
         component: () => import('../views/Other/UxForm/UxForm.vue'),
       },
       {
+        path: '/ux_pwd',
+        name: 'UxPwd',
+        component: () => import('../views/Other/UxForm/UxPwd.vue'),
+      },
+      {
         path: '/st_welcome',
         name: 'Welcome',
         component: () => import('../views/Welcome/Welcome.vue'),
@@ -54,6 +59,11 @@ const routes = [
         path: '/st_template3',
         name: 'Template3',
         component: () => import('../views/Template/Template3.vue'),
+      },
+      {
+        path: '/st_template4',
+        name: 'Template4',
+        component: () => import('../views/Template/Template4.vue'),
       },
       {
         path: '/st_manage',
@@ -157,12 +167,12 @@ const routes = [
         name: 'Element',
         component: () => import('../views/Element/Element.vue'),
       },
-      ,
       {
         path: '/st_settings',
         name: 'Settings',
         component: () => import('../views/Settings/Settings.vue'),
       },
+
     ]
   },
 ]
@@ -173,4 +183,12 @@ const router = new VueRouter({
   routes
 })
 
+router.onError((error) => {
+  const pattern = /Loading chunk (\d)+ failed/g;
+  const isChunkLoadFailed = error.message.match(pattern);
+  const targetPath = router.history.pending.fullPath;
+  if (isChunkLoadFailed) {
+    router.replace(targetPath);
+  }
+});
 export default router

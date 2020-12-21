@@ -2,7 +2,7 @@
  * @Author: sitao
  * @Date: 2020-12-17 11:23:04
  * @LastEditors: sitao
- * @LastEditTime: 2020-12-17 17:16:03
+ * @LastEditTime: 2020-12-21 10:07:35
  */
 import {
   regExpConfig
@@ -44,8 +44,11 @@ export function pwdLengthlogin(value) {
   // console.log(charLength)
   return charLength
 }
-//系统内部的字段长度检验
-export function pwdLength(value) {
+
+/**
+ * pwdLength830 密码长度为8~30为校验
+ */
+export function pwdLength830(value) {
   let charLength = null;
   if(value.length >= 8 && value.length <= 30) {
     charLength = true
@@ -56,4 +59,21 @@ export function pwdLength(value) {
   }
   // console.log(charLength)
   return charLength
+}
+/**
+ * pwdLength610 密码长度为6~10为校验
+ */
+export function pwdLength610(value) {
+  let charLength = null;
+  if (value != '') {
+      if (6 <= value.length && value.length <= 10) {
+          charLength = true;
+      } else {
+          charLength = false;
+      }
+  } else {
+      charLength = null;
+  }
+
+  return charLength;
 }

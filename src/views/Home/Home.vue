@@ -80,6 +80,7 @@
               <el-menu-item-group>
                 <el-menu-item index="/ux_table"><i class="iconfont icon-UX"></i>{{$t('others_subnav.Ux_Table')}}</el-menu-item>
                 <el-menu-item index="/ux_form"><i class="iconfont icon-UX"></i>{{$t('others_subnav.Ux_Form')}}</el-menu-item>
+                <el-menu-item index="/ux_pwd"><i class="iconfont icon-UX"></i>{{$t('others_subnav.pwd')}}</el-menu-item>
               </el-menu-item-group>
             </el-submenu>
             <el-submenu index="3">
@@ -90,7 +91,8 @@
               <el-menu-item-group>
                 <el-menu-item index="/st_template"><i class="iconfont icon-pulse"></i>{{$t('template_subnav.template1')}}</el-menu-item>
                 <el-menu-item index="/st_template2"><i class="iconfont icon-pulse"></i>{{$t('template_subnav.template2')}}</el-menu-item>
-                <el-menu-item index="/st_template3"><i class="iconfont icon-pulse"></i>{{$t('template_subnav.template2')}}</el-menu-item>
+                <el-menu-item index="/st_template3"><i class="iconfont icon-pulse"></i>{{$t('template_subnav.template3')}}</el-menu-item>
+                <el-menu-item index="/st_template4"><i class="iconfont icon-pulse"></i>{{$t('template_subnav.template4')}}</el-menu-item>
               </el-menu-item-group>
             </el-submenu>
             <el-menu-item index="/st_manage">
