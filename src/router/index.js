@@ -2,7 +2,7 @@
  * @Author: sitao
  * @Date: 2020-12-01 16:27:12
  * @LastEditors: sitao
- * @LastEditTime: 2020-12-21 17:26:36
+ * @LastEditTime: 2020-12-22 16:58:36
  */
 import Vue from 'vue'
 import VueRouter from 'vue-router'
@@ -168,9 +168,14 @@ const routes = [
         component: () => import('../views/Element/Element.vue'),
       },
       {
-        path: '/st_settings',
-        name: 'Settings',
-        component: () => import('../views/Settings/Settings.vue'),
+        path: '/st_settings1',
+        name: 'Settings1',
+        component: () => import('../views/Settings/Settings1.vue'),
+      },
+      {
+        path: '/st_upload',
+        name: 'Upload',
+        component: () => import('../views/Settings/Upload.vue'),
       },
 
     ]

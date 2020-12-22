@@ -2,10 +2,11 @@
  * @Author: sitao
  * @Date: 2020-11-26 09:58:32
  * @LastEditors: sitao
- * @LastEditTime: 2020-12-16 10:45:30
+ * @LastEditTime: 2020-12-22 18:03:55
  */
 import { mapActions } from "vuex";
-import { mapState } from 'vuex'
+import { mapState } from 'vuex';
+
 export default {
   name: "Layout",
   data() {
@@ -23,7 +24,8 @@ export default {
       event:null,
       backheight:null,
       tabShow:false, //右侧工具状态
-      tabIconFlag:true //右侧图标状态
+      tabIconFlag:true, //右侧图标状态
+      navFlag: false,//侧边栏位置的状态判断
     };
   },
   computed:mapState({
@@ -128,7 +130,12 @@ export default {
       this.tabIconFlag = true
       this.tabShow = false
     },
-    //截屏
+    //改变左边的侧边栏在左在右
+    changeNavposition() {
+      this.navFlag = !this.navFlag
+      this.tabIconFlag = true
+      this.tabShow = false
+    }
     
 
     //vue-custom-scrollbar----------------------------监听滚动位置的变化
@@ -157,7 +164,7 @@ export default {
   mounted() {
     this.currentLanguage = this.language == 'zh' ? '中文' : 'English',
     this.handleScroll()
-  }
+  },
 
 
 };

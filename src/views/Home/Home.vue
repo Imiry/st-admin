@@ -50,11 +50,9 @@
           </el-dropdown-menu> 
         </el-dropdown>
       </div>
-      
     </el-header>
     
-    <el-container >
-      
+    <el-container :class="navFlag ? 'nav_position':''" >
       <el-aside class="el_aside" style="width:auto ;">
         <el-scrollbar class="scroll_left" >
           <el-menu
@@ -137,10 +135,16 @@
                 <el-menu-item index="/st_element"><i class="iconfont icon-xiaolian-"></i>{{$t('element_subnav.St_element')}}</el-menu-item>
               </el-menu-item-group>
             </el-submenu>
-            <el-menu-item index="/st_settings">
-              <i class="iconfont icon-shezhi icbg"></i>
-              <span slot="title">{{$t('nav.settings')}}</span>
-            </el-menu-item>
+            <el-submenu index="8">
+              <template  slot="title" >
+                <i class="iconfont icon-shezhi icbg"></i>
+                <span slot="title">{{$t('nav.settings')}}</span>
+              </template>
+              <el-menu-item-group>
+                <el-menu-item index="/st_settings1"><i class="iconfont icon-shezhi icbg"></i>{{$t('settings_subnav.createUser')}}</el-menu-item>
+                <el-menu-item index="/st_upload"><i class="iconfont icon-icon-- icbg"></i>{{$t('settings_subnav.upload')}}</el-menu-item>
+              </el-menu-item-group>
+            </el-submenu>
             <!-- </el-scrollbar> -->
           </el-menu>
         </el-scrollbar>
@@ -152,11 +156,19 @@
         </el-main>
       </el-scrollbar>
     </el-container>
+
+    <!-- backtop -->
     <st-back-top v-show="backtopflag" @backtop="backtop"></st-back-top>
+    <!-- backtop -->
+
     <transition name="set">
-      <st-set :show="tabShow" @closeHandle="closeHandle">
+      <st-set :show="tabShow" @closeHandle="closeHandle" >
         <div class="tubiao">
-          <div class="icon"><i class="iconfont icon-apple"></i></div>
+          <el-tooltip class="item" effect="light" content="侧边栏位置" placement="bottom">
+          <div class="icon" @click="changeNavposition">
+              <i class="iconfont icon-nav"></i>   
+          </div>
+          </el-tooltip>
           <div class="icon"><i class="iconfont icon-xiaomi"></i></div>
           <div class="icon"><i class="iconfont icon-erweima"></i></div>
           <div class="icon"><i class="iconfont icon-feiji800"></i></div>
@@ -168,9 +180,10 @@
       </st-set>
     </transition>
     <!-- 工具图标类 -->
-    <div class="tabout" v-show="tabIconFlag" @click="tabOut"><i class="iconfont icon-peizhi"></i></div>
+    <div class="tabout" v-show="tabIconFlag" @click="tabOut" v-drag><i class="iconfont icon-peizhi"></i></div>
+
   </el-container> 
-  
+
 </template>
 
 <script src="./Home.js"></script>

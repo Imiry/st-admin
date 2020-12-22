@@ -2,7 +2,7 @@
  * @Author: sitao
  * @Date: 2020-11-25 18:15:00
  * @LastEditors: sitao
- * @LastEditTime: 2020-12-21 13:46:24
+ * @LastEditTime: 2020-12-22 16:53:11
  */
 const zh = {
   button: {
@@ -11,7 +11,8 @@ const zh = {
     delete: "删除",
     cancel: "取消",
     confirm: "确定",
-    submit:"提交"
+    submit:"提交",
+    findUserInfos:'查找用户信息'
   },
   lable: {
     name: "名称",
@@ -93,6 +94,10 @@ const zh = {
     St_liquidfill:"水球图",
     St_wordcloud:"词云图"
   },
+  settings_subnav:{
+    createUser:'创建用户',
+    upload:'上传'
+  },
   table:{
     name:"名称",
     status:"状态",
@@ -118,8 +123,14 @@ const zh = {
     'passwordStrength': '密码强度',
     'weak': '弱',
     'moderate': '中',
-    'strong': '强'
+    'strong': '强',
+    'email': '邮箱',
   },
+  formInput:{
+    userName_input:'请输入你的用户名',
+    email_iput:'请输入你的邮箱'
+  },
+
   message: {
 
   },
@@ -141,6 +152,12 @@ const zh = {
       'twoPasswordEntriesAreInconsistent': '两次密码输入不一致',
       'thePasswordDoesNotMeetTheRequirements': '密码不符合要求'
   },
+  //步骤条
+  steps:{
+    userInfo:'个人信息',
+    picVrify:'图片验证',
+    createSuccess:'创建成功'
+  }
   
 }
 export default zh

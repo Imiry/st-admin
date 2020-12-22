@@ -2,7 +2,7 @@
  * @Author: sitao
  * @Date: 2020-11-25 18:15:00
  * @LastEditors: sitao
- * @LastEditTime: 2020-12-21 14:23:29
+ * @LastEditTime: 2020-12-22 18:07:25
  */
 import Vue from 'vue';
 import App from './App.vue';
@@ -10,8 +10,11 @@ import router from './router';
 import store from './store';
 
 // plugins
-import ElementUI from 'element-ui';
+import Directives from './plugins/directive/index.js';
+Vue.use(Directives); 
 
+
+import ElementUI from 'element-ui';
 import '../src/assets/css/vue.scss'
 import '../src/assets/css/global.scss';
 import 'element-ui/lib/theme-chalk/index.css';

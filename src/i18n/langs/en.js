@@ -2,7 +2,7 @@
  * @Author: sitao
  * @Date: 2020-11-25 18:15:00
  * @LastEditors: sitao
- * @LastEditTime: 2020-12-21 13:46:01
+ * @LastEditTime: 2020-12-22 16:52:25
  */
 const en = {
   // 按钮
@@ -12,7 +12,8 @@ const en = {
       delete: "delete",
       cancel: "cancel",
       confirm: "confirm",
-      submit:"submit"
+      submit:"submit",
+      findUserInfos:'find user infos'
     },
     //模态框其一选项
     lable: {
@@ -102,6 +103,10 @@ const en = {
       St_liquidfill:"St_liquidfill",
       St_wordcloud:"St_wordcloud"
     },
+    settings_subnav:{
+      createUser:'createUser',
+      upload:'upload'
+    },
     //表格头其一
     table:{
       name:"name",
@@ -113,7 +118,7 @@ const en = {
       Use_space:"Use_space",
       users:"Select",
       operate:"operate1",
-      operate1:"operate2"
+      operate1:"operate2",
     },
     form: {
       'public': 'Public',
@@ -128,7 +133,12 @@ const en = {
       'passwordStrength': 'Password Strength',
       'weak': 'Weak',
       'moderate': 'Moderate',
-      'strong': 'Strong'
+      'strong': 'Strong',
+      'email': 'email'
+    },
+    formInput:{
+      userName_input:'please enter userName',
+      email_iput:'please enter userEmail'
     },
     message: {
 
@@ -150,6 +160,12 @@ const en = {
         'pleaseEnterTheConfirmationPassword': 'Please Enter The Confirmation Password',
         'twoPasswordEntriesAreInconsistent': 'Two Password Entries Are Inconsistent',
         'thePasswordDoesNotMeetTheRequirements': 'The Password Does Not Meet The Requirements'
-    },                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
+    },   
+    //步骤条
+    steps:{
+      userInfo:'userInfo',
+      picVrify:'picVrify',
+      createSuccess:'createSuccess'
+    }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
 }
 export default en

@@ -40,7 +40,7 @@
     right: 10px;
     top:50%;
     border-radius: 10px;
-    background-color: rgba(0,0,0,0.1);
+    background-color: rgba(0,0,0,0.2);
     cursor: pointer;
     .iconfont{
       font-size: 40px;
@@ -208,6 +208,9 @@
     height: calc(100vh - 60px);
     background-color: #eee
   }
+}
+.nav_position{
+  flex-direction: row-reverse;
 }
 .el-container .nav-menu {
     height: 100%;
