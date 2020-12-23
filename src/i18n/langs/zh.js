@@ -67,10 +67,11 @@ const zh = {
     pwd:"UX_Pwd"
   },
   template_subnav:{
-    template1:"模板1",
-    template2:"模板2",
-    template3:"模板3",
-    template4:"模板4"
+    'template1-1':"模板1",
+    'template2-2':"模板2",
+    'template3-pwd':"密码/确认密码",
+    'template4-menu-scroll':"menu-scroll",
+    'template5-todos':"todoList"
   },
   element_subnav:{
     St_element:"St_element"

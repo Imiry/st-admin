@@ -87,10 +87,11 @@
                 <span slot="title">{{$t('nav.template')}}</span>
               </template>
               <el-menu-item-group>
-                <el-menu-item index="/st_template"><i class="iconfont icon-pulse"></i>{{$t('template_subnav.template1')}}</el-menu-item>
-                <el-menu-item index="/st_template2"><i class="iconfont icon-pulse"></i>{{$t('template_subnav.template2')}}</el-menu-item>
-                <el-menu-item index="/st_template3"><i class="iconfont icon-pulse"></i>{{$t('template_subnav.template3')}}</el-menu-item>
-                <el-menu-item index="/st_template4"><i class="iconfont icon-pulse"></i>{{$t('template_subnav.template4')}}</el-menu-item>
+                <el-menu-item index="/st_template"><i class="iconfont icon-pulse"></i>{{$t('template_subnav.template1-1')}}</el-menu-item>
+                <el-menu-item index="/st_template2"><i class="iconfont icon-pulse"></i>{{$t('template_subnav.template2-2')}}</el-menu-item>
+                <el-menu-item index="/st_template3"><i class="iconfont icon-pulse"></i>{{$t('template_subnav.template3-pwd')}}</el-menu-item>
+                <el-menu-item index="/st_template4"><i class="iconfont icon-pulse"></i>{{$t('template_subnav.template4-menu-scroll')}}</el-menu-item>
+                <el-menu-item index="/st_template5"><i class="iconfont icon-pulse"></i>{{$t('template_subnav.template5-todoList')}}</el-menu-item>
               </el-menu-item-group>
             </el-submenu>
             <el-menu-item index="/st_manage">

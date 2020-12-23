@@ -2,7 +2,7 @@
  * @Author: sitao
  * @Date: 2020-11-25 18:15:00
  * @LastEditors: sitao
- * @LastEditTime: 2020-12-22 16:52:25
+ * @LastEditTime: 2020-12-23 10:04:49
  */
 const en = {
   // 按钮
@@ -76,10 +76,11 @@ const en = {
       pwd:"UX_Pwd"
     },
     template_subnav:{
-      template1:"template1",
-      template2:"template2",
-      template3:"template3",
-      template4:"template4"
+      'template1-1':"template1",
+      'template2-2':"template2",
+      'template3-pwd':"pwd/confirm-pwd",
+      'template4-menu-scroll':"menu-scroll",
+      'template5-todoList':"todoList"
     },
     element_subnav:{
       St_element:"St_element"
