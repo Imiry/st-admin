@@ -2,7 +2,7 @@
  * @Author: sitao
  * @Date: 2020-12-01 16:27:12
  * @LastEditors: sitao
- * @LastEditTime: 2020-12-23 10:05:38
+ * @LastEditTime: 2020-12-24 09:25:20
  */
 import Vue from 'vue'
 import VueRouter from 'vue-router'
@@ -181,6 +181,11 @@ const routes = [
         path: '/st_upload',
         name: 'Upload',
         component: () => import('../views/Settings/Upload.vue'),
+      },
+      {
+        path: '/st_usersetting',
+        name: 'UserSetting',
+        component: () => import('../views/Settings/UserSetting.vue'),
       },
 
     ]

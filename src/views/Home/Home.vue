@@ -41,7 +41,8 @@
         </el-select> -->
         <el-dropdown class="el-drop2">
           <div class="avatar-wrap">
-            <i class="avatar iconfont icon-shouye"  alt srcset />
+            <!-- <i class="avatar iconfont icon-shouye"  alt srcset /> -->
+            <img :src="exist" alt="">
             <i class="el-icon-arrow-down el-icon--right"></i>
           </div>
           <el-dropdown-menu slot="dropdown">
@@ -64,7 +65,6 @@
             router
             :collapse="isCollapse"
           > 
-          <!-- <el-scrollbar style="height:100%"> -->
             <el-menu-item index="/st_welcome">
               <i class="iconfont icon-shouye icbg"></i>
               <span slot="title">{{$t('nav.home')}}</span>
@@ -144,9 +144,9 @@
               <el-menu-item-group>
                 <el-menu-item index="/st_settings1"><i class="iconfont icon-shezhi icbg"></i>{{$t('settings_subnav.createUser')}}</el-menu-item>
                 <el-menu-item index="/st_upload"><i class="iconfont icon-icon-- icbg"></i>{{$t('settings_subnav.upload')}}</el-menu-item>
+                <el-menu-item index="/st_usersetting"><i class="iconfont icon-yonghushezhi icbg"></i>{{$t('settings_subnav.userSetting')}}</el-menu-item>
               </el-menu-item-group>
             </el-submenu>
-            <!-- </el-scrollbar> -->
           </el-menu>
         </el-scrollbar>
       </el-aside>
@@ -181,7 +181,10 @@
       </st-set>
     </transition>
     <!-- 工具图标类 -->
-    <div class="tabout" v-show="tabIconFlag" @click="tabOut" v-drag><i class="iconfont icon-peizhi"></i></div>
+    <div class="tabout" v-show="tabIconFlag" @click="tabOut" v-drag>
+      <!-- <i class="iconfont icon-peizhi"></i> -->
+      <div class="tabi"></div>
+    </div>
 
   </el-container> 
 

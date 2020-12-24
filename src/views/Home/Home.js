@@ -2,7 +2,7 @@
  * @Author: sitao
  * @Date: 2020-11-26 09:58:32
  * @LastEditors: sitao
- * @LastEditTime: 2020-12-22 18:03:55
+ * @LastEditTime: 2020-12-24 13:33:16
  */
 import { mapActions } from "vuex";
 import { mapState } from 'vuex';
@@ -26,11 +26,21 @@ export default {
       tabShow:false, //右侧工具状态
       tabIconFlag:true, //右侧图标状态
       navFlag: false,//侧边栏位置的状态判断
+      defaultUrl:require('../../assets/images/swiper/avtor.jpg')
     };
   },
   computed:mapState({
     isCollapse: state=> state.i18n.isCollapse,
-    language:state=> state.i18n.language
+    language:state=> state.i18n.language,
+    avtorPath: state => state.user.avtorPath,
+    exist() {
+      if(this.avtorPath){
+        this.defaultUrl = this.avtorPath
+        return this.defaultUrl
+      }else{
+        return this.defaultUrl
+      }
+    }
   }),
   
   methods:{

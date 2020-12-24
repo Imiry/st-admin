@@ -2,7 +2,7 @@
  * @Author: sitao
  * @Date: 2020-11-25 18:15:00
  * @LastEditors: sitao
- * @LastEditTime: 2020-12-22 16:53:11
+ * @LastEditTime: 2020-12-24 09:24:27
  */
 const zh = {
   button: {
@@ -97,7 +97,8 @@ const zh = {
   },
   settings_subnav:{
     createUser:'创建用户',
-    upload:'上传'
+    upload:'上传',
+    userSetting:'用户设置'
   },
   table:{
     name:"名称",

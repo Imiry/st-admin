@@ -2,7 +2,7 @@
  * @Author: sitao
  * @Date: 2020-11-25 18:15:00
  * @LastEditors: sitao
- * @LastEditTime: 2020-12-23 10:04:49
+ * @LastEditTime: 2020-12-24 09:24:06
  */
 const en = {
   // 按钮
@@ -106,7 +106,8 @@ const en = {
     },
     settings_subnav:{
       createUser:'createUser',
-      upload:'upload'
+      upload:'upload',
+      userSetting:'userSetting'
     },
     //表格头其一
     table:{

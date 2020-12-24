@@ -2,7 +2,7 @@
  * @Author: sitao
  * @Date: 2020-12-23 17:44:19
  * @LastEditors: sitao
- * @LastEditTime: 2020-12-23 17:58:06
+ * @LastEditTime: 2020-12-24 12:53:09
 -->
 <template>
   <div class="cropper-content">
@@ -156,9 +156,7 @@ export default {
             } else if (window.webkitURL != undefined) {
               url = window.webkitURL.createObjectURL(data);
             }
-            console.log(url)
-            return url;
-          
+            this.$emit('getpicPath',url)
         })
       }
     },
