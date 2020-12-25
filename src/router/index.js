@@ -2,11 +2,11 @@
  * @Author: sitao
  * @Date: 2020-12-01 16:27:12
  * @LastEditors: sitao
- * @LastEditTime: 2020-12-24 09:25:20
+ * @LastEditTime: 2020-12-25 14:46:17
  */
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-
+import { getUserToken } from '../utils/auth/auth-token.js'
 Vue.use(VueRouter)
 
 const routes = [
@@ -71,9 +71,9 @@ const routes = [
         component: () => import('../views/Template/Template5.vue'),
       },
       {
-        path: '/st_manage',
-        name: 'Manage',
-        component: () => import('../views/Manage/Manage.vue'),
+        path: '/st_editor',
+        name: 'Editor',
+        component: () => import('../views/Editor/Editor.vue'),
       },
 
       {
@@ -177,16 +177,17 @@ const routes = [
         name: 'Settings1',
         component: () => import('../views/Settings/Settings1.vue'),
       },
-      {
-        path: '/st_upload',
-        name: 'Upload',
-        component: () => import('../views/Settings/Upload.vue'),
-      },
+
       {
         path: '/st_usersetting',
         name: 'UserSetting',
         component: () => import('../views/Settings/UserSetting.vue'),
       },
+      // {
+      //   path: '/st_adss',
+      //   name: 'Adss',
+      //   component: () => import('../views/Settings/Adss.vue'),
+      // },
 
     ]
   },
@@ -196,6 +197,16 @@ const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes
+})
+
+// 挂载路由导航守卫
+router.beforeEach((to, from, next) => {
+  
+  if (to.path === '/login') return next()
+  // 获取token
+  const token = getUserToken('token')
+  if (!token) return next('/login')
+  next()
 })
 
 router.onError((error) => {

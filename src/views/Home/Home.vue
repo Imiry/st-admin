@@ -63,6 +63,7 @@
             text-color="#fff"
             active-text-color="#01DFD7"
             router
+            @open="handleOpen"
             :collapse="isCollapse"
           > 
             <el-menu-item index="/st_welcome">
@@ -94,9 +95,9 @@
                 <el-menu-item index="/st_template5"><i class="iconfont icon-pulse"></i>{{$t('template_subnav.template5-todoList')}}</el-menu-item>
               </el-menu-item-group>
             </el-submenu>
-            <el-menu-item index="/st_manage">
-              <i class="iconfont icon-baobeiguanli icbg"></i>
-              <span slot="title">{{$t('nav.manage')}}</span>
+            <el-menu-item index="/st_editor">
+              <i class="iconfont icon-fuwenbenbianjiqi_biaoge icbg"></i>
+              <span slot="title">{{$t('nav.editor')}}</span>
             </el-menu-item>
             <el-menu-item index="/st_form">
               <i class="iconfont icon-biaoge icbg"></i>
@@ -143,7 +144,7 @@
               </template>
               <el-menu-item-group>
                 <el-menu-item index="/st_settings1"><i class="iconfont icon-shezhi icbg"></i>{{$t('settings_subnav.createUser')}}</el-menu-item>
-                <el-menu-item index="/st_upload"><i class="iconfont icon-icon-- icbg"></i>{{$t('settings_subnav.upload')}}</el-menu-item>
+                <!-- <el-menu-item index="/st_upload"><i class="iconfont icon-icon-- icbg"></i>{{$t('settings_subnav.upload')}}</el-menu-item> -->
                 <el-menu-item index="/st_usersetting"><i class="iconfont icon-yonghushezhi icbg"></i>{{$t('settings_subnav.userSetting')}}</el-menu-item>
               </el-menu-item-group>
             </el-submenu>
@@ -152,8 +153,9 @@
       </el-aside>
       
       <el-scrollbar ref="scrollbar" class="conta" >
-        <el-main >       
-            <router-view></router-view>
+        <el-main >     
+          <div class="tag"><st-routetag :disable_tag="disable_tag" :routeTag="routeTag" @closeTag="closeTag"></st-routetag></div>
+          <div style="margin-top:35px"><router-view></router-view></div>
         </el-main>
       </el-scrollbar>
     </el-container>

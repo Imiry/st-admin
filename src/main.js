@@ -2,7 +2,7 @@
  * @Author: sitao
  * @Date: 2020-11-25 18:15:00
  * @LastEditors: sitao
- * @LastEditTime: 2020-12-22 18:07:25
+ * @LastEditTime: 2020-12-24 17:55:14
  */
 import Vue from 'vue';
 import App from './App.vue';
@@ -11,7 +11,10 @@ import store from './store';
 
 // plugins
 import Directives from './plugins/directive/index.js';
+import mavonEditor from 'mavon-editor'
+import 'mavon-editor/dist/css/index.css'
 Vue.use(Directives); 
+Vue.use(mavonEditor)
 
 
 import ElementUI from 'element-ui';
@@ -41,6 +44,7 @@ Vue.use(VCharts);
 Vue.use(VuePanel);
 Vue.use(screenfull);
 Vue.use(VueSparkline);
+
 
 
 

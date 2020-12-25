@@ -37,7 +37,7 @@
     line-height: 40px;
     text-align: center;
     position: fixed;
-    z-index: 999;
+    z-index: 999999;
     right: 10px;
     top:50%;
     display: flex;
@@ -221,7 +221,7 @@
   .conta{
     width: 100%;
     height: calc(100vh - 60px);
-    background-color: #eee
+    background-color: #eee;
   }
 }
 .nav_position{
@@ -247,7 +247,8 @@
   min-height: 400px;
 }
 .el-main{
-  background-color: #eee;
+  // background-color: #eee;
+  
   // height: 100%;
 }
 .el-scrollbar__wrap {

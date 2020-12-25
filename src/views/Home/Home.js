@@ -2,11 +2,11 @@
  * @Author: sitao
  * @Date: 2020-11-26 09:58:32
  * @LastEditors: sitao
- * @LastEditTime: 2020-12-24 13:33:16
+ * @LastEditTime: 2020-12-25 18:07:00
  */
 import { mapActions } from "vuex";
 import { mapState } from 'vuex';
-
+import { removeUserToken } from '../../utils/auth/auth-token.js'
 export default {
   name: "Layout",
   data() {
@@ -26,7 +26,15 @@ export default {
       tabShow:false, //右侧工具状态
       tabIconFlag:true, //右侧图标状态
       navFlag: false,//侧边栏位置的状态判断
-      defaultUrl:require('../../assets/images/swiper/avtor.jpg')
+      defaultUrl:require('../../assets/images/swiper/avtor.jpg'),
+
+
+      routeTag:[
+        { path:'/home',name:'首页',type:'info' },
+        { path:'/st_template',name:'模板1',type:'' },
+
+      ],
+      disable_tag:true
     };
   },
   computed:mapState({
@@ -53,8 +61,8 @@ export default {
         type: "warning"
       }).then(() => {
         //退出登录要把用户的登录状态清楚
-        window.localStorage.removeItem('user')
-        this.$router.push('/login')
+        removeUserToken('user')
+        this.$router.push({path:"/login",replace:true})
       }).catch(() => {
         this.$message({
           type: "info",
@@ -65,7 +73,7 @@ export default {
     
     //设置
     setting(){
-      this.$router.push('/st_settings')
+      this.$router.push('/st_usersetting')
     },
     
     exprandChange(){
@@ -145,31 +153,18 @@ export default {
       this.navFlag = !this.navFlag
       this.tabIconFlag = true
       this.tabShow = false
+    },
+
+
+    closeTag(index){
+      console.log(index)
+      this.routeTag.splice(index, 1);
+    },
+    
+    handleOpen(key,path) {
+      console.log(path)
     }
     
-
-    //vue-custom-scrollbar----------------------------监听滚动位置的变化
-    // scrollHanle(evt) {
-    //   this.event = evt.target;
-    //   this.backheight = parseInt(evt.target.scrollTop);
-    //   if(parseInt(evt.target.scrollTop) >= 250){
-    //     this.backtopflag = true
-    //   }else{
-    //     this.backtopflag = false
-    //   }
-    //   // console.log(parseInt(evt.target.scrollTop))
-    // },
-    // backtop() {
-    //   if(this.event){
-    //     let timer =setInterval(()=> {
-    //       this.event.scrollTop -=50; 
-    //       if(this.event.scrollTop <= 0){
-    //         clearInterval(timer)
-    //       }
-    //     },5)
-    //   }
-    // }
-    //vue-custom-scrollbar----------------------------监听滚动位置的变化
   },
   mounted() {
     this.currentLanguage = this.language == 'zh' ? '中文' : 'English',

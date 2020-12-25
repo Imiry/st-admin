@@ -2,10 +2,11 @@
  * @Author: sitao
  * @Date: 2020-12-15 10:39:37
  * @LastEditors: sitao
- * @LastEditTime: 2020-12-24 13:45:27
+ * @LastEditTime: 2020-12-25 16:17:45
 -->
 <template>
   <div id="app">
+
     <router-view v-if="activeRoute"/>
     
   </div>

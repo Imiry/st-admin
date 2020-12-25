@@ -2,7 +2,7 @@
  * @Author: sitao
  * @Date: 2020-11-25 18:15:00
  * @LastEditors: sitao
- * @LastEditTime: 2020-12-24 09:24:06
+ * @LastEditTime: 2020-12-24 17:11:02
  */
 const en = {
   // 按钮
@@ -63,7 +63,7 @@ const en = {
       others:"UX",
       home:"home",
       template:"template",
-      manage:"manage",
+      editor:"editor",
       form:"form",
       chart:"chart",
       element:"element",

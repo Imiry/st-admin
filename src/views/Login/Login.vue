@@ -71,7 +71,8 @@
         </div>
       </div>
       <!-- /切换背景区域 -->
-      
+
+
     </div>
   </div>
 </template>
@@ -84,6 +85,7 @@ import {
     checkStrong,
     pwdLength610 
 } from '../../utils/mUtils';
+import { setUserToken } from '../../utils/auth/auth-token.js'
 import stIdentify from '../../components/st-identify/st-identify.vue';
 export default {
   components: { stIdentify },
@@ -112,8 +114,8 @@ export default {
       userLogin: {
         // mobile: '13911111111', // 手机号
         // code: '246810', // 密码
-        mobile: '', // 手机号
-        password: '', // 密码
+        mobile: '18329162570', // 手机号
+        password: '123456.', // 密码
         agree: false // 是否同意协议
       },
       userRegister: {
@@ -139,6 +141,7 @@ export default {
       ],
       loginLoading:false,
       subBtn: false,
+      info:[],//零时保存注册对象
       //表单验证规则
       loginRules: { 
         mobile: [
@@ -182,7 +185,7 @@ export default {
           validator: validateConfirmPassword,
           trigger: 'change'
         }]
-      }
+      },
     }
   },
   watch: {
@@ -193,8 +196,10 @@ export default {
     }
   },
   methods: {
+   
     //登录校验
     onLogin () {
+
       this.$refs.loginFormRef.validate( async valid => {
         if(!valid) return 
         this.login()
@@ -204,43 +209,24 @@ export default {
     login () {
       this.loginLoading = true
       
-      /* 在这里就模拟下刚才新用户注册填写的信息进行登录，信息被保存在sessionStorage */
-      let registerPhone = sessionStorage.getItem('registerPhone')
-      let registerPassword = sessionStorage.getItem('registerPassword')
-      if(this.userLogin.mobile == registerPhone && this.userLogin.password == registerPassword){
-        this.$router.push('/st_template')
+      /* 在这里就模拟下刚才新用户注册填写的信息进行登录，信息被保存在localStorage */
+      let registeredInfo = JSON.parse(localStorage.getItem('registerData'))
+      // console.log(registeredInfo)
+      let flag=registeredInfo.find(item=> item.mobile===this.userLogin.mobile && item.passWord===this.userLogin.passWord);
+      if(!flag) {
+             this.$message({
+            message: '登录失败,密码信息或账号信息填错！',
+            type: 'error'
+          })
       }else{
+        setUserToken('token','st')
+        this.$router.push('/st_template')
         this.$message({
-          message: '登录失败,密码信息或账号信息填错！',
-          type: 'error'
+          message: '登录成功！',
+          type: 'success'
         })
       }
-      // login(this.user).then(res => {
-      //   // console.log(res)
-      //   // 登录成功
-      //   this.$message({
-      //     message: '登录成功',
-      //     type: 'success'
-      //   })
-      //   // 关闭 loading
-      //   this.loginLoading = false
-        
-      //   // 将接口返回的用户相关数据放到本地存储，方便应用数据共享
-      //   // 本地存储只能存储字符串
-      //   // 如果需要存储对象、数组类型的数据，则把他们转为 JSON 格式字符串进行存储
-      //   window.localStorage.setItem('user', JSONbig.stringify(res.data.data))
-      //   this.$router.push('/home')
-
-      // }).catch(err => { // 登录失败
-      //   console.log('登录失败', err)
-      //   this.$message({
-      //     message: '登录失败',
-      //     type: 'error'
-      //   })
-
-        // 关闭 loading
-        this.loginLoading = false
-      // })
+      this.loginLoading = false
     },
     Qr_open() {
       this.Qrflag = !this.Qrflag
@@ -252,8 +238,8 @@ export default {
     //提交注册
     submit(formName) {
       /*
-        目前实现一个本地注册，主要采用回话存储机制，当用户输入数据的时候，
-        当用户输入的数据保存在sessionstorey中，当用户登录的时候就会采用这个注册过的手机号进行登录。
+        目前实现一个本地注册，主要采用本地存储机制，每次注册都会在本地创建一个用户信息，到时候判断用户是否存在本地，来进行登录。
+        当用户输入的数据保存在localStorage中，当用户登录的时候就会采用这个注册过的手机号进行登录。
         本身实现注册就是调用注册接口将输入的信息保存到对应新用户的数据库中，
         当这个用户进行登录时，就调用登录接口，及后端处理的注册新用户有登录权限
       */
@@ -261,8 +247,9 @@ export default {
       this.$refs[formName].validate((valid) => {
           if (valid) {
             this.subBtn = false;
-            sessionStorage.setItem('registerPhone',this.userRegister.mobile)
-            sessionStorage.setItem('registerPassword',this.userRegister.password)
+            let registerInfo = {mobile:this.userRegister.mobile,password:this.userRegister.password}
+            this.info.push(registerInfo)
+            localStorage.setItem('registerData',JSON.stringify(this.info))
             this.$message('恭喜您！注册成功')
             this.loginFlag = true
           } else {
@@ -385,7 +372,7 @@ export default {
           flex-direction: column;
           justify-content: space-around;
           align-items: center;
-          .login-form .iput_psd .pwd_ux{
+          .pwd_ux{
             width: 300px;
           }
           .iput_con,.iput_psd,.xieyi{

@@ -13,6 +13,7 @@
     "echarts": "^4.9.0",
     "element-ui": "^2.14.1",
     "json-bigint": "^1.0.0",
+    "mavon-editor": "^2.9.0",
     "moment": "^2.29.1",
     "pug-plain-loader": "^1.0.0",
     "screenfull": "^5.0.2",

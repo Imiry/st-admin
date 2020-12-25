@@ -2,7 +2,7 @@
  * @Author: sitao
  * @Date: 2020-11-25 18:15:00
  * @LastEditors: sitao
- * @LastEditTime: 2020-12-24 09:24:27
+ * @LastEditTime: 2020-12-24 17:11:16
  */
 const zh = {
   button: {
@@ -55,7 +55,7 @@ const zh = {
     others:"UX",
     home:"首页",
     template:"模板",
-    manage:"管理",
+    editor:"编辑器",
     form:"表单/表格",
     chart:"可视化",
     element:"element组件",

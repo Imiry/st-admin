@@ -2,7 +2,7 @@
  * @Author: sitao
  * @Date: 2020-12-24 09:22:18
  * @LastEditors: sitao
- * @LastEditTime: 2020-12-24 16:23:55
+ * @LastEditTime: 2020-12-25 17:04:17
 -->
 <template>
   <div class="userSetting_container">
@@ -75,7 +75,9 @@
         </div>
       </el-col>
       <el-col :span="14">
-        <div class="grid-content2"></div>
+        <div class="grid-content2">
+          
+        </div>
       </el-col>
     </el-row>
 
@@ -139,6 +141,10 @@ export default {
   name: 'UserSetting',
   data() { 
     return {
+      info: [
+        { name: "姓名：", param: "" },
+        { name: "密码", param: "" },
+      ],
       user:{},
       eaditUsered:{},
       //裁切图片参数
@@ -147,12 +153,15 @@ export default {
       defaultUrl:require('../../assets/images/swiper/avtor.jpg'),
       
       //标签
-      dynamicTags: ['电影', '旅游', '篮球'],
+      dynamicTags: ['电影', '旅游', '篮球','游戏'],
       inputVisible: false,
       inputValue: '',
 
       //编辑弹窗
-      eaditVisible:false
+      eaditVisible:false,
+
+      //-----
+
     }
   },
   computed:{
@@ -172,8 +181,10 @@ export default {
   },
   mounted() {
     this.user = this.userInfoData
+
   },
   methods:{
+    
     ...mapActions({
       usersetting:'usersettingAction',
       userinfo:'userinfoAction'
@@ -181,6 +192,7 @@ export default {
     changeAvtor() {
       this.cropperModel = true
     },
+
     getpicPath(url) {
       console.log(url)
       this.usersetting(url)
@@ -225,7 +237,9 @@ export default {
       this.userinfo(this.eaditUsered);
       this.user = this.userInfoData
       this.eaditVisible = false;
-    }
+    },
+
+
   }
  }
 </script>

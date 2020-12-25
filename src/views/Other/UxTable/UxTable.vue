@@ -1,10 +1,10 @@
 <template>
   <div class="Uxtable_container">
-    <el-breadcrumb class="el-breadcrumb" separator-class="el-icon-arrow-right">
+    <!-- <el-breadcrumb class="el-breadcrumb" separator-class="el-icon-arrow-right">
       <el-breadcrumb-item :to="{ path: '/st_welcome' }">{{$t('nav.home')}}</el-breadcrumb-item>
       <el-breadcrumb-item >{{$t('nav.others')}}</el-breadcrumb-item>
       <el-breadcrumb-item>{{$t('others_subnav.Ux_Table')}}</el-breadcrumb-item>
-    </el-breadcrumb>
+    </el-breadcrumb> -->
     <!-- 表格区域 -->
     <ux-table
       :border="border"
