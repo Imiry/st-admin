@@ -3,7 +3,7 @@ import { Button } from 'mint-ui';
  * @Author: sitao
  * @Date: 2020-12-23 09:57:14
  * @LastEditors: sitao
- * @LastEditTime: 2020-12-23 17:19:41
+ * @LastEditTime: 2020-12-28 11:36:47
  * @ vuex-联系todolist
 -->
 <template>
@@ -98,6 +98,9 @@ export default {
       addItem:'addtodoAction',
       deleteItem:'deleteAction'
     }),
+    handleClose() {
+      this.dialogVisible = false
+    },
     //添加数据
     addThing(){
       if(!this.userName&&!this.userDec){

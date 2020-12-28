@@ -63,10 +63,11 @@
             text-color="#fff"
             active-text-color="#01DFD7"
             router
-            @open="handleOpen"
+            
             :collapse="isCollapse"
           > 
-            <el-menu-item index="/st_welcome">
+          <!-- @select="handleOpen" -->
+            <!-- <el-menu-item index="/st_welcome">
               <i class="iconfont icon-shouye icbg"></i>
               <span slot="title">{{$t('nav.home')}}</span>
             </el-menu-item>
@@ -77,7 +78,7 @@
                 <span slot="title">{{$t('nav.others')}}</span>
               </template>
               <el-menu-item-group>
-                <el-menu-item index="/ux_table"><i class="iconfont icon-UX"></i>{{$t('others_subnav.Ux_Table')}}</el-menu-item>
+                <el-menu-item index="/ux_table" ><i class="iconfont icon-UX"></i>{{$t('others_subnav.Ux_Table')}}</el-menu-item>
                 <el-menu-item index="/ux_form"><i class="iconfont icon-UX"></i>{{$t('others_subnav.Ux_Form')}}</el-menu-item>
                 <el-menu-item index="/ux_pwd"><i class="iconfont icon-UX"></i>{{$t('others_subnav.pwd')}}</el-menu-item>
               </el-menu-item-group>
@@ -144,8 +145,18 @@
               </template>
               <el-menu-item-group>
                 <el-menu-item index="/st_settings1"><i class="iconfont icon-shezhi icbg"></i>{{$t('settings_subnav.createUser')}}</el-menu-item>
-                <!-- <el-menu-item index="/st_upload"><i class="iconfont icon-icon-- icbg"></i>{{$t('settings_subnav.upload')}}</el-menu-item> -->
                 <el-menu-item index="/st_usersetting"><i class="iconfont icon-yonghushezhi icbg"></i>{{$t('settings_subnav.userSetting')}}</el-menu-item>
+              </el-menu-item-group>
+            </el-submenu> -->
+            <el-submenu :index="item.path" v-for="item in menuList" :key="item.path">
+              <template slot="title">
+                <i :class="item.icon"></i>
+                <span>{{item.name}}</span>
+              </template>
+              <el-menu-item-group>
+                <el-menu-item @click="handleGet(subItem)" :index="subItem.path" v-for="subItem in item.children" :key="subItem.path" >
+                  <i :class="subItem.icon"></i>{{subItem.name}}
+                </el-menu-item>
               </el-menu-item-group>
             </el-submenu>
           </el-menu>
@@ -154,7 +165,7 @@
       
       <el-scrollbar ref="scrollbar" class="conta" >
         <el-main >     
-          <div class="tag"><st-routetag :disable_tag="disable_tag" :routeTag="routeTag" @closeTag="closeTag"></st-routetag></div>
+          <div class="tag"><st-routetag :disable_tag="disable_tag" :routeTag="routeTag" @closeTag="closeTag" @handelClick="handelClick"></st-routetag></div>
           <div style="margin-top:35px"><router-view></router-view></div>
         </el-main>
       </el-scrollbar>

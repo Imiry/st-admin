@@ -9,7 +9,7 @@
 
     <!-- 卡片 -->
     <el-row :gutter="20">
-      <el-col span="13">
+      <el-col :span="13">
         <st-card :cardData="carddata">
           <!-- <div class="textBtn">  //用下面写法不用考虑布局
             <st-button :buttons="textButtons"></st-button>
@@ -23,7 +23,7 @@
         </st-card>
       </el-col>
       
-      <el-col span="11">
+      <el-col :span="11">
         <el-card class="box-card1">
           <div slot="header" class="clearfix">
             <span>卡片名称</span>

@@ -2,20 +2,21 @@
  * @Author: sitao
  * @Date: 2020-12-25 16:24:36
  * @LastEditors: sitao
- * @LastEditTime: 2020-12-25 17:45:42
+ * @LastEditTime: 2020-12-28 16:44:28
 -->
 <template>
   <div class="routetag_container">
-    <el-tag
-      class="m-l-10 m-b-10 m-t-10"
-      :key="index"
-      v-for="(item,index) in routeTag"
-      closable
-      :type="item.type"
-      :disable-transitions="disable_tag"
-      @close="handleClose(index)">
-      {{item.name}}
-    </el-tag>
+      <el-tag
+        v-for="(tag,index) in routeTag"
+        :key="index"
+        class="m-l-10 m-b-10 m-t-10 tag"
+        :closable="tag.name !== 'home'"
+        :type="tag.type"
+        :disable-transitions="disable_tag"
+        @click="handelClick(tag)"
+        @close="handleClose(index)">
+        {{tag.name}}
+      </el-tag>
   </div>
 </template>
 
@@ -37,8 +38,12 @@ export default {
     }
   },
   methods:{
-    handleClose(path) {
-      this.$emit('closeTag',path)
+    handleClose(index) {
+      this.$emit('closeTag',index)
+      
+    },
+    handelClick(tag){
+      this.$emit('handelClick',tag)
     }
   }
  }
@@ -49,8 +54,11 @@ export default {
     position: fixed;
     top:60px;
     left:210px;
-    z-index: 999999;
+    z-index: 999;
     width: 100%;
     background-color: #eee;
+    .tag:hover{
+      cursor: pointer;
+    }
   }
 </style>
