@@ -2,17 +2,17 @@
  * @Author: sitao
  * @Date: 2020-12-25 16:24:36
  * @LastEditors: sitao
- * @LastEditTime: 2020-12-28 16:44:28
+ * @LastEditTime: 2020-12-29 15:04:30
 -->
 <template>
   <div class="routetag_container">
       <el-tag
         v-for="(tag,index) in routeTag"
         :key="index"
-        class="m-l-10 m-b-10 m-t-10 tag"
-        :closable="tag.name !== 'home'"
+        class=" m-r-5 m-b-10 m-t-10 tag"
+        :closable="tag.name !== '工作台'"
         :type="tag.type"
-        :disable-transitions="disable_tag"
+        
         @click="handelClick(tag)"
         @close="handleClose(index)">
         {{tag.name}}
@@ -30,7 +30,7 @@ export default {
         return []
       }
     },
-    disable_tag:false
+    
   },
   data() { 
     return {
@@ -53,9 +53,11 @@ export default {
   .routetag_container{
     position: fixed;
     top:60px;
-    left:210px;
+    // left:200px;
     z-index: 999;
     width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
     background-color: #eee;
     .tag:hover{
       cursor: pointer;

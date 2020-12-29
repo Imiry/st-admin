@@ -2,11 +2,11 @@
  * @Author: sitao
  * @Date: 2020-11-26 09:58:32
  * @LastEditors: sitao
- * @LastEditTime: 2020-12-28 17:47:28
+ * @LastEditTime: 2020-12-29 16:07:12
  */
 import { mapActions } from "vuex";
 import { mapState } from 'vuex';
-
+import { getRouterTag,setRouterTag,removeRouterTag } from '../../utils/auth/auth-routerTag.JS'
 import { removeUserToken } from '../../utils/auth/auth-token.js'
 // import { menuList } from '../../utils/menu/menu.js'
 export default {
@@ -32,7 +32,7 @@ export default {
 
       routeTag:[
         // { path:'/home',name:'首页',type:'' },
-        { path:'/st_template',name:'st_template',type:'' },
+        { path:'/st_work',name:'工作台',type:'',},
       ],
       disable_tag:true,
       menuList:[
@@ -42,6 +42,15 @@ export default {
           name:this.$t('nav.home'),
           children:[
             { path:'/st_welcome',icon:'iconfont icon-shouye icbg',name:this.$t('nav.home') },
+          ]
+        },
+        { 
+          path:'/st_supervisory',
+          icon:'iconfont icon-gongzuotai icbg',
+          name:this.$t('nav.supervisory'),
+          // name:'监控中心',
+          children:[
+            { path:'/st_work',icon:'iconfont icon-gongzuotai icbg',name:this.$t('supervisory_subnav.work') },
           ]
         },
         { 
@@ -75,22 +84,24 @@ export default {
           ]
         },
         { 
-          path:'/st_form',
-          icon:'iconfont icon-biaoge icbg',
-          name:this.$t('nav.form'),
+          path:'/st_Exception',
+          icon:'iconfont icon-yichang icbg',
+          name:this.$t('nav.Exception'),
           children:[
-            { path:'/st_form',icon:'iconfont icon-biaoge icbg',name:this.$t('nav.form') },
+            { path:'/403',icon:'iconfont icon-icon-test icbg',name:this.$t('nav.Exception403') },
+            { path:'/404',icon:'iconfont icon-icon-test1 icbg',name:this.$t('nav.Exception404') },
+            { path:'/500',icon:'iconfont icon-icon-test2 icbg',name:this.$t('nav.Exception500') },
           ]
         },
         { 
           path:'/st_charts',
-          icon:'iconfont icon-chart icbg',
+          icon:'iconfont icon-zhuzhuangtu icbg',
           name:this.$t('nav.chart'),
           children:[
             { path:'/st_line',icon:'iconfont icon-linechart icbg',name:this.$t('chart_subnav.St_line') },
             { path:'/st_histogram',icon:'iconfont icon-zhuzhuangtu icbg',name:this.$t('chart_subnav.St_histogram') },
             { path:'/st_bar',icon:'iconfont icon-icon- icbg',name:this.$t('chart_subnav.St_bar') },
-            { path:'/st_pie',icon:'iconfont icon-tianchongxing icbg',name:this.$t('chart_subnav.St_pie') },
+            { path:'/st_pie',icon:'iconfont icon-tianchongxing- icbg',name:this.$t('chart_subnav.St_pie') },
             { path:'/st_ring',icon:'iconfont icon-fsux_tubiao_bingtu icbg',name:this.$t('chart_subnav.St_ring') },
             { path:'/st_waterfal',icon:'iconfont icon-pubutu icbg',name:this.$t('chart_subnav.St_waterfal') },
             { path:'/st_funnel',icon:'iconfont icon-loudoutu icbg',name:this.$t('chart_subnav.St_funnel') },
@@ -151,7 +162,7 @@ export default {
       }).then(() => {
         //退出登录要把用户的登录状态清楚
         removeUserToken('user')
-        localStorage.removeItem('router_tag')
+        removeRouterTag('router_tag')
         this.$router.push({path:"/login",replace:true})
       }).catch(() => {
         this.$message({
@@ -245,23 +256,23 @@ export default {
       this.tabShow = false
     },
 
+
+    
     //关闭tagrouter
     closeTag(index){
-      //解释：当关闭tag路由标签的时候，要处理点击之后，当前激活路由的位置，现在有两种情况，
-      //当用户点击最后一个时候，要对最后一个的前一个激活，并对删除之后保存在localStorage
-      //当用户点击中间的话，就直接删除对应索引的内容，即保存
-      if(index === this.routeTag.length-1){
-        this.routeTag[index-1].type = ''
+      if(this.routeTag[index].type == '' ){ //关闭的标签是最右边的话，往左边跳转一个
         this.routeTag.splice(index, 1);
-        this.$router.push(`${this.routeTag[index-1].path}`)
-        localStorage.setItem('router_tag',JSON.stringify(this.routeTag))
+        this.routeTag[this.routeTag.length-1].type = ''
+        this.$router.push(`${this.routeTag[this.routeTag.length-1].path}`)
+        setRouterTag('router_tag',JSON.stringify(this.routeTag))
       }else{
+        // 如果关闭的标签不是当前路由的话，就不跳转
         this.routeTag.splice(index, 1);
-        localStorage.setItem('router_tag',JSON.stringify(this.routeTag))
-      }   
+        setRouterTag('router_tag',JSON.stringify(this.routeTag))
+
+      }
       // console.log(this.routeTag)
     },
-
 
     hasSomeRoute(route,item){
       return route.some(val=> val.name===item.name)
@@ -273,7 +284,7 @@ export default {
        if(!some){
          this.routeTag.map(item=> item.type='info')
          this.routeTag.push(seletedItem)
-         localStorage.setItem('router_tag',JSON.stringify(this.routeTag))
+         setRouterTag('router_tag',JSON.stringify(this.routeTag))
        }else{
          this.routeTag.map(item=>{
             if(seletedItem.name===item.name){
@@ -284,17 +295,17 @@ export default {
          })
        }
     },
-
     //点击tag时要保证点击的激活，其他的不激活，颜色状态变化
     handelClick(tag){
       this.routeTag.map(item=> item.type='info')
       tag.type=''
       this.$router.push(`${tag.path}`)
+      setRouterTag('router_tag',JSON.stringify(this.routeTag))
     }
     
   },
   mounted() {
-    // this.routeTag = JSON.parse(localStorage.getItem('router_tag'))
+    this.routeTag = JSON.parse(getRouterTag('router_tag')) ? JSON.parse(getRouterTag('router_tag')) : this.routeTag
     this.currentLanguage = this.language == 'zh' ? '中文' : 'English'
     this.handleScroll()
     

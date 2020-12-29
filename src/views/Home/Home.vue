@@ -63,91 +63,9 @@
             text-color="#fff"
             active-text-color="#01DFD7"
             router
-            
+            :unique-opened="true"
             :collapse="isCollapse"
-          > 
-          <!-- @select="handleOpen" -->
-            <!-- <el-menu-item index="/st_welcome">
-              <i class="iconfont icon-shouye icbg"></i>
-              <span slot="title">{{$t('nav.home')}}</span>
-            </el-menu-item>
-
-            <el-submenu index="2">
-              <template  slot="title" >
-                <i class="iconfont icon-otherfile icbg"></i>
-                <span slot="title">{{$t('nav.others')}}</span>
-              </template>
-              <el-menu-item-group>
-                <el-menu-item index="/ux_table" ><i class="iconfont icon-UX"></i>{{$t('others_subnav.Ux_Table')}}</el-menu-item>
-                <el-menu-item index="/ux_form"><i class="iconfont icon-UX"></i>{{$t('others_subnav.Ux_Form')}}</el-menu-item>
-                <el-menu-item index="/ux_pwd"><i class="iconfont icon-UX"></i>{{$t('others_subnav.pwd')}}</el-menu-item>
-              </el-menu-item-group>
-            </el-submenu>
-            <el-submenu index="3">
-              <template  slot="title" >
-                <i class="iconfont icon-pulse icbg"></i>
-                <span slot="title">{{$t('nav.template')}}</span>
-              </template>
-              <el-menu-item-group>
-                <el-menu-item index="/st_template"><i class="iconfont icon-pulse"></i>{{$t('template_subnav.template1-1')}}</el-menu-item>
-                <el-menu-item index="/st_template2"><i class="iconfont icon-pulse"></i>{{$t('template_subnav.template2-2')}}</el-menu-item>
-                <el-menu-item index="/st_template3"><i class="iconfont icon-pulse"></i>{{$t('template_subnav.template3-pwd')}}</el-menu-item>
-                <el-menu-item index="/st_template4"><i class="iconfont icon-pulse"></i>{{$t('template_subnav.template4-menu-scroll')}}</el-menu-item>
-                <el-menu-item index="/st_template5"><i class="iconfont icon-pulse"></i>{{$t('template_subnav.template5-todoList')}}</el-menu-item>
-              </el-menu-item-group>
-            </el-submenu>
-            <el-menu-item index="/st_editor">
-              <i class="iconfont icon-fuwenbenbianjiqi_biaoge icbg"></i>
-              <span slot="title">{{$t('nav.editor')}}</span>
-            </el-menu-item>
-            <el-menu-item index="/st_form">
-              <i class="iconfont icon-biaoge icbg"></i>
-              <span slot="title">{{$t('nav.form')}}</span>
-            </el-menu-item>
-            <el-submenu index="6">
-              <template  slot="title" >
-                <i class="iconfont icon-chart icbg"></i>
-                <span slot="title">{{$t('nav.chart')}}</span>
-              </template>
-              <el-menu-item-group>
-                <el-menu-item index="/st_line"><i class="iconfont icon-linechart"></i>{{$t('chart_subnav.St_line')}}</el-menu-item>
-                <el-menu-item index="/st_histogram"><i class="iconfont icon-zhuzhuangtu"></i>{{$t('chart_subnav.St_histogram')}}</el-menu-item>
-                <el-menu-item index="/st_bar"><i class="iconfont icon-icon-"></i>{{$t('chart_subnav.St_bar')}}</el-menu-item>
-                <el-menu-item index="/st_pie"><i class="iconfont icon-tianchongxing-"></i>{{$t('chart_subnav.St_pie')}}</el-menu-item>
-                <el-menu-item index="/st_ring"><i class="iconfont icon-fsux_tubiao_bingtu"></i>{{$t('chart_subnav.St_ring')}}</el-menu-item>
-                <el-menu-item index="/st_waterfal"><i class="iconfont icon-pubutu"></i>{{$t('chart_subnav.St_waterfal')}}</el-menu-item>
-                <el-menu-item index="/st_funnel"><i class="iconfont icon-loudoutu"></i>{{$t('chart_subnav.St_funnel')}}</el-menu-item>
-                <el-menu-item index="/st_radar"><i class="iconfont icon-leidatu"></i>{{$t('chart_subnav.St_radar')}}</el-menu-item>
-                <el-menu-item index="/st_map"><i class="iconfont icon-ditu"></i>{{$t('chart_subnav.St_map')}}</el-menu-item>
-                <el-menu-item index="/st_sankey"><i class="iconfont icon-tubiaozhizuomoban_sangjitu"></i>{{$t('chart_subnav.St_sankey')}}</el-menu-item>
-                <el-menu-item index="/st_heatmap"><i class="iconfont icon-sandiantu"></i>{{$t('chart_subnav.St_heatmap')}}</el-menu-item>
-                <el-menu-item index="/st_scatter"><i class="iconfont icon-Kxiantu"></i>{{$t('chart_subnav.St_scatter')}}</el-menu-item>
-                <el-menu-item index="/st_candle"><i class="iconfont icon-ziyuan"></i>{{$t('chart_subnav.St_candle')}}</el-menu-item>
-                <el-menu-item index="/st_gauge"><i class="iconfont icon-ziyuan"></i>{{$t('chart_subnav.St_gauge')}}</el-menu-item>
-                <el-menu-item index="/st_tree"><i class="iconfont icon-511tongji_shutu"></i>{{$t('chart_subnav.St_tree')}}</el-menu-item>
-                <el-menu-item index="/st_liquidfill"><i class="iconfont icon-fsux_tubiao_shuiqiutu"></i>{{$t('chart_subnav.St_liquidfill')}}</el-menu-item>
-                <el-menu-item index="/st_wordcloud"><i class="iconfont icon-ciyuntu"></i>{{$t('chart_subnav.St_wordcloud')}}</el-menu-item>
-              </el-menu-item-group>
-            </el-submenu>
-            <el-submenu index="7">
-              <template  slot="title" >
-                <i class="iconfont icon-suozhu icbg"></i>
-                <span slot="title">{{$t('nav.element')}}</span>
-              </template>
-              <el-menu-item-group>
-                <el-menu-item index="/st_element"><i class="iconfont icon-xiaolian-"></i>{{$t('element_subnav.St_element')}}</el-menu-item>
-              </el-menu-item-group>
-            </el-submenu>
-            <el-submenu index="8">
-              <template  slot="title" >
-                <i class="iconfont icon-shezhi icbg"></i>
-                <span slot="title">{{$t('nav.settings')}}</span>
-              </template>
-              <el-menu-item-group>
-                <el-menu-item index="/st_settings1"><i class="iconfont icon-shezhi icbg"></i>{{$t('settings_subnav.createUser')}}</el-menu-item>
-                <el-menu-item index="/st_usersetting"><i class="iconfont icon-yonghushezhi icbg"></i>{{$t('settings_subnav.userSetting')}}</el-menu-item>
-              </el-menu-item-group>
-            </el-submenu> -->
+          >  
             <el-submenu :index="item.path" v-for="item in menuList" :key="item.path">
               <template slot="title">
                 <i :class="item.icon"></i>
@@ -165,7 +83,7 @@
       
       <el-scrollbar ref="scrollbar" class="conta" >
         <el-main >     
-          <div class="tag"><st-routetag :disable_tag="disable_tag" :routeTag="routeTag" @closeTag="closeTag" @handelClick="handelClick"></st-routetag></div>
+          <el-scrollbar style="width:100%"><st-routetag :disable_tag="disable_tag" :routeTag="routeTag" @closeTag="closeTag" @handelClick="handelClick"></st-routetag></el-scrollbar>
           <div style="margin-top:35px"><router-view></router-view></div>
         </el-main>
       </el-scrollbar>
@@ -195,7 +113,6 @@
     </transition>
     <!-- 工具图标类 -->
     <div class="tabout" v-show="tabIconFlag" @click="tabOut" v-drag>
-      <!-- <i class="iconfont icon-peizhi"></i> -->
       <div class="tabi"></div>
     </div>
 

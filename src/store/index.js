@@ -2,7 +2,7 @@
  * @Author: sitao
  * @Date: 2020-12-15 10:39:37
  * @LastEditors: sitao
- * @LastEditTime: 2020-12-28 16:00:48
+ * @LastEditTime: 2020-12-29 15:21:16
  */
 import Vue from 'vue'
 import Vuex from 'vuex'
@@ -10,7 +10,7 @@ import i18n from './modules/i18n.js'
 import admin from './modules/admin.js'
 import todo from './modules/todo.js'
 import user from './modules/user.js'
-import tab from './modules/tab.js'
+
 Vue.use(Vuex)
 
 export default new Vuex.Store({
@@ -19,6 +19,5 @@ export default new Vuex.Store({
     admin,
     todo,
     user,
-    tab
   }
 })

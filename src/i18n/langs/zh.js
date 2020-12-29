@@ -2,7 +2,7 @@
  * @Author: sitao
  * @Date: 2020-11-25 18:15:00
  * @LastEditors: sitao
- * @LastEditTime: 2020-12-24 17:11:16
+ * @LastEditTime: 2020-12-29 11:05:09
  */
 const zh = {
   button: {
@@ -54,12 +54,19 @@ const zh = {
   nav:{
     others:"UX",
     home:"首页",
+    supervisory:'监控中心',
     template:"模板",
     editor:"编辑器",
-    form:"表单/表格",
+    Exception:"异常页面",
+    Exception403:"403",
+    Exception404:"404",
+    Exception500:"500",
     chart:"可视化",
     element:"element组件",
     settings:"设置"
+  },
+  supervisory_subnav:{
+    work:'工作台'
   },
   others_subnav:{
     Ux_Table:"Ux_Table",

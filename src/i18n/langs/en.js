@@ -2,7 +2,7 @@
  * @Author: sitao
  * @Date: 2020-11-25 18:15:00
  * @LastEditors: sitao
- * @LastEditTime: 2020-12-24 17:11:02
+ * @LastEditTime: 2020-12-29 11:06:18
  */
 const en = {
   // 按钮
@@ -62,14 +62,21 @@ const en = {
     nav:{
       others:"UX",
       home:"home",
+      supervisory:'supervisory',
       template:"template",
       editor:"editor",
-      form:"form",
+      Exception:"Exception",
+      Exception403:"403",
+      Exception404:"404",
+      Exception500:"500",
       chart:"chart",
       element:"element",
       settings:"settings",
     },
     //子nav
+    supervisory_subnav:{
+      work:'workbench'
+    },
     others_subnav:{
       Ux_Table:"Ux_Table",
       Ux_Form:"Ux_Form",

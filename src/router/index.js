@@ -2,7 +2,7 @@
  * @Author: sitao
  * @Date: 2020-12-01 16:27:12
  * @LastEditors: sitao
- * @LastEditTime: 2020-12-25 14:46:17
+ * @LastEditTime: 2020-12-29 11:17:14
  */
 import Vue from 'vue'
 import VueRouter from 'vue-router'
@@ -25,6 +25,11 @@ const routes = [
     redirect:"/ux_table",
     component: () => import('../views/Home/Home.vue'),
     children:[
+      {
+        path: '/st_work',
+        name: 'Work',
+        component: () => import('../views/Supervisory/Work.vue'),
+      },
       {
         path: '/ux_table',
         name: 'Ux_table',
@@ -77,9 +82,19 @@ const routes = [
       },
 
       {
-        path: '/st_form',
-        name: 'Form',
-        component: () => import('../views/Form/Form.vue'),
+        path: '/403',
+        name: 'AbnormalPage403',
+        component: () => import('../views/Abnormal/AbnormalPage403.vue'),
+      },
+      {
+        path: '/404',
+        name: 'AbnormalPage404',
+        component: () => import('../views/Abnormal/AbnormalPage404.vue'),
+      },
+      {
+        path: '/500',
+        name: 'AbnormalPage500',
+        component: () => import('../views/Abnormal/AbnormalPage500.vue'),
       },
       {
         path: '/st_line',

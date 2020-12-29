@@ -220,7 +220,7 @@ export default {
           })
       }else{
         setUserToken('token','st')
-        this.$router.push('/st_template')
+        this.$router.push('/st_work')
         this.$message({
           message: '登录成功！',
           type: 'success'
