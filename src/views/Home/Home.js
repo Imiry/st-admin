@@ -2,8 +2,9 @@
  * @Author: sitao
  * @Date: 2020-11-26 09:58:32
  * @LastEditors: sitao
- * @LastEditTime: 2020-12-29 16:07:12
+ * @LastEditTime: 2020-12-30 15:38:54
  */
+
 import { mapActions } from "vuex";
 import { mapState } from 'vuex';
 import { getRouterTag,setRouterTag,removeRouterTag } from '../../utils/auth/auth-routerTag.JS'
@@ -34,6 +35,7 @@ export default {
         // { path:'/home',name:'首页',type:'' },
         { path:'/st_work',name:'工作台',type:'',},
       ],
+      
       disable_tag:true,
       menuList:[
         { 
@@ -140,8 +142,8 @@ export default {
   computed:mapState({
     isCollapse: state=> state.i18n.isCollapse,
     language:state=> state.i18n.language,
-    avtorPath: state => state.user.avtorPath,
-    exist() {
+    avtorPath: state => state.user.avtorPath,  //头像
+    exist() {  //判断头像存在修改
       if(this.avtorPath){
         this.defaultUrl = this.avtorPath
         return this.defaultUrl
@@ -154,7 +156,7 @@ export default {
   methods:{
     ...mapActions(['changeCollapse','changeLanguage']),
     //登出
-    logout(){
+    logout() {
       this.$confirm("确认退出吗？","退出提示", {
         confirmButtonText: "确定",
         cancelButtonText: "取消",
@@ -173,11 +175,12 @@ export default {
     },
     
     //设置
-    setting(){
+    setting() {
       this.$router.push('/st_usersetting')
     },
     
-    exprandChange(){
+    //全屏
+    exprandChange() {
       let element = document.documentElement;
       if (this.fullscreen) {
         if (document.exitFullscreen) {
@@ -204,8 +207,9 @@ export default {
       this.fullscreen = !this.fullscreen;
       this.exprandflag = ! this.exprandflag
     },
+
     //切换中英文
-    handleChange(value){
+    handleChange(value) {
       let language = value === 'zh' ? 'zh' : 'en'
       this.currentLanguage = language === 'zh' ? '中文' : 'English'
       this.$i18n.locale = language
@@ -218,6 +222,7 @@ export default {
       this.changeCollapse(!isCol)
     },
 
+    //监听滚动
     handleScroll() {
       let scrollbarEl = this.$refs.scrollbar.wrap
       scrollbarEl.onscroll = () => {
@@ -228,6 +233,8 @@ export default {
         }
       }
     },
+
+    //位置回去
     backtop() {
       // this.$refs.scrollbar.wrap.scrollTop = 0
       // console.log(this.$refs.scrollbar.wrap.scrollTop)
@@ -239,16 +246,19 @@ export default {
         },10)
 
     },
+
     //左侧图标显示
-    tabOut(){
+    tabOut() {
       this.tabShow = !this.tabShow
       this.tabIconFlag = !this.tabIconFlag
     },
+
     // 左侧图标隐藏
     closeHandle() {
       this.tabIconFlag = true
       this.tabShow = false
     },
+
     //改变左边的侧边栏在左在右
     changeNavposition() {
       this.navFlag = !this.navFlag
@@ -259,8 +269,8 @@ export default {
 
     
     //关闭tagrouter
-    closeTag(index){
-      if(this.routeTag[index].type == '' ){ //关闭的标签是最右边的话，往左边跳转一个
+    closeTag(index) {
+      if(this.routeTag[index].type == ''){ 
         this.routeTag.splice(index, 1);
         this.routeTag[this.routeTag.length-1].type = ''
         this.$router.push(`${this.routeTag[this.routeTag.length-1].path}`)
@@ -269,12 +279,10 @@ export default {
         // 如果关闭的标签不是当前路由的话，就不跳转
         this.routeTag.splice(index, 1);
         setRouterTag('router_tag',JSON.stringify(this.routeTag))
-
       }
-      // console.log(this.routeTag)
     },
 
-    hasSomeRoute(route,item){
+    hasSomeRoute(route,item) {
       return route.some(val=> val.name===item.name)
     },
     //点击对应的侧边栏的内容实现添加tag
@@ -289,26 +297,34 @@ export default {
          this.routeTag.map(item=>{
             if(seletedItem.name===item.name){
               item.type=''
+              setRouterTag('router_tag',JSON.stringify(this.routeTag))
             }else{
               item.type='info'
+              setRouterTag('router_tag',JSON.stringify(this.routeTag))
             }
          })
        }
     },
     //点击tag时要保证点击的激活，其他的不激活，颜色状态变化
-    handelClick(tag){
+    handelClick(tag) {
       this.routeTag.map(item=> item.type='info')
       tag.type=''
       this.$router.push(`${tag.path}`)
       setRouterTag('router_tag',JSON.stringify(this.routeTag))
-    }
+    },
+
+    
     
   },
   mounted() {
-    this.routeTag = JSON.parse(getRouterTag('router_tag')) ? JSON.parse(getRouterTag('router_tag')) : this.routeTag
+    this.routeTag = getRouterTag('router_tag') ? getRouterTag('router_tag') : this.routeTag
+    
+    // if(!getRouterTag('router_tag')) {  //判断如果没有就强制到工作台
+    //   this.$router.push('/st_work')
+    // }
     this.currentLanguage = this.language == 'zh' ? '中文' : 'English'
     this.handleScroll()
-    
+
   },
 
 

@@ -83,7 +83,11 @@
       
       <el-scrollbar ref="scrollbar" class="conta" >
         <el-main >     
-          <el-scrollbar style="width:100%"><st-routetag :disable_tag="disable_tag" :routeTag="routeTag" @closeTag="closeTag" @handelClick="handelClick"></st-routetag></el-scrollbar>
+          <!-- <div class="router"  style="width:100%"> -->
+            <!-- <div class="tag_hh"><el-tag  effect="dark" >工作台</el-tag></div> -->
+            <st-routetag :disable_tag="disable_tag" :routeTag="routeTag" @closeTag="closeTag" @handelClick="handelClick"></st-routetag>
+            
+          <!-- </div> -->
           <div style="margin-top:35px"><router-view></router-view></div>
         </el-main>
       </el-scrollbar>

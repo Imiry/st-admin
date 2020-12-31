@@ -2,7 +2,7 @@
  * @Author: sitao
  * @Date: 2020-11-25 18:15:00
  * @LastEditors: sitao
- * @LastEditTime: 2020-11-30 16:20:27
+ * @LastEditTime: 2020-12-30 09:29:28
  */
 import Vue from 'vue'
 import locale from 'element-ui/lib/locale';
@@ -26,7 +26,9 @@ const messages = {
 
 const i18n = new VueI18n({
   locale: sessionStorage.getItem('language') || 'zh',
-  messages
+  messages,
+  silentTranslationWarn: true  //去除警告
+
 })
 locale.i18n((key, value) => i18n.t(key, value)) //为了实现element插件的多语言切换
 console.log('%c当前缓存语言是：'+(sessionStorage.getItem('language')=='en'?'English':'中文')+'','color:#fff;background:green;padding:4px;border-radius:5px');

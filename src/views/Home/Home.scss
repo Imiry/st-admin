@@ -11,6 +11,7 @@
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;  
+    z-index: 999999;
     // border-bottom: 1px solid rgba(247, 238, 238, 0.9); 
     .icon{
       flex: 15%;
@@ -222,6 +223,32 @@
     width: 100%;
     height: calc(100vh - 60px);
     background-color: #eee;
+    .tag_hh{
+      z-index: 999;
+      position: fixed;
+      height: 52px;
+      top: 60px;
+      width: 100%;
+      padding-top: 10px;
+      box-sizing: border-box;
+      display: inline-block;
+      background-color: #eee;
+    }
+    .tag_hh:hover{
+      cursor: pointer;
+    }
+    .el_drop{
+      z-index: 9999;
+      position: fixed;
+      right: 20px;
+      top:70px;
+      .el-button{
+        height: 32px;
+        background-color: #fff;
+        color: #ccc;
+        border: none;
+      }
+    }
   }
 }
 .nav_position{

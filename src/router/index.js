@@ -2,12 +2,18 @@
  * @Author: sitao
  * @Date: 2020-12-01 16:27:12
  * @LastEditors: sitao
- * @LastEditTime: 2020-12-29 11:17:14
+ * @LastEditTime: 2020-12-30 15:45:57
  */
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import { getUserToken } from '../utils/auth/auth-token.js'
 Vue.use(VueRouter)
+//获取原型对象上的push函数
+const originalPush = VueRouter.prototype.push
+//修改原型对象中的push方法
+VueRouter.prototype.push = function push(location) {
+  return originalPush.call(this, location).catch(err => err)
+}
 
 const routes = [
   {
@@ -232,4 +238,6 @@ router.onError((error) => {
     router.replace(targetPath);
   }
 });
+
+
 export default router

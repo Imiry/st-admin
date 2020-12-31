@@ -2,7 +2,7 @@
  * @Author: sitao
  * @Date: 2020-12-15 15:51:39
  * @LastEditors: sitao
- * @LastEditTime: 2020-12-16 10:09:53
+ * @LastEditTime: 2020-12-31 09:15:59
 -->
 <template>
   <div class="set_container" v-show="show">
@@ -42,7 +42,7 @@ export default {
     width: 300px;
     height: 100%;
     position: fixed;
-    z-index: 999;
+    z-index: 99999;
     right: 5px;
     // border-radius: 4px;
     padding: 10px;
