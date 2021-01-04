@@ -20,9 +20,11 @@
     "v-charts": "^1.19.0",
     "vue": "^2.6.11",
     "vue-cropper": "^0.5.6",
+    "vue-drr": "^1.0.9",
     "vue-i18n": "^8.22.2",
     "vue-puzzle-vcode": "^1.1.4",
     "vue-router": "^3.2.0",
+    "vuedraggable": "^2.24.3",
     "vuex": "^3.4.0",
     "webpack": "^4.0.0"
   },

@@ -2,7 +2,7 @@
  * @Author: sitao
  * @Date: 2020-12-01 16:27:12
  * @LastEditors: sitao
- * @LastEditTime: 2020-12-30 15:45:57
+ * @LastEditTime: 2021-01-04 14:20:56
  */
 import Vue from 'vue'
 import VueRouter from 'vue-router'
@@ -18,7 +18,7 @@ VueRouter.prototype.push = function push(location) {
 const routes = [
   {
     path: '/',
-    redirect:'/login'
+    redirect:'/st_work'
   },
   {
     path: '/login',
@@ -28,7 +28,6 @@ const routes = [
   {
     path: '/home',
     name: 'Home',
-    redirect:"/ux_table",
     component: () => import('../views/Home/Home.vue'),
     children:[
       {
@@ -194,6 +193,16 @@ const routes = [
         component: () => import('../views/Element/Element.vue'),
       },
       {
+        path: '/st_drag',
+        name: 'Drag',
+        component: () => import('../views/Element/Drag.vue'),
+      },
+      {
+        path: '/st_vuedrr',
+        name: 'VueDrr',
+        component: () => import('../views/Element/VueDrr.vue'),
+      },
+      {
         path: '/st_settings1',
         name: 'Settings1',
         component: () => import('../views/Settings/Settings1.vue'),
@@ -204,11 +213,11 @@ const routes = [
         name: 'UserSetting',
         component: () => import('../views/Settings/UserSetting.vue'),
       },
-      // {
-      //   path: '/st_adss',
-      //   name: 'Adss',
-      //   component: () => import('../views/Settings/Adss.vue'),
-      // },
+      {
+        path: '/st_image',
+        name: 'Image',
+        component: () => import('../views/Image/Image.vue'),
+      },
 
     ]
   },

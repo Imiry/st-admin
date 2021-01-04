@@ -2,7 +2,7 @@
  * @Author: sitao
  * @Date: 2020-12-25 16:24:36
  * @LastEditors: sitao
- * @LastEditTime: 2020-12-30 15:51:01
+ * @LastEditTime: 2021-01-04 09:42:06
 -->
 <template>
   <div class="routetag_container">
@@ -53,8 +53,8 @@ export default {
   .routetag_container{
     position: fixed;
     top:60px;
-    left:220px;
-    z-index: 10000;
+    // left:220px;
+    z-index: 999;
     width: 100%;
     display: flex;
     flex-wrap: nowrap;

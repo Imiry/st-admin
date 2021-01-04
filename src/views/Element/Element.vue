@@ -1,11 +1,11 @@
 <template>
   <div class="element_container">
     <!-- 面包屑 -->
-    <el-breadcrumb class="el-breadcrumb" separator-class="el-icon-arrow-right">
+    <!-- <el-breadcrumb class="el-breadcrumb" separator-class="el-icon-arrow-right">
       <el-breadcrumb-item :to="{ path: '/st_welcome' }">{{$t('nav.home')}}</el-breadcrumb-item>
       <el-breadcrumb-item >{{$t('nav.element')}}</el-breadcrumb-item>
-      <el-breadcrumb-item>{{$t('others_subnav.St_element')}}</el-breadcrumb-item>
-    </el-breadcrumb>  
+      <el-breadcrumb-item>{{$t('element_subnav.St_element')}}</el-breadcrumb-item>
+    </el-breadcrumb>   -->
 
     <!-- 卡片 -->
     <el-row :gutter="20">

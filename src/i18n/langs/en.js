@@ -2,7 +2,7 @@
  * @Author: sitao
  * @Date: 2020-11-25 18:15:00
  * @LastEditors: sitao
- * @LastEditTime: 2020-12-29 11:06:18
+ * @LastEditTime: 2021-01-04 14:17:22
  */
 const en = {
   // 按钮
@@ -65,12 +65,13 @@ const en = {
       supervisory:'supervisory',
       template:"template",
       editor:"editor",
+      image:"Image-process",
       Exception:"Exception",
       Exception403:"403",
       Exception404:"404",
       Exception500:"500",
       chart:"chart",
-      element:"element",
+      components:"components",
       settings:"settings",
     },
     //子nav
@@ -90,7 +91,9 @@ const en = {
       'template5-todoList':"todoList"
     },
     element_subnav:{
-      St_element:"St_element"
+      St_element:"Element",
+      drag:'drag',
+      vue_drr:'VueDRR'
     },
     chart_subnav:{
       St_line:"St_line",
@@ -115,6 +118,9 @@ const en = {
       createUser:'createUser',
       upload:'upload',
       userSetting:'userSetting'
+    },
+    image_subnav:{
+      Clipper:'img_Clipper'
     },
     //表格头其一
     table:{

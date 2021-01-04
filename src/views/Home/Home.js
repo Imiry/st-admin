@@ -2,7 +2,7 @@
  * @Author: sitao
  * @Date: 2020-11-26 09:58:32
  * @LastEditors: sitao
- * @LastEditTime: 2020-12-30 15:38:54
+ * @LastEditTime: 2021-01-04 14:17:43
  */
 
 import { mapActions } from "vuex";
@@ -86,6 +86,14 @@ export default {
           ]
         },
         { 
+          path:'/st_images',
+          icon:'iconfont icon-tupian icbg',
+          name:this.$t('nav.image'),
+          children:[
+            { path:'/st_image',icon:'iconfont icon-tupiancaijian icbg',name:this.$t('image_subnav.Clipper') },
+          ] 
+        },
+        { 
           path:'/st_Exception',
           icon:'iconfont icon-yichang icbg',
           name:this.$t('nav.Exception'),
@@ -121,10 +129,12 @@ export default {
         },
         { 
           path:'/st_elements',
-          icon:'iconfont icon-suozhu icbg ',
-          name:this.$t('nav.element'),
+          icon:'iconfont icon-zujian icbg ',
+          name:this.$t('nav.components'),
           children:[
-            { path:'/st_element',icon:'iconfont icon-xiaolian- icbg',name:this.$t('element_subnav.St_element') },
+            { path:'/st_element',icon:'iconfont icon-elements icbg',name:this.$t('element_subnav.St_element') },
+            { path:'/st_drag',icon:'iconfont icon-tuozhuai icbg',name:this.$t('element_subnav.drag') },
+            { path:'/st_vuedrr',icon:'iconfont icon-drag_2 icbg',name:this.$t('element_subnav.vue_drr') },
           ]
         },
         { 

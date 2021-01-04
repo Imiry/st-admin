@@ -2,7 +2,7 @@
  * @Author: sitao
  * @Date: 2020-11-25 18:15:00
  * @LastEditors: sitao
- * @LastEditTime: 2020-12-29 11:05:09
+ * @LastEditTime: 2021-01-04 14:17:34
  */
 const zh = {
   button: {
@@ -57,12 +57,13 @@ const zh = {
     supervisory:'监控中心',
     template:"模板",
     editor:"编辑器",
+    image:"图片处理",
     Exception:"异常页面",
     Exception403:"403",
     Exception404:"404",
     Exception500:"500",
     chart:"可视化",
-    element:"element组件",
+    components:"组件",
     settings:"设置"
   },
   supervisory_subnav:{
@@ -81,7 +82,9 @@ const zh = {
     'template5-todos':"todoList"
   },
   element_subnav:{
-    St_element:"St_element"
+    St_element:"Element",
+    drag:'拖拽',
+    vue_drr:'VueDRR'
   },
   chart_subnav:{
     St_line:"折线图",
@@ -106,6 +109,9 @@ const zh = {
     createUser:'创建用户',
     upload:'上传',
     userSetting:'用户设置'
+  },
+  image_subnav:{
+    Clipper:'图片裁剪'
   },
   table:{
     name:"名称",
