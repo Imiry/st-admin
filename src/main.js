@@ -2,7 +2,7 @@
  * @Author: sitao
  * @Date: 2020-11-25 18:15:00
  * @LastEditors: sitao
- * @LastEditTime: 2020-12-24 17:55:14
+ * @LastEditTime: 2021-01-07 13:17:07
  */
 import Vue from 'vue';
 import App from './App.vue';
@@ -13,6 +13,10 @@ import store from './store';
 import Directives from './plugins/directive/index.js';
 import mavonEditor from 'mavon-editor'
 import 'mavon-editor/dist/css/index.css'
+
+import 'prismjs/themes/prism.css'
+import './assets/css/markdown-segmentfault.scss';
+
 Vue.use(Directives); 
 Vue.use(mavonEditor)
 

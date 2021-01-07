@@ -2,7 +2,7 @@
  * @Author: sitao
  * @Date: 2020-12-15 10:39:37
  * @LastEditors: sitao
- * @LastEditTime: 2020-12-22 16:55:10
+ * @LastEditTime: 2021-01-05 13:46:25
 -->
 <template>
   <div class="settings_container">
@@ -39,7 +39,7 @@
 
         <!-- 图形验证 -->
         <div v-if="active == 1">
-          <el-button @click="open">{{$t('steps.createSuccess')}}</el-button>
+          <el-button @click="open">{{$t('steps.picVrify')}}</el-button>
           <Vcode :show="isShow" @success="success" @close="close" />
         </div>
         <!-- 图形验证 -->
@@ -72,7 +72,7 @@
       </div>
       <!-- 用户信息区域 -->
       <el-dialog title="用户信息" :visible.sync="dialogVisible"  :modal-append-to-body='false'>
-        <el-table class="m-t-10" :data="adminInfo" style="width: 100%" :header-cell-style="{textAlign: 'center'}" :cell-style="{textAlign: 'center'}" max-height="350"   stripe >
+        <el-table class="m-t-10" :data="InfoData" style="width: 100%" :header-cell-style="{textAlign: 'center'}" :cell-style="{textAlign: 'center'}" max-height="350"   stripe >
           <el-table-column prop="name" label="用户名" width="180">
           </el-table-column>
           <el-table-column prop="email" label="邮箱" width="180">
@@ -206,7 +206,7 @@ export default {
         this.subBtn = false;
     },
     open() {
-      this.isShow = true
+      this.isShow = true;
     },
     // 用户通过了验证
     success(msg) {
@@ -225,6 +225,7 @@ export default {
     //返回继续创建用户
     backCreate() {
       this.active = 0
+      
     },
     //编辑
     handleEdit(index, row) {

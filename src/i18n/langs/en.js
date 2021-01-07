@@ -2,7 +2,7 @@
  * @Author: sitao
  * @Date: 2020-11-25 18:15:00
  * @LastEditors: sitao
- * @LastEditTime: 2021-01-04 14:17:22
+ * @LastEditTime: 2021-01-07 12:28:58
  */
 const en = {
   // 按钮
@@ -73,6 +73,7 @@ const en = {
       chart:"chart",
       components:"components",
       settings:"settings",
+      study:'study'
     },
     //子nav
     supervisory_subnav:{
@@ -118,6 +119,9 @@ const en = {
       createUser:'createUser',
       upload:'upload',
       userSetting:'userSetting'
+    },
+    study_subnav:{
+      vue3:'vue3'
     },
     image_subnav:{
       Clipper:'img_Clipper'

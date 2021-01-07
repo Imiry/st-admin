@@ -2,7 +2,7 @@
  * @Author: sitao
  * @Date: 2020-11-25 18:15:00
  * @LastEditors: sitao
- * @LastEditTime: 2021-01-04 14:17:34
+ * @LastEditTime: 2021-01-07 12:33:59
  */
 const zh = {
   button: {
@@ -64,7 +64,8 @@ const zh = {
     Exception500:"500",
     chart:"可视化",
     components:"组件",
-    settings:"设置"
+    settings:"设置",
+    study:'学习库'
   },
   supervisory_subnav:{
     work:'工作台'
@@ -109,6 +110,9 @@ const zh = {
     createUser:'创建用户',
     upload:'上传',
     userSetting:'用户设置'
+  },
+  study_subnav:{
+    vue3:'vue3'
   },
   image_subnav:{
     Clipper:'图片裁剪'

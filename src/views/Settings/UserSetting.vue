@@ -2,7 +2,7 @@
  * @Author: sitao
  * @Date: 2020-12-24 09:22:18
  * @LastEditors: sitao
- * @LastEditTime: 2020-12-25 17:04:17
+ * @LastEditTime: 2021-01-07 12:36:56
 -->
 <template>
   <div class="userSetting_container">
@@ -76,7 +76,7 @@
       </el-col>
       <el-col :span="14">
         <div class="grid-content2">
-          
+          <textmd></textmd>
         </div>
       </el-col>
     </el-row>
@@ -169,22 +169,19 @@ export default {
       avtorPath: state => state.user.avtorPath,
       userInfoData: state => state.user.userInfo
     }),
-     exist() {
+    exist() {
        if(this.avtorPath){
          this.defaultUrl = this.avtorPath
          return this.defaultUrl
        }else{
          return this.defaultUrl
        }
-     }
-
+    },
   },
   mounted() {
     this.user = this.userInfoData
-
   },
   methods:{
-    
     ...mapActions({
       usersetting:'usersettingAction',
       userinfo:'userinfoAction'
