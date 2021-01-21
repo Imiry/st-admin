@@ -2,7 +2,7 @@
  * @Author: sitao
  * @Date: 2020-11-26 09:58:32
  * @LastEditors: sitao
- * @LastEditTime: 2021-01-07 12:32:53
+ * @LastEditTime: 2021-01-21 14:11:19
  */
 
 import { mapActions } from "vuex";
@@ -143,6 +143,7 @@ export default {
           name:this.$t('nav.settings'),
           children:[
             { path:'/st_settings1',icon:'iconfont icon-shezhi icbg',name:this.$t('settings_subnav.createUser') },
+            { path:'/st_settings2',icon:'iconfont icon-yonghushezhi icbg',name:this.$t('settings_subnav.userSetting_api') },
             { path:'/st_usersetting',icon:'iconfont icon-yonghushezhi icbg',name:this.$t('settings_subnav.userSetting') },
           ]
         },

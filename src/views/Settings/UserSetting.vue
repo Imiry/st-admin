@@ -2,7 +2,7 @@
  * @Author: sitao
  * @Date: 2020-12-24 09:22:18
  * @LastEditors: sitao
- * @LastEditTime: 2021-01-07 12:36:56
+ * @LastEditTime: 2021-01-20 15:43:10
 -->
 <template>
   <div class="userSetting_container">
@@ -76,7 +76,7 @@
       </el-col>
       <el-col :span="14">
         <div class="grid-content2">
-          <textmd></textmd>
+          
         </div>
       </el-col>
     </el-row>

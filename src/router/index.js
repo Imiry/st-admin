@@ -2,7 +2,7 @@
  * @Author: sitao
  * @Date: 2020-12-01 16:27:12
  * @LastEditors: sitao
- * @LastEditTime: 2021-01-07 12:26:25
+ * @LastEditTime: 2021-01-21 14:07:43
  */
 import Vue from 'vue'
 import VueRouter from 'vue-router'
@@ -212,6 +212,11 @@ const routes = [
         path: '/st_usersetting',
         name: 'UserSetting',
         component: () => import('../views/Settings/UserSetting.vue'),
+      },
+      {
+        path: '/st_settings2',
+        name: 'Settings2',
+        component: () => import('../views/Settings/Settings2.vue'),
       },
       {
         path: '/st_image',

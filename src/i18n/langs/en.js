@@ -2,7 +2,7 @@
  * @Author: sitao
  * @Date: 2020-11-25 18:15:00
  * @LastEditors: sitao
- * @LastEditTime: 2021-01-07 12:28:58
+ * @LastEditTime: 2021-01-21 14:11:45
  */
 const en = {
   // 按钮
@@ -118,7 +118,8 @@ const en = {
     settings_subnav:{
       createUser:'createUser',
       upload:'upload',
-      userSetting:'userSetting'
+      userSetting:'Setting-vuex',
+      userSetting_api:'userSetting-api'
     },
     study_subnav:{
       vue3:'vue3'
@@ -144,6 +145,7 @@ const en = {
       'private': 'Private',
       'userName': 'UserName',
       'password': 'Password',
+      "name":"name",
       'phone':'phone',
       'confirmPassword': 'ConfirmPassword',
       'age': 'Age',

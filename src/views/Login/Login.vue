@@ -17,8 +17,8 @@
         <!-- /二维码区域 -->
 
         <el-form  v-show="Qrflag" class="login-form" ref="loginFormRef" :model="userLogin" :rules="loginRules">
-          <el-form-item prop="mobile" class="iput_con">
-            <el-input  placeholder="请输入手机号" v-model="userLogin.mobile"  prefix-icon=" icon iconfont icon-yidongduanicon-"></el-input>
+          <el-form-item prop="email" class="iput_con">
+            <el-input  placeholder="请输入邮箱" v-model="userLogin.email"  prefix-icon=" icon iconfont icon-youxiang1"></el-input>
           </el-form-item>
           <el-form-item prop="password" class="iput_psd">
             <el-input  placeholder="请输入密码" v-model="userLogin.password" prefix-icon=" icon iconfont icon-zu" show-password></el-input>
@@ -47,8 +47,11 @@
           <i class=" iconfont icon-zhuce"></i> 
         </div>
         <el-form  class="login-form" ref="registerFormRef" :model="userRegister" :rules="registerRules">
-          <el-form-item prop="mobile" class="iput_con">
-              <el-input  :placeholder="$t('form.phone')" v-model="userRegister.mobile"  prefix-icon=" icon iconfont icon-yidongduanicon-"></el-input>
+          <el-form-item prop="email" class="iput_con">
+              <el-input  :placeholder="$t('form.phone')" v-model="userRegister.email"  prefix-icon=" icon iconfont icon-youxiang1"></el-input>
+          </el-form-item>
+          <el-form-item prop="name" class="iput_con">
+              <el-input  :placeholder="$t('form.name')" v-model="userRegister.name"  prefix-icon=" icon iconfont icon-yidongduanicon-"></el-input>
           </el-form-item>
           <el-form-item prop="password" class="iput_psd">
             <ux-password class="pwd_ux" ref="pwd" v-model="userRegister.password" :pwdLengthRange="'6~10'"></ux-password>
@@ -87,6 +90,7 @@ import {
 } from '../../utils/mUtils';
 import { setUserToken } from '../../utils/auth/auth-token.js'
 import stIdentify from '../../components/st-identify/st-identify.vue';
+import axios from 'axios';
 export default {
   components: { stIdentify },
   name: 'Login',
@@ -104,7 +108,7 @@ export default {
         if (value == '' && this.subBtn == true) {
           callback(new Error(this.$i18n.t('errorMsg.pleaseEnterTheConfirmationPassword')));
         } else if (value !== this.userRegister.password) {
-          console.log(this.userRegister.password + value)
+          // console.log(this.userRegister.pass + value)
           callback(new Error(this.$i18n.t('errorMsg.twoPasswordEntriesAreInconsistent')));
         } else {
           callback();
@@ -114,12 +118,14 @@ export default {
       userLogin: {
         // mobile: '13911111111', // 手机号
         // code: '246810', // 密码
-        mobile: '18329162570', // 手机号
+        email: '123@163.com', // 邮箱
         password: '123456.', // 密码
         agree: false // 是否同意协议
       },
       userRegister: {
-        mobile: '18329162570', // 手机号
+        // mobile: '18329162570', // 手机号
+        name:"st",
+        email: 'stmt@163.com', // 邮箱
         password: '', // 密码
         confirmPassword:'',//确认密码
       },
@@ -133,8 +139,8 @@ export default {
       identifyCodes: '1234567890',
 
       bgImages:[
-        {id:1,src:require("@/assets/images/timg2.gif")},
-        {id:2,src:require("@/assets/images/bg2.jpg")},
+        {id:1,src:require("@/assets/images/bg2.jpg")},
+        {id:2,src:require("@/assets/images/timg2.gif")},
         {id:3,src:require("@/assets/images/bg3.jpg")},
         {id:4,src:require("@/assets/images/bg4.jpg")},
         {id:5,src:require("@/assets/images/bg6.jpg")}
@@ -199,35 +205,47 @@ export default {
    
     //登录校验
     onLogin () {
-
       this.$refs.loginFormRef.validate( async valid => {
-        if(!valid) return 
-        this.login()
+        console.log(valid)
+        if(valid) {
+          const { data:res } = await this.$http.post('/login',this.userLogin)
+          console.log(res)
+          setUserToken('token',res.data.token)
+          this.$router.push('/st_work')
+          this.$message({
+            message: '登录成功！',
+            type: 'success'
+          })
+        }
+        this.loginLoading = false
+        // this.login()
       })
     },
+    //--------------没接口之前--------------
     //登录
-    login () {
-      this.loginLoading = true
+    // login () {
+    //   this.loginLoading = true
       
-      /* 在这里就模拟下刚才新用户注册填写的信息进行登录，信息被保存在localStorage */
-      let registeredInfo = JSON.parse(localStorage.getItem('registerData'))
-      // console.log(registeredInfo)
-      let flag=registeredInfo.find(item=> item.mobile===this.userLogin.mobile && item.passWord===this.userLogin.passWord);
-      if(!flag) {
-             this.$message({
-            message: '登录失败,密码信息或账号信息填错！',
-            type: 'error'
-          })
-      }else{
-        setUserToken('token','st')
-        this.$router.push('/st_work')
-        this.$message({
-          message: '登录成功！',
-          type: 'success'
-        })
-      }
-      this.loginLoading = false
-    },
+    //   /* 在这里就模拟下刚才新用户注册填写的信息进行登录，信息被保存在localStorage */
+    //   let registeredInfo = JSON.parse(localStorage.getItem('registerData'))
+    //   // console.log(registeredInfo)
+    //   let flag=registeredInfo.find(item=> item.mobile===this.userLogin.mobile && item.passWord===this.userLogin.passWord);
+    //   if(!flag) {
+    //          this.$message({
+    //         message: '登录失败,密码信息或账号信息填错！',
+    //         type: 'error'
+    //       })
+    //   }else{
+    //     setUserToken('token','st')
+    //     this.$router.push('/st_work')
+    //     this.$message({
+    //       message: '登录成功！',
+    //       type: 'success'
+    //     })
+    //   }
+    //   this.loginLoading = false
+    // },
+    //--------------没接口之前--------------
     Qr_open() {
       this.Qrflag = !this.Qrflag
     },
@@ -237,21 +255,33 @@ export default {
     },
     //提交注册
     submit(formName) {
-      /*
+      /*//--------------没接口之前--------------
         目前实现一个本地注册，主要采用本地存储机制，每次注册都会在本地创建一个用户信息，到时候判断用户是否存在本地，来进行登录。
         当用户输入的数据保存在localStorage中，当用户登录的时候就会采用这个注册过的手机号进行登录。
         本身实现注册就是调用注册接口将输入的信息保存到对应新用户的数据库中，
         当这个用户进行登录时，就调用登录接口，及后端处理的注册新用户有登录权限
-      */
+      *///--------------没接口之前--------------
       this.subBtn = true;
-      this.$refs[formName].validate((valid) => {
+      this.$refs[formName].validate(async (valid) => {
           if (valid) {
-            this.subBtn = false;
-            let registerInfo = {mobile:this.userRegister.mobile,password:this.userRegister.password}
-            this.info.push(registerInfo)
-            localStorage.setItem('registerData',JSON.stringify(this.info))
-            this.$message('恭喜您！注册成功')
-            this.loginFlag = true
+            const { data:res } = await this.$http.post('/register',this.userRegister)
+            // this.subBtn = false;
+            console.log(res)
+            if (res.code == 200) {
+              this.$message('恭喜您！注册成功')
+              this.loginFlag = true
+            }else if(res.code == 409){
+              this.$message('注册失败，邮箱被占用')
+            }else {
+              this.$message('注册失败，邮箱被占用')
+            }
+            //--------------没接口之前--------------
+            // let registerInfo = {mobile:this.userRegister.mobile,password:this.userRegister.password}
+            // this.info.push(registerInfo)
+            // localStorage.setItem('registerData',JSON.stringify(this.info))
+            // this.$message('恭喜您！注册成功')
+            // this.loginFlag = true
+            //--------------没接口之前--------------
           } else {
               this.subBtn = false;
               return false;
@@ -271,8 +301,7 @@ export default {
     //切换背景
     changeBg (item) {
       // console.log(item.id)
-      this.defaultindex = item.id-1
-      
+      this.defaultindex = item.id-1 
     },
 
 
@@ -295,7 +324,7 @@ export default {
 
   },
   mounted() { 
-    let data = this.$md5(this.passWord)
+    // let data = this.$md5(this.passWord)
     console.log(data)// e10adc3949ba59abbe56e057f20f883e
     // 刷新页面就生成随机验证码
     this.identifyCode = ''

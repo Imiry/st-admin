@@ -2,7 +2,7 @@
  * @Author: sitao
  * @Date: 2020-11-25 18:15:00
  * @LastEditors: sitao
- * @LastEditTime: 2021-01-07 12:33:59
+ * @LastEditTime: 2021-01-21 14:12:05
  */
 const zh = {
   button: {
@@ -109,7 +109,8 @@ const zh = {
   settings_subnav:{
     createUser:'创建用户',
     upload:'上传',
-    userSetting:'用户设置'
+    userSetting:'个人设置-vuex',
+    userSetting_api:'个人设置-api'
   },
   study_subnav:{
     vue3:'vue3'
@@ -134,6 +135,7 @@ const zh = {
     'private': '私有',
     'userName': '用户名',
     'password': '密码',
+    "name":"用户名",
     'phone':'手机号',
     'confirmPassword': '确认密码',
     'age': '年龄',
