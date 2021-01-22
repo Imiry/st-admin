@@ -2,7 +2,7 @@
  * @Author: sitao
  * @Date: 2021-01-21 14:06:22
  * @LastEditors: sitao
- * @LastEditTime: 2021-01-21 18:05:23
+ * @LastEditTime: 2021-01-22 18:20:51
 -->
 <!--
  * @Author: sitao
@@ -59,9 +59,9 @@
       </el-col>
       <el-col :span="20">
         <div class="grid-content2">
-          <el-tabs class="tabs"  :tab-position="'left'" >
-            <el-tab-pane label="登录信息">
-              <div class="title_lg">登录信息</div>
+          <el-tabs v-model="tabName" class="tabs"  :tab-position="'left'" >
+            <el-tab-pane label="登录信息*">
+              <div class="title_lg" >登录信息*</div>
               <el-form class="m-t-40 lg_form" ref="lgUserform" require="true" :rules="loginUserRules"  :model="loginUser" label-width="80px">
                 <el-form-item label="用户名:" prop="name">
                   <el-input v-model="loginUser.name" ></el-input>
@@ -75,8 +75,8 @@
               </el-form>
               <el-button class="btn_lg" type="primary" @click="submitUser_lg('lgUserform')">提交</el-button>
             </el-tab-pane>
-            <el-tab-pane label="基本信息">
-              <div class="title_lg">基本信息</div>
+            <el-tab-pane name="base" label="基本信息*">
+              <div class="title_lg">基本信息*</div>
               <el-form class="m-t-40 info_profile" ref="UserInfoForm" require="true"  :model="UserInfo" label-width="80px">
                 <el-form-item label="职业:" prop="status">
                   <el-input v-model="UserInfo.status" ></el-input>
@@ -99,24 +99,169 @@
                 <el-form-item label="个人介绍:" prop="bio">
                   <el-input v-model="UserInfo.bio" ></el-input>
                 </el-form-item>
-                <el-form-item label="技能:" prop="skill">
-                  <el-input v-model="UserInfo.skill" ></el-input>
+                <el-form-item label="技能:" >
+                  <el-input v-model="UserInfo.skills" ></el-input>
+                  <!-- <el-tag class="m-l-5" v-for="(item,index) in UserInfo.skills" :key="index" >{{item}}</el-tag> -->
                 </el-form-item>
                 
                 
               </el-form>
-              <el-button class="btn_profile " type="primary" @click="submitUser_info('UserInfoForm')">提交</el-button>
+              <el-button class="btn_profile " type="primary" @click="submitUser_info">提交</el-button>
             </el-tab-pane>
-            <el-tab-pane label="工作经验">
-              <div class="title_lg">工作经验</div>
+            <el-tab-pane label="工作经验+">
+              <div class="title_lg" >工作经验+</div>
+              <el-button class="m-l-10" type="primary" @click="tabName = 'work'" circle icon="el-icon-search" size="mini"></el-button>
+              <el-form class="m-t-40 info_profile" ref="workExpForm" require="true"  :model="workExp" label-width="80px">
+                <el-form-item label="职业:" prop="title">
+                  <el-input v-model="workExp.title" ></el-input>
+                </el-form-item>
+                <el-form-item label="公司:" prop="company">
+                  <el-input v-model="workExp.company" ></el-input>
+                </el-form-item>
+                <el-form-item label="公司地址:" prop="location">
+                  <el-input v-model="workExp.location" ></el-input>
+                </el-form-item>
+                <el-form-item label="date:" prop="date">
+                  <el-input v-model="workExp.date" ></el-input>
+                </el-form-item>
+                <el-form-item label="工作描述:" prop="description">
+                  <el-input v-model="workExp.description" ></el-input>
+                </el-form-item>
+              </el-form>
+              <el-button class="btn_profile " type="primary" @click="submitWork_info">添加</el-button>
             </el-tab-pane>
-            <el-tab-pane label="教育经历">
-              <div class="title_lg">教育经历</div>
+            <el-tab-pane label="教育经历+">
+              <div class="title_lg">教育经历+</div>
+              <el-button class="m-l-10" type="primary" @click="tabName = 'edu'" circle icon="el-icon-search" size="mini"></el-button>
+              <el-form class="m-t-40 info_profile" ref="eduInfoForm" require="true"  :model="eduInfo" label-width="80px">
+                <el-form-item label="学校:" prop="school">
+                  <el-input v-model="eduInfo.school" ></el-input>
+                </el-form-item>
+                <el-form-item label="学位:" prop="degree">
+                  <el-input v-model="eduInfo.degree" ></el-input>
+                </el-form-item>
+                <el-form-item label="专业:" prop="fieldofstudy">
+                  <el-input v-model="eduInfo.fieldofstudy" ></el-input>
+                </el-form-item>
+                <el-form-item label="date:" prop="date">
+                  <el-input v-model="eduInfo.date" ></el-input>
+                </el-form-item>
+                <el-form-item label="学校描述:" prop="description">
+                  <el-input v-model="eduInfo.description" ></el-input>
+                </el-form-item>
+              </el-form>
+              <el-button class="btn_profile " type="primary" @click="submitEdu_info">添加</el-button>
+            </el-tab-pane>
+            <el-tab-pane name="work" label="工作#">
+              <div class="title_lg" >工作资料</div>
+              <el-table :data="workTimes" style="width: 100%" class="m-t-20">
+                <el-table-column type="index" width="50"></el-table-column>
+                <el-table-column prop="title" label="职位" ></el-table-column>
+                <el-table-column prop="company" label="公司" ></el-table-column>
+                <el-table-column prop="location" label="地址" ></el-table-column>
+                <el-table-column prop="date" label="工作时间" ></el-table-column>
+                <el-table-column prop="description" label="描述" ></el-table-column>
+                <el-table-column label="操作">
+                  <template slot-scope="scope">
+                    <el-button
+                      size="mini"
+                      @click="workEdit(scope.$index, scope.row)">编辑</el-button>
+                    <el-button
+                      size="mini"
+                      type="danger"
+                      @click="workDelete(scope.$index, scope.row)">删除</el-button>
+                  </template>
+                </el-table-column>
+              </el-table>
+            </el-tab-pane>
+            <el-tab-pane name="edu" label="教育#">
+              <div class="title_lg" >教育资料</div>
+              <el-table :data="eduTimes" style="width: 100%" class="m-t-20">
+                <el-table-column type="index" width="50"></el-table-column>
+                <el-table-column prop="school" label="学校" ></el-table-column>
+                <el-table-column prop="degree" label="学位" ></el-table-column>
+                <el-table-column prop="fieldofstudy" label="专业" ></el-table-column>
+                <el-table-column prop="date" label="时间" ></el-table-column>
+                <el-table-column prop="description" label="描述" ></el-table-column>
+                <el-table-column label="操作">
+                  <template slot-scope="scope">
+                    <el-button
+                      size="mini"
+                      @click="eduEdit(scope.$index, scope.row)">编辑</el-button>
+                    <el-button
+                      size="mini"
+                      type="danger"
+                      @click="eduDelete(scope.$index, scope.row)">删除</el-button>
+                  </template>
+                </el-table-column>
+              </el-table>
             </el-tab-pane>
           </el-tabs>
         </div>
       </el-col>
     </el-row>
+    
+    <!-- 工作资料弹窗 -->
+    <el-dialog
+      :modal="false"
+      title="工作"
+      :visible.sync="workDialogVisible"
+      width="30%"
+      :before-close="workClose">
+      <el-form class="m-t-40 info_profile" ref="workExpForm_eadit" require="true"  :model="workExp" label-width="80px">
+        <el-form-item label="职业:" prop="title">
+          <el-input v-model="workExp.title" ></el-input>
+        </el-form-item>
+        <el-form-item label="公司:" prop="company">
+          <el-input v-model="workExp.company" ></el-input>
+        </el-form-item>
+        <el-form-item label="公司地址:" prop="location">
+          <el-input v-model="workExp.location" ></el-input>
+        </el-form-item>
+        <el-form-item label="date:" prop="date">
+          <el-input v-model="workExp.date" ></el-input>
+        </el-form-item>
+        <el-form-item label="工作描述:" prop="description">
+          <el-input v-model="workExp.description" ></el-input>
+        </el-form-item>
+      </el-form>
+      <span slot="footer" class="dialog-footer">
+        <el-button @click="workDialogVisible = false">取 消</el-button>
+        <el-button type="primary" @click="workCirfirm">确 定</el-button>
+      </span>
+    </el-dialog>
+    <!-- 工作资料弹窗 -->
+
+    <!-- 教育资料弹窗 -->
+    <el-dialog
+      :modal="false"
+      title="工作"
+      :visible.sync="eduDialogVisible"
+      width="30%"
+      :before-close="eduClose">
+      <el-form class="m-t-40 info_profile" ref="eduForm_eadit" require="true"  :model="eduInfo" label-width="80px">
+        <el-form-item label="学校:" prop="school">
+          <el-input v-model="eduInfo.school" ></el-input>
+        </el-form-item>
+        <el-form-item label="学位:" prop="degree">
+          <el-input v-model="eduInfo.degree" ></el-input>
+        </el-form-item>
+        <el-form-item label="专业" prop="fieldofstudy">
+          <el-input v-model="eduInfo.fieldofstudy" ></el-input>
+        </el-form-item>
+        <el-form-item label="时间:" prop="date">
+          <el-input v-model="eduInfo.date" ></el-input>
+        </el-form-item>
+        <el-form-item label="学校描述:" prop="description">
+          <el-input v-model="eduInfo.description" ></el-input>
+        </el-form-item>
+      </el-form>
+      <span slot="footer" class="dialog-footer">
+        <el-button @click="eduDialogVisible = false">取 消</el-button>
+        <el-button type="primary" @click="eduCirfirm">确 定</el-button>
+      </span>
+    </el-dialog>
+    <!-- 教育资料弹窗 -->
 
     <!-- 剪裁组件弹窗 -->
     <el-dialog
@@ -152,17 +297,60 @@ export default {
         password:"123456.",
         email:"123@163.com"
       },
+      //用户的基本信息
       UserInfo:{
         status:"前端开发",
         company:'北京优炫软件公司',
         location:'北京',
         website:'www.baidu.com',
         github:'www.github/Imiry.com',
-        wechat:'123456',
-        qq:'123456',
+        wechat:'123456-----------',
         bio:'让数据更安全',
-        skill:'vue',
-      },//用户的基本信息
+        skills:'',
+      },
+      //添加工作经验from
+      workExp:{
+        title:'xxx-xxx-xx',
+        company:'xxxxxxxx',
+        location:'北京昌平',
+        date:'2018-2019',
+        description:'xxxxxxxxxxx'
+      },
+      //添加教育经验from
+      eduInfo:{
+        school:'xxx-xxx-xx',
+        degree:'xxxxxxxx',
+        fieldofstudy:'计算机',
+        date:'2018-2019',
+        description:'xxxxxxxxxxx'
+      },
+      currentWork_id:'',
+      currentEdu_id:'',
+
+      //工作履历-删改查
+      workTimes:[
+        {
+          title:'前端开发',
+          company:'百度',
+          location:'北京海淀西二旗',
+          date:'2018-2019',
+          description:'0000000'
+        }
+      ],
+      workDialogVisible:false,
+      eduDialogVisible:false,
+      //教育履历-删改查
+      eduTimes:[
+        {
+          school:'xxx-xxx-xx',
+          degree:'xxxxxxxx',
+          fieldofstudy:'计算机',
+          date:'2018-2019',
+          description:'xxxxxxxxxxx'
+        }
+      ],
+
+
       loginUserRules:{
         name:[
           { required: true, message: '请输入用户名', trigger: 'blur'}
@@ -174,19 +362,19 @@ export default {
           { required: true, message: '请输入邮箱', trigger: 'blur'}
         ]
       },
+      tabName:'base',   //el-tab-pane默认选中base
+      
+      
       //裁切图片参数
       cropperModel:false,
       cropperName:'',
       defaultUrl:require('../../assets/images/swiper/avtor.jpg'),
-      
       //标签
       dynamicTags: ['电影', '旅游', '篮球','游戏'],
       inputVisible: false,
       inputValue: '',
-
       //编辑弹窗
       eaditVisible:false,
-
       //-----
 
     }
@@ -204,9 +392,12 @@ export default {
          return this.defaultUrl
        }
     },
+
   },
   mounted() {
-   this.getUserList()
+   this.getUserList();//获取当前的用户登录的信息
+   this.getProfile();//获取当前的基本信息资料
+
   },
   methods:{
     ...mapActions({
@@ -214,7 +405,7 @@ export default {
       userinfo:'userinfoAction'
     }),
 
-    //调用接口回去当前的用户的信息
+    //调用接口获取当前的用户登录的信息
     async getUserList() {
       const { data:res } = await this.$http.get('/current')
       // console.log(res)
@@ -230,27 +421,126 @@ export default {
       this.$refs[from].validate(async (valid) => {
         if(valid) {
           const { data:res } = await this.$http.post('/eadit',this.loginUser)
-          console.log(res)
-          if(res.status == 200){
-            this.$message({
-              type:'success',
-              message:'提交成功'
-            })
-          }else{
-            this.$message({
-              type:'warning',
-              message:'提交失败'
-            })
-          }
+          // console.log(res)
+          if(res.status == 200) return this.$message({type:'success',message:'提交成功'})
+          this.$message({ type:'warning',message:'提交失败'})
         }
       })
     },
-
-    //
-    submitUser_info() {
-      console.log(1)
+    //调用接口获取当前的基本信息资料
+    async getProfile() {
+      const { data:res } = await this.$http.get('/profile')
+      // console.log(res)
+      let info = {
+        status:res[0].status,
+        company:res[0].company,
+        location:res[0].location,
+        website:res[0].website,
+        github:res[0].githubusername,
+        wechat:res[0].social.wechat,
+        bio:res[0].bio,
+        skills:res[0].skills
+      }
+      this.workTimes = res[0].experience;
+      this.eduTimes = res[0].education;
+      this.UserInfo = info
     },
 
+    //修改用户的基本信息
+    async submitUser_info() {
+      const { data:res } = await this.$http.post('/profile',this.UserInfo)
+      // console.log(res)
+    },
+    //增加工作经验
+    async submitWork_info(){
+      const { data:res } = await this.$http.post('profile/experience',this.workExp)
+      // console.log(res)
+      if(res.status == 200) {
+        this.workTimes = res.profile[0].experience;
+        this.$message({type:'success',message:'添加成功'})
+      }
+     
+    },
+
+    //增加学校经历
+    async submitEdu_info() {
+       const { data:res } = await this.$http.post('profile/education',this.eduInfo)
+      // console.log(res)
+      if(res.status == 200) {
+        this.eduTimes = res.profile[0].education
+        this.$message({type:'success',message:'添加成功'})
+      }  
+    },
+
+    
+
+
+    //工作资料编辑-------------------
+     workEdit(index, row) {
+      // console.log(index, row);
+      this.workDialogVisible = true
+      this.workExp = {
+        title:row.title,
+        company:row.company,
+        location:row.location,
+        date:row.date,
+        description:row.description
+      }
+      this.currentWork_id = row._id
+    },
+    async workCirfirm() {
+      const { data:res } = await this.$http.put(`profile/experience?exp_id=${this.currentWork_id}`,this.workExp)
+      console.log(res)
+      this.workTimes = res.experience;
+      this.workDialogVisible = false
+    },
+    //工作资料编辑-------------------
+
+    
+    //工作资料删除
+    async workDelete(index, row) {
+      // console.log(row._id);
+      const { data:res } = await this.$http.delete(`profile/experience?exp_id=${row._id}`)
+      this.workTimes = res.experience
+      // console.log(res)
+    },
+    //关闭工作资料编辑弹窗
+    workClose(done){
+      done();
+    },
+    
+
+    //教育资料编辑-------------------------
+    eduEdit(index, row) {
+      this.eduDialogVisible = true
+      this.eduInfo = {
+        school:row.school,
+        degree:row.degree,
+        fieldofstudy:row.fieldofstudy,
+        date:row.date,
+        description:row.description
+      }
+      this.currentEdu_id = row._id
+    },
+    async eduCirfirm() {
+      const { data:res } = await this.$http.put(`profile/education?edu_id=${this.currentEdu_id}`,this.eduInfo)
+      console.log(res)
+      this.eduTimes = res.education;
+      this.eduDialogVisible = false
+    },
+    //教育资料编辑-------------------------
+
+    //教育资料删除
+    async eduDelete(index, row) {
+      // console.log(index, row);
+      const { data:res } = await this.$http.delete(`profile/education?edu_id=${row._id}`)
+      this.eduTimes = res.education
+    },
+    eduClose(done){
+      done();
+    },
+
+    
 
 
     changeAvtor() {
@@ -383,6 +673,7 @@ export default {
           text-align: center;
           margin:20px 0 0 20px;
           border-bottom: 3px solid rgb(43, 172, 223); 
+          display: inline-block;
         }
         .lg_form{width: 400px;}
         .info_profile{width: 500px;}

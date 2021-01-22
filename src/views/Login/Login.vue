@@ -266,7 +266,7 @@ export default {
           if (valid) {
             const { data:res } = await this.$http.post('/register',this.userRegister)
             // this.subBtn = false;
-            console.log(res)
+            // console.log(res)
             if (res.code == 200) {
               this.$message('恭喜您！注册成功')
               this.loginFlag = true
@@ -325,7 +325,7 @@ export default {
   },
   mounted() { 
     // let data = this.$md5(this.passWord)
-    console.log(data)// e10adc3949ba59abbe56e057f20f883e
+    // console.log(data)// e10adc3949ba59abbe56e057f20f883e
     // 刷新页面就生成随机验证码
     this.identifyCode = ''
     this.makeCode(this.identifyCodes, 4)
