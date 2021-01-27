@@ -2,7 +2,7 @@
  * @Author: sitao
  * @Date: 2020-11-26 09:58:32
  * @LastEditors: sitao
- * @LastEditTime: 2021-01-21 14:11:19
+ * @LastEditTime: 2021-01-26 14:45:57
  */
 
 import { mapActions } from "vuex";
@@ -53,6 +53,15 @@ export default {
           // name:'监控中心',
           children:[
             { path:'/st_work',icon:'iconfont icon-gongzuotai icbg',name:this.$t('supervisory_subnav.work') },
+          ]
+        },
+        { 
+          path:'/st_articles',
+          icon:'iconfont icon-navicon-wzgl icbg',
+          name:this.$t('nav.article'),
+          children:[
+            { path:'/st_article',icon:'iconfont icon-navicon-wzgl icbg',name:this.$t('article_subnav.article_p') },
+            { path:'/st_articled',icon:'iconfont icon-navicon-wzgl icbg',name:this.$t('article_subnav.article_list') },
           ]
         },
         { 

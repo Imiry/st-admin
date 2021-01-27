@@ -2,7 +2,7 @@
  * @Author: sitao
  * @Date: 2020-12-15 10:39:37
  * @LastEditors: sitao
- * @LastEditTime: 2020-12-24 18:08:26
+ * @LastEditTime: 2021-01-26 14:54:56
 -->
 <template>
   <div class="manage_container">
@@ -18,7 +18,7 @@ export default {
   name: 'Manage',
   data() { 
     return {
-      value:''
+      value:'1'
     }
   },
   methods:{

@@ -2,7 +2,7 @@
  * @Author: sitao
  * @Date: 2020-11-25 18:15:00
  * @LastEditors: sitao
- * @LastEditTime: 2021-01-21 14:12:05
+ * @LastEditTime: 2021-01-26 14:45:29
  */
 const zh = {
   button: {
@@ -55,6 +55,7 @@ const zh = {
     others:"UX",
     home:"首页",
     supervisory:'监控中心',
+    article:'文章管理',
     template:"模板",
     editor:"编辑器",
     image:"图片处理",
@@ -69,6 +70,10 @@ const zh = {
   },
   supervisory_subnav:{
     work:'工作台'
+  },
+  article_subnav:{
+    article_p:'文章发布',
+    article_list:'文章列表',
   },
   others_subnav:{
     Ux_Table:"Ux_Table",

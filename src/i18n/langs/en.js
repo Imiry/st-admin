@@ -2,7 +2,7 @@
  * @Author: sitao
  * @Date: 2020-11-25 18:15:00
  * @LastEditors: sitao
- * @LastEditTime: 2021-01-21 14:11:45
+ * @LastEditTime: 2021-01-26 14:45:49
  */
 const en = {
   // 按钮
@@ -63,6 +63,7 @@ const en = {
       others:"UX",
       home:"home",
       supervisory:'supervisory',
+      article:'article',
       template:"template",
       editor:"editor",
       image:"Image-process",
@@ -78,6 +79,10 @@ const en = {
     //子nav
     supervisory_subnav:{
       work:'workbench'
+    },
+    article_subnav:{
+      article_p:'articlePbulish',
+      article_list:'articleList',
     },
     others_subnav:{
       Ux_Table:"Ux_Table",

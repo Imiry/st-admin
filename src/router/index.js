@@ -2,7 +2,7 @@
  * @Author: sitao
  * @Date: 2020-12-01 16:27:12
  * @LastEditors: sitao
- * @LastEditTime: 2021-01-21 14:07:43
+ * @LastEditTime: 2021-01-26 14:42:56
  */
 import Vue from 'vue'
 import VueRouter from 'vue-router'
@@ -227,6 +227,16 @@ const routes = [
         path: '/st_studyvue3',
         name: 'StudyVue3',
         component: () => import('../views/Study/Vue/StudyVue3.vue'),
+      },
+      {
+        path: '/st_article',
+        name: 'Article',
+        component: () => import('../views/Article/Article.vue'),
+      },
+      {
+        path: '/st_articled',
+        name: 'Articled',
+        component: () => import('../views/Article/Articled.vue'),
       },
 
     ]

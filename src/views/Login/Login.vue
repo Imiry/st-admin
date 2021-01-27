@@ -206,10 +206,10 @@ export default {
     //登录校验
     onLogin () {
       this.$refs.loginFormRef.validate( async valid => {
-        console.log(valid)
+        // console.log(valid)
         if(valid) {
           const { data:res } = await this.$http.post('/login',this.userLogin)
-          console.log(res)
+          // console.log(res)
           setUserToken('token',res.data.token)
           this.$router.push('/st_work')
           this.$message({

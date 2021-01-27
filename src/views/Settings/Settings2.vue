@@ -2,7 +2,7 @@
  * @Author: sitao
  * @Date: 2021-01-21 14:06:22
  * @LastEditors: sitao
- * @LastEditTime: 2021-01-22 18:20:51
+ * @LastEditTime: 2021-01-25 12:36:38
 -->
 <!--
  * @Author: sitao
@@ -112,20 +112,20 @@
               <div class="title_lg" >工作经验+</div>
               <el-button class="m-l-10" type="primary" @click="tabName = 'work'" circle icon="el-icon-search" size="mini"></el-button>
               <el-form class="m-t-40 info_profile" ref="workExpForm" require="true"  :model="workExp" label-width="80px">
-                <el-form-item label="职业:" prop="title">
-                  <el-input v-model="workExp.title" ></el-input>
+                <el-form-item label="职业:" prop="title" >
+                  <el-input v-model="workExp.title" placeholder="请输入你的职业"></el-input>
                 </el-form-item>
                 <el-form-item label="公司:" prop="company">
-                  <el-input v-model="workExp.company" ></el-input>
+                  <el-input v-model="workExp.company" placeholder="请输入你的公司" ></el-input>
                 </el-form-item>
                 <el-form-item label="公司地址:" prop="location">
-                  <el-input v-model="workExp.location" ></el-input>
+                  <el-input v-model="workExp.location" placeholder="请输入你的公司地址"></el-input>
                 </el-form-item>
-                <el-form-item label="date:" prop="date">
-                  <el-input v-model="workExp.date" ></el-input>
+                <el-form-item label="时间:" prop="date">
+                  <el-input v-model="workExp.date" placeholder="请输入你的时间"></el-input>
                 </el-form-item>
                 <el-form-item label="工作描述:" prop="description">
-                  <el-input v-model="workExp.description" ></el-input>
+                  <el-input v-model="workExp.description" placeholder="请输入你的工作描述"></el-input>
                 </el-form-item>
               </el-form>
               <el-button class="btn_profile " type="primary" @click="submitWork_info">添加</el-button>
@@ -135,19 +135,19 @@
               <el-button class="m-l-10" type="primary" @click="tabName = 'edu'" circle icon="el-icon-search" size="mini"></el-button>
               <el-form class="m-t-40 info_profile" ref="eduInfoForm" require="true"  :model="eduInfo" label-width="80px">
                 <el-form-item label="学校:" prop="school">
-                  <el-input v-model="eduInfo.school" ></el-input>
+                  <el-input v-model="eduInfo.school" placeholder="请输入你的学校"></el-input>
                 </el-form-item>
                 <el-form-item label="学位:" prop="degree">
-                  <el-input v-model="eduInfo.degree" ></el-input>
+                  <el-input v-model="eduInfo.degree" placeholder="请输入你的学位" ></el-input>
                 </el-form-item>
                 <el-form-item label="专业:" prop="fieldofstudy">
-                  <el-input v-model="eduInfo.fieldofstudy" ></el-input>
+                  <el-input v-model="eduInfo.fieldofstudy" placeholder="请输入你的专业" ></el-input>
                 </el-form-item>
-                <el-form-item label="date:" prop="date">
-                  <el-input v-model="eduInfo.date" ></el-input>
+                <el-form-item label="时间:" prop="date">
+                  <el-input v-model="eduInfo.date" placeholder="请输入你的时间"></el-input>
                 </el-form-item>
                 <el-form-item label="学校描述:" prop="description">
-                  <el-input v-model="eduInfo.description" ></el-input>
+                  <el-input v-model="eduInfo.description" placeholder="请输入你的学校描述" ></el-input>
                 </el-form-item>
               </el-form>
               <el-button class="btn_profile " type="primary" @click="submitEdu_info">添加</el-button>
@@ -310,19 +310,19 @@ export default {
       },
       //添加工作经验from
       workExp:{
-        title:'xxx-xxx-xx',
-        company:'xxxxxxxx',
-        location:'北京昌平',
-        date:'2018-2019',
-        description:'xxxxxxxxxxx'
+        title:'',
+        company:'',
+        location:'',
+        date:'',
+        description:''
       },
       //添加教育经验from
       eduInfo:{
-        school:'xxx-xxx-xx',
-        degree:'xxxxxxxx',
-        fieldofstudy:'计算机',
-        date:'2018-2019',
-        description:'xxxxxxxxxxx'
+        school:'',
+        degree:'',
+        fieldofstudy:'',
+        date:'',
+        description:''
       },
       currentWork_id:'',
       currentEdu_id:'',
@@ -449,7 +449,8 @@ export default {
     //修改用户的基本信息
     async submitUser_info() {
       const { data:res } = await this.$http.post('/profile',this.UserInfo)
-      // console.log(res)
+      console.log(res)
+      if(res.status ==200) return this.$message({type:'success',message:'修改成功'})
     },
     //增加工作经验
     async submitWork_info(){
@@ -490,19 +491,30 @@ export default {
     },
     async workCirfirm() {
       const { data:res } = await this.$http.put(`profile/experience?exp_id=${this.currentWork_id}`,this.workExp)
-      console.log(res)
+      // console.log(res)
       this.workTimes = res.experience;
       this.workDialogVisible = false
     },
     //工作资料编辑-------------------
 
-    
     //工作资料删除
-    async workDelete(index, row) {
+    workDelete(index, row) {
       // console.log(row._id);
-      const { data:res } = await this.$http.delete(`profile/experience?exp_id=${row._id}`)
-      this.workTimes = res.experience
-      // console.log(res)
+      this.$confirm('确定要删除吗？','提示',{
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).then(async() => {
+        const { data:res } = await this.$http.delete(`profile/experience?exp_id=${row._id}`)
+        if(res.status == 200) {
+          this.workTimes = res.data.experience
+          this.$message({type:'success',message:'删除成功'})
+        }else{
+          this.$message({type:'info',message:'删除失败'})
+        }
+      })
+      
+      
     },
     //关闭工作资料编辑弹窗
     workClose(done){
@@ -524,17 +536,36 @@ export default {
     },
     async eduCirfirm() {
       const { data:res } = await this.$http.put(`profile/education?edu_id=${this.currentEdu_id}`,this.eduInfo)
-      console.log(res)
-      this.eduTimes = res.education;
-      this.eduDialogVisible = false
+      // console.log(res)
+      if(res.status == 200) {
+        this.eduTimes = res.data.education;
+        this.eduDialogVisible = false
+        this.$message({type:'success',message:'编辑成功'})
+        
+      }else{
+        this.$message({type:'info',message:'编辑失败'})
+      }
+      
     },
     //教育资料编辑-------------------------
 
     //教育资料删除
-    async eduDelete(index, row) {
+    eduDelete(index, row) {
       // console.log(index, row);
-      const { data:res } = await this.$http.delete(`profile/education?edu_id=${row._id}`)
-      this.eduTimes = res.education
+      this.$confirm('确定要删除吗？','提示',{
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).then(async() => {
+        const { data:res } = await this.$http.delete(`profile/education?edu_id=${row._id}`)
+        if(res.status == 200) {
+          this.eduTimes = res.data.education
+          this.$message({type:'success',message:'删除成功'})
+        }else{
+          this.$message({type:'info',message:'删除失败'})
+        }
+      })
+ 
     },
     eduClose(done){
       done();
