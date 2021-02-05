@@ -2,7 +2,7 @@
  * @Author: sitao
  * @Date: 2020-11-25 18:15:00
  * @LastEditors: sitao
- * @LastEditTime: 2021-01-21 16:07:11
+ * @LastEditTime: 2021-01-27 14:36:59
  */
 import Vue from 'vue';
 import App from './App.vue';
@@ -41,6 +41,7 @@ import screenfull from 'screenfull';
 import VueSparkline from 'vue-sparklines';
 import '../node_modules/echarts/map/js/world.js' // 引入世界地图
 import { getUserToken } from './utils/auth/auth-token.js'
+
 
 Vue.use(ElementUI);
 Vue.use(filters);

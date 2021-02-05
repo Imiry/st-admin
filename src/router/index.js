@@ -2,14 +2,24 @@
  * @Author: sitao
  * @Date: 2020-12-01 16:27:12
  * @LastEditors: sitao
- * @LastEditTime: 2021-01-26 14:42:56
+ * @LastEditTime: 2021-01-27 18:04:59
  */
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import { getUserToken } from '../utils/auth/auth-token.js'
+import NProgress from 'nprogress'
+import 'nprogress/nprogress.css'
 Vue.use(VueRouter)
 //获取原型对象上的push函数
 const originalPush = VueRouter.prototype.push
+
+NProgress.configure({
+  easing: 'ease', // 动画方式
+  speed: 600, // 递增进度条的速度
+  showSpinner: true, // 是否显示加载ico
+  trickleSpeed: 200, // 自动递增间隔
+  minimum: 0.3 // 初始化时的最小百分比
+})
 //修改原型对象中的push方法
 VueRouter.prototype.push = function push(location) {
   return originalPush.call(this, location).catch(err => err)
@@ -243,6 +253,7 @@ const routes = [
   },
 ]
 
+
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
@@ -251,12 +262,18 @@ const router = new VueRouter({
 
 // 挂载路由导航守卫
 router.beforeEach((to, from, next) => {
-  
+  NProgress.start(); 
   if (to.path === '/login') return next()
   // 获取token
   const token = getUserToken('token')
   if (!token) return next('/login')
   next()
+  
+})
+
+
+router.afterEach(() => { // 在即将进入新的页面组件前，关闭掉进度条
+  NProgress.done() 
 })
 
 router.onError((error) => {

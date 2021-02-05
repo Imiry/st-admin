@@ -2,7 +2,7 @@
  * @Author: sitao
  * @Date: 2020-12-09 16:25:42
  * @LastEditors: sitao
- * @LastEditTime: 2020-12-18 11:07:07
+ * @LastEditTime: 2021-01-27 13:53:30
 -->
 <template>
   <div class="tempalte2_container">
@@ -16,7 +16,8 @@
         <div class="card">
           <div class="cd_header">
               <div class="title">TODAY'S VISITS</div>
-              <div class="number">7,842,900</div>
+              <countTo class="number" :startVal='0' :endVal='7842900' :duration='4000'></countTo>
+              <!-- <div class="number">7,842,900</div> -->
               <div class="percent"><st-progress :height="2" :bgcolor="'rgba(0,0,0,.5)'" :perColor="'#fff'" :percent="70.1"></st-progress></div>
               <div class="percented">Better than last week (70.1%)</div>
           </div>
@@ -26,7 +27,8 @@
         <div class="card1">
           <div class="cd_header">
               <div class="title">TODAY'S PROFIT</div>
-              <div class="number">180,200</div>
+              <!-- <div class="number">180,200</div> -->
+              <countTo class="number" :startVal='0' :endVal='1802000' :duration='4000'></countTo>
               <div class="percent"><st-progress :height="2" :bgcolor="'rgba(0,0,0,.5)'" :perColor="'#fff'" :percent="40.5"></st-progress></div>
               <div class="percented">Better than last week (40.5%)</div>
           </div>
@@ -36,7 +38,8 @@
         <div class="card2">
           <div class="cd_header">
               <div class="title">NEW ORDERS</div>
-              <div class="number">38,900</div>
+              <!-- <div class="number">38,900</div> -->
+              <countTo class="number" :startVal='0' :endVal='3900000' :duration='4000'></countTo>
               <div class="percent"><st-progress :height="2" :bgcolor="'rgba(0,0,0,.5)'" :perColor="'#fff'" :percent="76.3"></st-progress></div>
               <div class="percented">Better than last week (76.3%)</div>
           </div>
@@ -46,7 +49,8 @@
         <div class="card3">
           <div class="cd_header">
               <div class="title">NEW COMMENTS</div>
-              <div class="number">3,988</div>
+              <!-- <div class="number">3,988</div> -->
+              <countTo class="number" :startVal='0' :endVal='39888' :duration='3000'></countTo>
               <div class="percent"><st-progress :height="2" :bgcolor="'rgba(0,0,0,.5)'" :perColor="'#fff'" :percent="54.9"></st-progress></div>
               <div class="percented">Better than last week (54.9%)</div>
           </div>
@@ -81,9 +85,10 @@
 
 <script>
     import echarts from 'echarts'
+    import countTo from 'vue-count-to';
 import stProgress from '../../components/st-progress/st-progress.vue'
 export default {
-  components: { stProgress },
+  components: { stProgress,countTo },
   name: 'Template2',
   data() { 
     return {
@@ -132,10 +137,10 @@ export default {
     },
     getWorld (data) {
       var that = this
-      this.$http.get('world').then(function (res) {
+      this.$http.get('/article/word').then(function (res) {
         // console.log(res)
-        let namemap = res.data.namemap
-        let dataArr = res.data.dataArr
+        let namemap = res.data[0].namemap
+        let dataArr = res.data[0].dataArr
         // let dataArr = data.data
         that.drawChart(namemap, dataArr)
       })

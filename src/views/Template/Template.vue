@@ -2,7 +2,7 @@
  * @Author: sitao
  * @Date: 2020-11-26 09:58:50
  * @LastEditors: sitao
- * @LastEditTime: 2020-12-15 14:34:37
+ * @LastEditTime: 2021-01-27 13:51:17
 -->
 <template>
   <div class="tempalte_container">
@@ -18,7 +18,8 @@
           <div class="cd_header">
             <div class="header_left">
               <div class="title">TOTAL VISITORS</div>
-              <div class="number">3,291,922</div>
+              <countTo class="number" :startVal='0' :endVal='3291922' :duration='3000'></countTo>
+              <!-- <div >3,291,922</div> -->
             </div>
             <div class="header_right">
               <sparkline height="23">
@@ -36,7 +37,8 @@
           <div class="cd_header">
             <div class="header_left">
               <div class="title">BOUNCE RATE</div>
-              <div class="number">20.44%</div>
+              <countTo class="number" :startVal='0' :endVal='546134621' :duration='3000'></countTo>
+              <!-- <div class="number">20.44%</div> -->
             </div>
             <div class="header_right">
               <sparkline height="23">
@@ -54,7 +56,8 @@
           <div class="cd_header">
             <div class="header_left">
               <div class="title">UNIQUE VISITORS</div>
-              <div class="number">1,291,922</div>
+              <countTo class="number" :startVal='0' :endVal='214461466' :duration='4000'></countTo>
+              <!-- <div class="number">1,291,922</div> -->
             </div>
             <div class="header_right">
               <sparkline height="23">
@@ -72,7 +75,8 @@
           <div class="cd_header">
             <div class="header_left">
               <div class="title">AVG TIME ON SITE</div>
-              <div class="number">00:12:23</div>
+              <countTo class="number" :startVal='0' :endVal='10000000' :duration='4000'></countTo>
+              <!-- <div class="number">00:12:23</div> -->
             </div>
             <div class="header_right">
               <sparkline height="23">
@@ -178,9 +182,13 @@
 </template>
 
 <script>
+import countTo from 'vue-count-to';
 import { mapState } from 'vuex'
 export default {
   name: 'Tempalte1',
+  components:{
+    countTo
+  },
   data() { 
     return {
       tableData: [{
