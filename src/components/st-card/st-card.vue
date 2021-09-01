@@ -47,6 +47,7 @@ export default {
 
     .box-card {
       // width: 700px;
+      margin-bottom: 10px;
     }
 
 </style>

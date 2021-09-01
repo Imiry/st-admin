@@ -17,6 +17,11 @@ import 'mavon-editor/dist/css/index.css'
 import 'prismjs/themes/prism.css'
 import './assets/css/markdown-segmentfault.scss';
 
+import 'xe-utils'
+import VXETable from 'vxe-table'
+import 'vxe-table/lib/style.css'
+
+Vue.use(VXETable)
 Vue.use(Directives); 
 Vue.use(mavonEditor)
 

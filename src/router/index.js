@@ -265,8 +265,8 @@ router.beforeEach((to, from, next) => {
   NProgress.start(); 
   if (to.path === '/login') return next()
   // 获取token
-  const token = getUserToken('token')
-  if (!token) return next('/login')
+  // const token = getUserToken('token')
+  // if (!token) return next('/login')
   next()
   
 })

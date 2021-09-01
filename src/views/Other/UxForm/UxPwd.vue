@@ -6,114 +6,150 @@
 -->
 <template>
   <div class="ux_pwd">
-    <el-row>
-      <el-col :span="12">
-        <el-form :model="form" :rules="rules" ref="form" label-width="140px">
-          <el-form-item :label="$t('form.password')" prop="password">
-            <ux-password ref="pwd" v-model="form.password" :pwdLengthRange="'6~10'"></ux-password>
-          </el-form-item>
-          <el-form-item :label="$t('form.confirmPassword')" prop="confirmPassword">
-            <el-input
-              type="password"
-              v-model="form.confirmPassword"
-              :placeholder="$t('form.confirmPassword')"
-            ></el-input>
-          </el-form-item>
-          <el-form-item>
-            <el-button type="primary" @click="submit('form')">{{$t('button.submit')}}</el-button>
-            <el-button @click="reset('form')">{{$t('button.cancel')}}</el-button>
-          </el-form-item>
-        </el-form>
-      </el-col>
-    </el-row>
+    <div class="select_header" @click="changeUp">
+      <div class="content">{{ currentContent }}</div>
+      <i class="el-icon-arrow-down icon" v-show="!visibale"></i>
+      <i class="el-icon-arrow-up icon" v-show="visibale"></i>
+    </div>
+    <div class="showlist" v-show="visibale">
+      <div class="search">
+        <search
+          :style="searchMemberStyle"
+          caption=""
+          @keyup="onKeyUp"
+          @search="searchMember"
+        ></search>
+      </div>
+      <div class="list">
+        <vxe-list height="240" class="my-list" :loading="loading" :data="list">
+          <template #default="{ items }">
+            <div
+              class="my-list-item"
+              v-for="(item, index) in items"
+              :key="index"
+              @click="selectItem(item)"
+            >
+              {{ item.label }}
+            </div>
+          </template>
+        </vxe-list>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-import {
-    checkStrong,
-    pwdLength610
-} from '../../../utils/mUtils.js';
+import search from "./componets/search.vue";
+import XEUtils from "xe-utils";
 export default {
-  name: 'UxPwd',
-  data() {
-    let validatePassword = (rule, value, callback) => {
-        if (value == '' && this.subBtn == true) {
-            callback(new Error(this.$i18n.t('errorMsg.pleaseInputAPassword')));
-        } else if (pwdLength610(value) == false || checkStrong(value) == 1) {
-            callback(new Error(this.$i18n.t('errorMsg.thePasswordDoesNotMeetTheRequirements')))
-        } else {
-            callback();
-        }
-    }
-    let validateConfirmPassword = (rule, value, callback) => {
-        if (value == '' && this.subBtn == true) {
-            callback(new Error(this.$i18n.t('errorMsg.pleaseEnterTheConfirmationPassword')));
-        } else if (value !== this.form.password) {
-            callback(new Error(this.$i18n.t('errorMsg.twoPasswordEntriesAreInconsistent')));
-        } else {
-            callback();
-        }
-    }
-    return {
-        subBtn: false,
-        form: {
-            password: '',
-            confirmPassword: '',
-        },
-        rules: {
-            password: [{
-                required: true,
-                validator: validatePassword,
-                trigger: ['blur']
-            }],
-            confirmPassword: [{
-                required: true,
-                validator: validateConfirmPassword,
-                trigger: 'change'
-            }]
-        },
-    }
+  name: "UxPwd",
+  components: {
+    search,
   },
-  watch: {
-      'form.password'(newVal, oldVal) {
-          if (newVal != oldVal) {
-              this.$refs['form'].clearValidate('password')
-          }
-      }
+  data() {
+    return {
+      searchMemberStyle: {
+        width: "100%",
+      },
+      visibale: false,
+      currentContent: "项目", //当前显示的内容
+      loading: false, //loading显示
+      list: [],
+    };
+  },
+  watch: {},
+
+  created() {
+    this.getList();
   },
   methods: {
-      submit(formName) {
-          this.subBtn = true;
-          this.$refs[formName].validate((valid) => {
-              if (valid) {
-                  this.subBtn = false;
-                  // 表单验证通过
-              } else {
-                  this.subBtn = false;
-                  return false;
-              }
-          })
-      },
-      reset(formName) {
-          this.$refs[formName].resetFields();
-          this.$refs.pwd.resetPwd();
-          this.subBtn = false;
+    //回车确定搜索
+    onKeyUp(val) {
+      console.log(val);
+    },
+
+    //搜索数据
+    searchMember(val) {
+      console.log(val);
+    },
+
+    //下拉图标切换
+    changeUp() {
+      this.visibale = !this.visibale;
+    },
+
+    //模拟后台返回数据
+    getList() {
+      for (let i = 0; i < 10000; i++) {
+        this.list.push({
+          label: "项目" + i,
+        });
       }
+    },
+    //选中当前的数据
+    selectItem(item) {
+      this.currentContent = item.label;
+    },
   },
- }
+};
 </script>
 
 <style lang="scss" >
-  .ux_pwd{
+.ux_pwd {
+  width: 350px;
+  height: 100%;
+  padding-top: 20px;
+  .select_header {
     width: 100%;
-    height: 100%;
+    height: 40px;
+    box-sizing: border-box;
+    line-height: 20px;
+    padding: 10px;
+    border-top-right-radius: 3px;
+    border-top-left-radius: 3px;
+    position: relative;
+    border: 1px solid #dcdfe6;
+    cursor: pointer;
     background-color: #fff;
-    padding-top: 20px;
-
-    .tip-text {
-        // color: $tip-text-color;
-        font-size: 12px;
+    .content {
+      color: #ccc;
+      position: absolute;
+      font-size: 14px;
+    }
+    .icon {
+      position: absolute;
+      right: 9px;
+      color: #ccc;
     }
   }
+  .select_header:hover {
+    border-color: rgb(42, 165, 236);
+  }
+  .showlist {
+    height: 300px;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #fff;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    .search {
+      width: 100%;
+      height: 60px;
+      padding: 10px;
+      box-sizing: border-box;
+      background-color: rgb(245, 243, 243);
+    }
+    .list {
+      .my-list .my-list-item {
+        height: 30px;
+        padding-left: 15px;
+        cursor: pointer;
+      }
+      .my-list-item:hover {
+        color: rgb(42, 165, 236);
+        background-color: rgba(42, 165, 236, 0.2);
+      }
+    }
+  }
+}
 </style>
