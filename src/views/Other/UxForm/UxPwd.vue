@@ -40,7 +40,6 @@
 
 <script>
 import search from "./componets/search.vue";
-import XEUtils from "xe-utils";
 export default {
   name: "UxPwd",
   components: {
