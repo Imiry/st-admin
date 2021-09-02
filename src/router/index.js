@@ -61,6 +61,11 @@ const routes = [
         component: () => import('../views/Other/UxForm/UxPwd.vue'),
       },
       {
+        path: '/Demo1',
+        name: 'Demo',
+        component: () => import('../views/Other/Demo/Demo1.vue'),
+      },
+      {
         path: '/st_welcome',
         name: 'Welcome',
         component: () => import('../views/Welcome/Welcome.vue'),

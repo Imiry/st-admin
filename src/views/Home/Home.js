@@ -72,6 +72,7 @@ export default {
             { path:'/ux_table',icon:'iconfont icon-UX icbg',name:this.$t('others_subnav.Ux_Table') },
             { path:'/ux_form',icon:'iconfont icon-UX icbg',name:this.$t('others_subnav.Ux_Form') },
             { path:'/ux_pwd',icon:'iconfont icon-UX icbg',name:this.$t('others_subnav.pwd') },
+            { path: '/demo1', icon: 'iconfont icon-UX icbg', name: "demo1" },
           ]
         },
         { 

@@ -5,10 +5,10 @@
  * @LastEditTime: 2020-12-16 11:43:29
 -->
 <template>
-    <el-card class="box-card">
+    <el-card class="box-card" :style="cardStyle">
       <div slot="header" class="clearfix">
-        <span>{{cardData.cardname}}</span>
-        <el-button style="float: right; " :size="cardData.size" :icon="cardData.icon" :type="cardData.btntype">{{cardData.textValue}}</el-button>
+        <span style="color: rgb(156, 154, 154)">{{cardname}}</span>
+        <el-button style="float: right; "  :size="size" :icon="icon" :type="btntype">{{textValue}}</el-button>
       </div>
       <slot></slot>
     </el-card>
@@ -19,12 +19,27 @@
 export default {
   name: 'st-card',
   props:{
-    cardData:{
-      type:Object,
-      default:() => {
-        return {}
-      }
-    }
+    cardname: {
+      type: String,
+      default: ''
+    },
+    size: {
+      type: String,
+      default: 'small'
+    },
+    icon: {
+      type: String,
+      default: ''
+    },
+    btntype: {
+      type: String,
+      default: 'primary'
+    },
+    textValue: {
+      type: String,
+      default: '查看'
+    },
+    cardStyle: {}
   },
   data() { 
     return {
@@ -35,17 +50,7 @@ export default {
 </script>
 
 <style lang="scss" >
-
-    .clearfix:before,
-    .clearfix:after {
-      display: table;
-      content: "";
-    }
-    .clearfix:after {
-      clear: both
-    }
-
-    .box-card {
+   .box-card {
       // width: 700px;
       margin-bottom: 10px;
     }
