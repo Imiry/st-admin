@@ -5,68 +5,56 @@
  * @LastEditTime: 2021-01-20 16:03:33
 -->
 <template>
-  <div class="Work_container">
-    <el-card>
-      <div v-for ="(item,index) in list" :index="index" v-html="change(item.dec)"></div>
-    </el-card>
+  <div class="main">
+    <StepPanle :stepData="stepData"></StepPanle>
   </div>
 </template>
 
 <script>
+import StepPanle from './stepPanle.vue'
 export default {
   name: 'Work',
+  components:{
+    StepPanle
+  },
   data() { 
     return {
-      color_text: [
-        "#FFB5C5"
-      ],
-      list:[
+      stepData:[
         {
-          id:"01",
-          dec:"今天开心，我今天跑了，"
+          title:'积分落户',
+          desc:'有时我们觉得别人误会了自己，其实是我们误会了自己,有时我们觉得别人误会了自己，其实是我们误会了自，有时我们觉得别人误会了自己，其实是我们误会了自己,有时我们觉得别人误会了自己，其实是我们误会了自，有时我们觉得别人误会了自己，其实是我们误会了自己,有时我们觉得别人误会了自己，其实是我们误会了自，有时我们觉得别人误会了自己，其实是我们误会了自己,有时我们觉得别人误会了自己，其实是我们误会了自，有时我们觉得别人误会了自己，其实是我们误会了自己,有时我们觉得别人误会了自己，其实是我们误会了自，有时我们觉得别人误会了自己，其实是我们误会了自己,有时我们觉得别人误会了自己，其实是我们误会了自，有时我们觉得别人误会了自己，其实是我们误会了自己,有时我们觉得别人误会了自己，其实是我们误会了自，有时我们觉得别人误会了自己，其实是我们误会了自己,有时我们觉得别人误会了自己，其实是我们误会了自'
         },
         {
-          id:"01",
-          dec:"今天开心，我今天跑了5次，"
+          title:'积分落户',
+          desc:'有时我们觉得别人误会了自己，其实是我们误会了自己,有时我们觉得别人误会了自己，其实是我们误会了自'
         },
         {
-          id:"02",
-          dec:"到今天5日，馊了2斤"
+          title:'积分落户',
+          desc:'有时我们觉得别人误会了自己，其实是我们误会了自己,有时我们觉得别人误会了自己，其实是我们误会了自'
         },
         {
-          id:"03",
-          dec:"今天花了100元，买了3斤草莓"
+          title:'积分落户',
+          desc:'有时我们觉得别人误会了自己，其实是我们误会了自己,有时我们觉得别人误会了自己，其实是我们误会了自，有时我们觉得别人误会了自己，其实是我们误会了自己,有时我们觉得别人误会了自己，其实是我们误会了自，有时我们觉得别人误会了自己，其实是我们误会了自己,有时我们觉得别人误会了自己，其实是我们误会了自，有时我们觉得别人误会了自己，其实是我们误会了自己,有时我们觉得别人误会了自己，其实是我们误会了自，有时我们觉得别人误会了自己，其实是我们误会了自己,有时我们觉得别人误会了自己，其实是我们误会了自，有时我们觉得别人误会了自己，其实是我们误会了自己,有时我们觉得别人误会了自己，其实是我们误会了自，有时我们觉得别人误会了自己，其实是我们误会了自己,有时我们觉得别人误会了自己，其实是我们误会了自，有时我们觉得别人误会了自己，其实是我们误会了自己,有时我们觉得别人误会了自己，其实是我们误会了自'
         },
         {
-          id:"04",
-          dec:"累计50000步馊了两斤"
+          title:'积分落户',
+          desc:'有时我们觉得别人误会了自己，其实是我们误会了自己,有时我们觉得别人误会了自己，其实是我们误会了自'
+        },
+        {
+          title:'积分落户',
+          desc:'有时我们觉得别人误会了自己，其实是我们误会了自己,有时我们觉得别人误会了自己，其实是我们误会了自'
         }
       ]
-    }
-  },
-  methods: {
-    change(value) {
-      let reg = RegExp(/\d+(万|日|步|元|次|斤)/g)
-      let match=value.match(reg);
-      if(match){
-        let replace_text1 = value
-
-        for(let i=0;i<match.length;i++){
-          let replaceString = '<span style="color: ' + this.color_text + ';">' + match[i] + "</span>";
-          replace_text1 =replace_text1.replace(match[i] ,replaceString);
-        }
-         return replace_text1
-      }else{
-        return value
-      }
-      
     }
   }
  }
 </script>
 
 <style lang="scss" >
-  .Work_container{
-    
+  .main{
+    background-color: #fff;
+    height: 1000px;
+    padding: 20px;
+    border-radius: 5px;
   }
 </style>
